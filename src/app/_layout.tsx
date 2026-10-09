@@ -2,11 +2,27 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Pressable, Text } from 'react-native';
 
+import { goHome } from '@/lib/nav';
 import { TeasProvider } from '@/lib/teas';
 import { C, serif } from '@/lib/theme';
 
 SplashScreen.preventAutoHideAsync();
+
+// Po obnovení stránky nie je v histórii kam ísť späť, tak ponúkneme návrat na zoznam.
+function HomeButton() {
+  return (
+    <Pressable onPress={() => goHome(false)} hitSlop={10} style={{ paddingHorizontal: 12 }}>
+      <Text style={{ color: C.accent, fontSize: 16, fontWeight: '600' }}>‹ Čaje</Text>
+    </Pressable>
+  );
+}
+
+const withHomeFallback =
+  (title: string) =>
+  ({ navigation }: { navigation: { canGoBack: () => boolean } }) =>
+    navigation.canGoBack() ? { title } : { title, headerLeft: () => <HomeButton /> };
 
 export default function RootLayout() {
   useEffect(() => {
@@ -26,9 +42,9 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: C.bg },
         }}>
         <Stack.Screen name="index" options={{ headerShown: false, title: 'Môj čaj' }} />
-        <Stack.Screen name="caj/[id]" options={{ title: '' }} />
-        <Stack.Screen name="upravit" options={{ title: 'Čaj' }} />
-        <Stack.Screen name="nastavenia" options={{ title: 'Časovač a záloha' }} />
+        <Stack.Screen name="caj/[id]" options={withHomeFallback('')} />
+        <Stack.Screen name="upravit" options={withHomeFallback('Čaj')} />
+        <Stack.Screen name="nastavenia" options={withHomeFallback('Časovač a záloha')} />
       </Stack>
     </TeasProvider>
   );

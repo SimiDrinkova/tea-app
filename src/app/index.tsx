@@ -4,23 +4,34 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Card, Chip } from '@/components/ui';
-import { formatGrams, useTeas } from '@/lib/teas';
+import { formatGrams, isLowStock, Tea, useTeas } from '@/lib/teas';
 import { C, serif, TEA_TYPES, TYPE_COLORS, TeaType } from '@/lib/theme';
+
+const SORTS = {
+  favorite: { label: 'Obľúbené', cmp: (a: Tea, b: Tea) => Number(!!b.favorite) - Number(!!a.favorite) || (b.rating ?? 0) - (a.rating ?? 0) },
+  rating: { label: 'Hodnotenie', cmp: (a: Tea, b: Tea) => (b.rating ?? 0) - (a.rating ?? 0) },
+  name: { label: 'Názov', cmp: (a: Tea, b: Tea) => a.name.localeCompare(b.name, 'sk') },
+};
+type SortKey = keyof typeof SORTS;
 
 export default function TeaList() {
   const { teas, loaded } = useTeas();
   const insets = useSafeAreaInsets();
   const [query, setQuery] = useState('');
   const [type, setType] = useState<TeaType | null>(null);
+  const [sort, setSort] = useState<SortKey>('favorite');
 
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return teas.filter(
-      (t) =>
-        (!type || t.type === type) &&
-        (!q || [t.name, t.origin, t.tasting, t.description].join(' ').toLowerCase().includes(q)),
-    );
-  }, [teas, query, type]);
+    return teas
+      .filter(
+        (t) =>
+          (!type || t.type === type) &&
+          (!q || [t.name, t.origin, t.tasting, t.description].join(' ').toLowerCase().includes(q)),
+      )
+      .sort(SORTS[sort].cmp);
+  }, [teas, query, type, sort]);
+  const lowCount = teas.filter(isLowStock).length;
 
   const usedTypes = TEA_TYPES.filter((ty) => teas.some((t) => t.type === ty));
 
@@ -56,6 +67,23 @@ export default function TeaList() {
           </ScrollView>
         )}
 
+        {teas.length > 1 && (
+          <View style={s.sortRow}>
+            <Text style={s.sortLabel}>Zoradiť:</Text>
+            {(Object.keys(SORTS) as SortKey[]).map((k) => (
+              <Pressable key={k} onPress={() => setSort(k)} hitSlop={6}>
+                <Text style={[s.sortOption, sort === k && s.sortActive]}>{SORTS[k].label}</Text>
+              </Pressable>
+            ))}
+          </View>
+        )}
+
+        {lowCount > 0 && (
+          <Text style={s.lowBanner}>
+            ⚠︎ {lowCount === 1 ? '1 čaj ti dochádza' : `${lowCount} čaje ti dochádzajú`}
+          </Text>
+        )}
+
         {loaded && teas.length === 0 && (
           <Card style={{ alignItems: 'center', paddingVertical: 36 }}>
             <Text style={{ fontSize: 42 }}>🍵</Text>
@@ -73,6 +101,7 @@ export default function TeaList() {
                 </View>
                 <View style={{ flex: 1, gap: 3 }}>
                   <Text style={s.teaName} numberOfLines={1}>
+                    {t.favorite ? <Text style={{ color: C.danger }}>♥ </Text> : null}
                     {t.name}
                   </Text>
                   <Text style={s.soft} numberOfLines={1}>
@@ -86,9 +115,14 @@ export default function TeaList() {
                 </View>
                 <View style={{ alignItems: 'flex-end', gap: 2 }}>
                   <Text style={s.meta}>{t.tempC} °C</Text>
-                  <Text style={s.metaSoft}>
-                    {formatGrams(t.baseGrams)} / {t.baseMl} ml
-                  </Text>
+                  {t.rating ? <Text style={s.rating}>{'★'.repeat(t.rating)}</Text> : null}
+                  {isLowStock(t) ? (
+                    <Text style={s.lowBadge}>{t.stockGrams === 0 ? 'Došiel' : `Zostáva ${formatGrams(t.stockGrams!)}`}</Text>
+                  ) : (
+                    <Text style={s.metaSoft}>
+                      {formatGrams(t.baseGrams)} / {t.baseMl} ml
+                    </Text>
+                  )}
                 </View>
               </Card>
             </Pressable>
@@ -140,6 +174,22 @@ const s = StyleSheet.create({
   tasting: { color: C.olive, fontSize: 13, fontStyle: 'italic' },
   meta: { color: C.text, fontWeight: '600', fontSize: 15 },
   metaSoft: { color: C.textSoft, fontSize: 12 },
+  sortRow: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  sortLabel: { color: C.textSoft, fontSize: 14 },
+  sortOption: { color: C.textSoft, fontSize: 14, paddingVertical: 2 },
+  sortActive: { color: C.accent, fontWeight: '700', textDecorationLine: 'underline' },
+  rating: { color: '#D49A2A', fontSize: 12, letterSpacing: 1 },
+  lowBanner: {
+    backgroundColor: '#FBF0EC',
+    color: C.danger,
+    borderRadius: 14,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    fontSize: 14,
+    fontWeight: '600',
+    overflow: 'hidden',
+  },
+  lowBadge: { color: C.danger, fontSize: 12, fontWeight: '700' },
   emptyTitle: { fontFamily: serif, fontSize: 20, color: C.text, marginTop: 10, marginBottom: 4 },
   fab: {
     position: 'absolute',

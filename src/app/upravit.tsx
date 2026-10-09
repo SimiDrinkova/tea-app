@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button, Chip, Field } from '@/components/ui';
-import { newId, Tea, useTeas } from '@/lib/teas';
+import { DEFAULT_LOW_STOCK, newId, Tea, useTeas } from '@/lib/teas';
 import { C, TEA_TYPES, TYPE_COLORS, TeaType } from '@/lib/theme';
 
 type SteepDraft = { min: string; sec: string };
@@ -27,6 +27,10 @@ export default function EditTea() {
     existing?.steeps.map((s) => ({ min: String(Math.floor(s / 60)), sec: String(s % 60) })) ?? [{ min: '3', sec: '0' }],
   );
   const [steps, setSteps] = useState(existing?.steps ?? '');
+  const [stock, setStock] = useState(
+    existing?.stockGrams !== undefined ? String(existing.stockGrams).replace('.', ',') : '',
+  );
+  const [lowStock, setLowStock] = useState(String(existing?.lowStockGrams ?? DEFAULT_LOW_STOCK));
   const [hasCold, setHasCold] = useState(!!existing?.coldBrew);
   const [coldMl, setColdMl] = useState(String(existing?.coldBrew?.baseMl ?? 500));
   const [coldGrams, setColdGrams] = useState(String(existing?.coldBrew?.baseGrams ?? 5).replace('.', ','));
@@ -46,6 +50,10 @@ export default function EditTea() {
     if (!name.trim()) return setError('Zadaj názov čaju.');
     if (!(ml > 0) || !(g > 0)) return setError('Množstvo vody a čaju musí byť kladné číslo.');
     if (!(temp > 0 && temp <= 100)) return setError('Teplota musí byť medzi 1 a 100 °C.');
+    const stockNum = stock.trim() ? toNum(stock) : undefined;
+    const lowNum = toNum(lowStock);
+    if (stockNum !== undefined && !(stockNum >= 0)) return setError('Zásoba musí byť číslo (alebo nechaj prázdne).');
+    if (stockNum !== undefined && !(lowNum >= 0)) return setError('Hranica pre upozornenie musí byť číslo.');
     const cMl = toNum(coldMl);
     const cG = toNum(coldGrams);
     const cH = toNum(coldHours);
@@ -67,6 +75,10 @@ export default function EditTea() {
         .filter((sec) => sec > 0)
         .map(Math.round),
       steps: steps.trim(),
+      favorite: existing?.favorite,
+      rating: existing?.rating,
+      stockGrams: stockNum,
+      lowStockGrams: stockNum !== undefined ? lowNum : existing?.lowStockGrams,
       coldBrew: hasCold ? { baseMl: cMl, baseGrams: cG, hours: cH, steps: coldSteps.trim() } : undefined,
     };
     save(tea);
@@ -145,6 +157,27 @@ export default function EditTea() {
         placeholder={'Každý krok na nový riadok\nNahrej konvičku\nZalej vodou…'}
         style={{ minHeight: 140 }}
       />
+
+      <View style={{ gap: 8 }}>
+        <View style={s.row}>
+          <Field
+            label="Zásoba doma (g)"
+            value={stock}
+            onChangeText={setStock}
+            inputMode="decimal"
+            placeholder="nesledujem"
+            containerStyle={{ flex: 1 }}
+          />
+          <Field
+            label="Upozorniť pod (g)"
+            value={lowStock}
+            onChangeText={setLowStock}
+            inputMode="decimal"
+            containerStyle={{ flex: 1 }}
+          />
+        </View>
+        <Text style={s.unit}>Keď si pripravíš čaj, appka odráta gramy a upozorní ťa, keď ti bude dochádzať.</Text>
+      </View>
 
       <View style={s.coldBox}>
         <Pressable style={s.coldHeader} onPress={() => setHasCold(!hasCold)}>

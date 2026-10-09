@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, TextInput, TextInputProps, View, ViewStyle } from 'react-native';
 
 import { C, serif } from '@/lib/theme';
 
@@ -46,7 +46,7 @@ export function Chip({
   );
 }
 
-export function Card({ children, style }: { children: ReactNode; style?: ViewStyle }) {
+export function Card({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
   return <View style={[s.card, style]}>{children}</View>;
 }
 

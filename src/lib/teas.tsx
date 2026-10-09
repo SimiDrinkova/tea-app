@@ -16,7 +16,16 @@ export type Tea = {
   steeps: number[]; // časy lúhovania v sekundách
   steps: string; // postup prípravy, jeden krok na riadok
   coldBrew?: ColdBrew;
+  favorite?: boolean;
+  rating?: number; // 1–5 hviezdičiek
+  stockGrams?: number; // koľko gramov mám doma; undefined = nesledujem
+  lowStockGrams?: number; // upozorniť, keď klesne pod
 };
+
+export const isLowStock = (t: Tea) =>
+  t.stockGrams !== undefined && t.stockGrams <= (t.lowStockGrams ?? DEFAULT_LOW_STOCK);
+
+export const DEFAULT_LOW_STOCK = 20;
 
 export type ColdBrew = {
   baseMl: number;
@@ -80,6 +89,7 @@ type Ctx = {
   teas: Tea[];
   loaded: boolean;
   save: (tea: Tea) => void;
+  update: (id: string, patch: Partial<Tea>) => void;
   remove: (id: string) => void;
   replaceAll: (teas: Tea[]) => void;
 };
@@ -107,6 +117,7 @@ export function TeasProvider({ children }: { children: ReactNode }) {
     loaded,
     save: (tea) =>
       persist(teas.some((t) => t.id === tea.id) ? teas.map((t) => (t.id === tea.id ? tea : t)) : [tea, ...teas]),
+    update: (id, patch) => persist(teas.map((t) => (t.id === id ? { ...t, ...patch } : t))),
     remove: (id) => persist(teas.filter((t) => t.id !== id)),
     replaceAll: persist,
   };
