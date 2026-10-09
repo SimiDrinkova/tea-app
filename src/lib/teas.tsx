@@ -15,6 +15,14 @@ export type Tea = {
   tempC: number;
   steeps: number[]; // časy lúhovania v sekundách
   steps: string; // postup prípravy, jeden krok na riadok
+  coldBrew?: ColdBrew;
+};
+
+export type ColdBrew = {
+  baseMl: number;
+  baseGrams: number;
+  hours: number; // lúhovanie v chladničke
+  steps: string;
 };
 
 const KEY = 'caj-app/teas/v1';
@@ -32,6 +40,12 @@ const SEED: Tea[] = [
     tempC: 95,
     steeps: [180, 240],
     steps: 'Nahrej konvičku horúcou vodou.\nNasyp čaj a zalej vodou s teplotou 95 °C.\nLúhuj 3 minúty a sceď.\nDruhý nálev lúhuj o minútu dlhšie.',
+    coldBrew: {
+      baseMl: 500,
+      baseGrams: 6,
+      hours: 10,
+      steps: 'Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nZatvor a daj do chladničky na 8 – 12 hodín.\nSceď a pi do 2 dní.',
+    },
   },
   {
     id: 'ukazka-sencha',
@@ -45,6 +59,12 @@ const SEED: Tea[] = [
     tempC: 75,
     steeps: [60, 20, 45],
     steps: 'Prevar vodu a nechaj ju vychladnúť na 75 °C.\nZalej čaj a lúhuj 1 minútu.\nVylej úplne do poslednej kvapky.\nĎalšie nálevy sú kratšie.',
+    coldBrew: {
+      baseMl: 500,
+      baseGrams: 5,
+      hours: 6,
+      steps: 'Nasyp čaj do fľaše.\nZalej studenou vodou.\nLúhuj v chladničke 5 – 6 hodín, dlhšie by zhorkol.\nSceď a pi čerstvý.',
+    },
   },
 ];
 
@@ -99,6 +119,10 @@ export function formatTime(sec: number) {
   const s = sec % 60;
   if (!m) return `${s} s`;
   return s ? `${m}:${String(s).padStart(2, '0')} min` : `${m} min`;
+}
+
+export function formatHours(h: number) {
+  return `${String(h).replace('.', ',')} h`;
 }
 
 export function formatGrams(g: number) {

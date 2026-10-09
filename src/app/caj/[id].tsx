@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Card, Chip, SectionTitle } from '@/components/ui';
-import { formatGrams, formatTime, useTeas } from '@/lib/teas';
+import { formatGrams, formatHours, formatTime, useTeas } from '@/lib/teas';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction, startSteepTimer } from '@/lib/timer';
 
@@ -14,6 +14,7 @@ export default function TeaDetail() {
   const { teas, loaded, remove } = useTeas();
   const tea = teas.find((t) => t.id === id);
   const [ml, setMl] = useState<number | null>(null);
+  const [cold, setCold] = useState(false);
 
   if (!loaded) return null;
   if (!tea) {
@@ -25,12 +26,18 @@ export default function TeaDetail() {
     );
   }
 
-  const volume = ml ?? tea.baseMl;
-  const grams = Math.max(1, Math.round((tea.baseGrams * volume) / tea.baseMl));
+  const isCold = cold && !!tea.coldBrew;
+  const recipe = isCold && tea.coldBrew ? tea.coldBrew : tea;
+  const volume = ml ?? recipe.baseMl;
+  const grams = Math.max(1, Math.round((recipe.baseGrams * volume) / recipe.baseMl));
   const color = TYPE_COLORS[tea.type];
   const notes = tea.tasting.split(',').map((n) => n.trim()).filter(Boolean);
-  const steps = tea.steps.split('\n').map((n) => n.trim()).filter(Boolean);
-  const presets = Array.from(new Set([...PRESETS, tea.baseMl])).sort((a, b) => a - b);
+  const steps = recipe.steps.split('\n').map((n) => n.trim()).filter(Boolean);
+  const presets = Array.from(new Set([...PRESETS, recipe.baseMl])).sort((a, b) => a - b);
+  const switchMode = (next: boolean) => {
+    setCold(next);
+    setMl(null);
+  };
 
   return (
     <ScrollView contentContainerStyle={s.page}>
@@ -66,8 +73,24 @@ export default function TeaDetail() {
         </View>
       )}
 
+      {!!tea.coldBrew && (
+        <View style={s.segment}>
+          {[
+            { label: '☕ Horúci', value: false },
+            { label: '🧊 Cold brew', value: true },
+          ].map((o) => (
+            <Pressable
+              key={o.label}
+              onPress={() => switchMode(o.value)}
+              style={[s.segmentBtn, isCold === o.value && { backgroundColor: color }]}>
+              <Text style={[s.segmentText, isCold === o.value && { color: '#FFF' }]}>{o.label}</Text>
+            </Pressable>
+          ))}
+        </View>
+      )}
+
       <Card style={{ gap: 14 }}>
-        <SectionTitle>Koľko si chceš pripraviť?</SectionTitle>
+        <SectionTitle>{isCold ? 'Koľko cold brew si chceš pripraviť?' : 'Koľko si chceš pripraviť?'}</SectionTitle>
         <View style={s.stepper}>
           <Pressable style={s.stepBtn} onPress={() => setMl(Math.max(50, volume - 50))}>
             <Text style={s.stepBtnText}>−</Text>
@@ -86,12 +109,16 @@ export default function TeaDetail() {
           ))}
         </View>
         <View style={s.params}>
-          <Param label="Teplota" value={`${tea.tempC} °C`} />
-          <Param label="Pomer" value={`${formatGrams(tea.baseGrams)} / ${tea.baseMl} ml`} />
+          {isCold && tea.coldBrew ? (
+            <Param label="V chladničke" value={formatHours(tea.coldBrew.hours)} />
+          ) : (
+            <Param label="Teplota" value={`${tea.tempC} °C`} />
+          )}
+          <Param label="Pomer" value={`${formatGrams(recipe.baseGrams)} / ${recipe.baseMl} ml`} />
         </View>
       </Card>
 
-      {tea.steeps.length > 0 && (
+      {!isCold && tea.steeps.length > 0 && (
         <Card style={{ gap: 10 }}>
           <SectionTitle>Lúhovanie</SectionTitle>
           {tea.steeps.map((sec, i) => (
@@ -112,7 +139,7 @@ export default function TeaDetail() {
 
       {steps.length > 0 && (
         <View>
-          <SectionTitle>Postup prípravy</SectionTitle>
+          <SectionTitle>{isCold ? 'Postup – cold brew' : 'Postup prípravy'}</SectionTitle>
           <View style={{ gap: 12 }}>
             {steps.map((step, i) => (
               <View key={i} style={{ flexDirection: 'row', gap: 12 }}>
@@ -173,6 +200,9 @@ const s = StyleSheet.create({
   params: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border, paddingTop: 12 },
   paramLabel: { fontSize: 12, color: C.textSoft, textTransform: 'uppercase', letterSpacing: 0.6 },
   paramValue: { fontSize: 16, color: C.text, fontWeight: '600' },
+  segment: { flexDirection: 'row', backgroundColor: C.chip, borderRadius: 999, padding: 4, gap: 4 },
+  segmentBtn: { flex: 1, paddingVertical: 10, borderRadius: 999, alignItems: 'center' },
+  segmentText: { fontSize: 15, fontWeight: '600', color: C.accent },
   steepRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   timerBtn: { paddingHorizontal: 14, paddingVertical: 9, borderRadius: 999 },
   timerBtnText: { color: '#FFF', fontWeight: '700', fontSize: 14 },

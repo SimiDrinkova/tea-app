@@ -27,6 +27,13 @@ export default function EditTea() {
     existing?.steeps.map((s) => ({ min: String(Math.floor(s / 60)), sec: String(s % 60) })) ?? [{ min: '3', sec: '0' }],
   );
   const [steps, setSteps] = useState(existing?.steps ?? '');
+  const [hasCold, setHasCold] = useState(!!existing?.coldBrew);
+  const [coldMl, setColdMl] = useState(String(existing?.coldBrew?.baseMl ?? 500));
+  const [coldGrams, setColdGrams] = useState(String(existing?.coldBrew?.baseGrams ?? 5).replace('.', ','));
+  const [coldHours, setColdHours] = useState(String(existing?.coldBrew?.hours ?? 8).replace('.', ','));
+  const [coldSteps, setColdSteps] = useState(
+    existing?.coldBrew?.steps ?? 'Nasyp čaj do fľaše.\nZalej studenou vodou.\nDaj do chladničky.\nSceď a pi.',
+  );
   const [error, setError] = useState('');
 
   const updateSteep = (i: number, patch: Partial<SteepDraft>) =>
@@ -39,6 +46,11 @@ export default function EditTea() {
     if (!name.trim()) return setError('Zadaj názov čaju.');
     if (!(ml > 0) || !(g > 0)) return setError('Množstvo vody a čaju musí byť kladné číslo.');
     if (!(temp > 0 && temp <= 100)) return setError('Teplota musí byť medzi 1 a 100 °C.');
+    const cMl = toNum(coldMl);
+    const cG = toNum(coldGrams);
+    const cH = toNum(coldHours);
+    if (hasCold && (!(cMl > 0) || !(cG > 0) || !(cH > 0)))
+      return setError('Pri cold brew vyplň vodu, čaj aj počet hodín kladným číslom.');
 
     const tea: Tea = {
       id: existing?.id ?? newId(),
@@ -55,6 +67,7 @@ export default function EditTea() {
         .filter((sec) => sec > 0)
         .map(Math.round),
       steps: steps.trim(),
+      coldBrew: hasCold ? { baseMl: cMl, baseGrams: cG, hours: cH, steps: coldSteps.trim() } : undefined,
     };
     save(tea);
     if (existing) router.back();
@@ -133,6 +146,28 @@ export default function EditTea() {
         style={{ minHeight: 140 }}
       />
 
+      <View style={s.coldBox}>
+        <Pressable style={s.coldHeader} onPress={() => setHasCold(!hasCold)}>
+          <View style={{ flex: 1 }}>
+            <Text style={s.coldTitle}>🧊 Cold brew</Text>
+            <Text style={s.unit}>Príprava za studena v chladničke</Text>
+          </View>
+          <View style={[s.toggle, hasCold && s.toggleOn]}>
+            <View style={[s.knob, hasCold && { alignSelf: 'flex-end' }]} />
+          </View>
+        </Pressable>
+        {hasCold && (
+          <View style={{ gap: 14 }}>
+            <View style={s.row}>
+              <Field label="Voda (ml)" value={coldMl} onChangeText={setColdMl} inputMode="numeric" containerStyle={{ flex: 1 }} />
+              <Field label="Čaj (g)" value={coldGrams} onChangeText={setColdGrams} inputMode="decimal" containerStyle={{ flex: 1 }} />
+              <Field label="Hodiny" value={coldHours} onChangeText={setColdHours} inputMode="decimal" containerStyle={{ flex: 1 }} />
+            </View>
+            <Field label="Postup – cold brew" value={coldSteps} onChangeText={setColdSteps} multiline style={{ minHeight: 120 }} />
+          </View>
+        )}
+      </View>
+
       {!!error && <Text style={s.error}>{error}</Text>}
       <Button title="Uložiť" onPress={onSave} />
     </ScrollView>
@@ -158,5 +193,11 @@ const s = StyleSheet.create({
     color: C.text,
   },
   unit: { color: C.textSoft, fontSize: 15 },
+  coldBox: { backgroundColor: '#EAF0F2', borderRadius: 18, padding: 14, gap: 14, borderWidth: 1, borderColor: '#D5E0E4' },
+  coldHeader: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  coldTitle: { fontSize: 17, fontWeight: '700', color: C.text },
+  toggle: { width: 50, height: 30, borderRadius: 15, backgroundColor: '#CFC3B3', padding: 3 },
+  toggleOn: { backgroundColor: C.olive },
+  knob: { width: 24, height: 24, borderRadius: 12, backgroundColor: '#FFF' },
   error: { color: C.danger, fontSize: 15, textAlign: 'center' },
 });
