@@ -68,6 +68,14 @@ const SEED: Tea[] = [
   },
 ];
 
+// Ukážkové čaje uložené pred pridaním cold brew dostanú cold brew recept dodatočne.
+function withSeedUpdates(teas: Tea[]): Tea[] {
+  return teas.map((t) => {
+    const seed = SEED.find((x) => x.id === t.id);
+    return seed && !t.coldBrew ? { ...t, coldBrew: seed.coldBrew } : t;
+  });
+}
+
 type Ctx = {
   teas: Tea[];
   loaded: boolean;
@@ -84,7 +92,7 @@ export function TeasProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
-      .then((raw) => setTeas(raw ? JSON.parse(raw) : SEED))
+      .then((raw) => setTeas(raw ? withSeedUpdates(JSON.parse(raw)) : SEED))
       .catch(() => setTeas(SEED))
       .finally(() => setLoaded(true));
   }, []);
