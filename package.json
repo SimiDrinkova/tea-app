@@ -42,7 +42,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "predeploy": "expo export -p web && cp dist/index.html dist/404.html",
-    "deploy": "gh-pages --nojekyll -d dist"
+    "deploy": "gh-pages --nojekyll -d dist",
+    "preview": "expo export -p web && cp dist/index.html dist/404.html && node scripts/preview.js"
   },
   "private": true
 }
