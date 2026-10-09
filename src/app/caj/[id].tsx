@@ -8,6 +8,7 @@ import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction, startSteepTimer } from '@/lib/timer';
 
 const PRESETS = [100, 150, 200, 250, 300, 400, 500];
+const COLD_PRESETS = [250, 300, 400, 500, 700, 1000];
 
 export default function TeaDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -33,7 +34,7 @@ export default function TeaDetail() {
   const color = TYPE_COLORS[tea.type];
   const notes = tea.tasting.split(',').map((n) => n.trim()).filter(Boolean);
   const steps = recipe.steps.split('\n').map((n) => n.trim()).filter(Boolean);
-  const presets = Array.from(new Set([...PRESETS, recipe.baseMl])).sort((a, b) => a - b);
+  const presets = Array.from(new Set([...(isCold ? COLD_PRESETS : PRESETS), recipe.baseMl])).sort((a, b) => a - b);
   const switchMode = (next: boolean) => {
     setCold(next);
     setMl(null);
@@ -96,7 +97,7 @@ export default function TeaDetail() {
             <Text style={s.stepBtnText}>−</Text>
           </Pressable>
           <View style={{ alignItems: 'center', flex: 1 }}>
-            <Text style={s.bigNumber}>{volume} ml</Text>
+            <Text style={s.bigNumber}>{volume >= 1000 ? `${String(volume / 1000).replace('.', ',')} l` : `${volume} ml`}</Text>
             <Text style={[s.bigNumber, { color }]}>{grams} g</Text>
           </View>
           <Pressable style={s.stepBtn} onPress={() => setMl(volume + 50)}>
@@ -105,7 +106,7 @@ export default function TeaDetail() {
         </View>
         <View style={s.wrap}>
           {presets.map((p) => (
-            <Chip key={p} label={`${p} ml`} active={p === volume} color={color} onPress={() => setMl(p)} />
+            <Chip key={p} label={p >= 1000 ? `${p / 1000} l` : `${p} ml`} active={p === volume} color={color} onPress={() => setMl(p)} />
           ))}
         </View>
         <View style={s.params}>
