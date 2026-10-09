@@ -26,7 +26,7 @@ export default function TeaDetail() {
   }
 
   const volume = ml ?? tea.baseMl;
-  const grams = (tea.baseGrams * volume) / tea.baseMl;
+  const grams = Math.max(1, Math.round((tea.baseGrams * volume) / tea.baseMl));
   const color = TYPE_COLORS[tea.type];
   const notes = tea.tasting.split(',').map((n) => n.trim()).filter(Boolean);
   const steps = tea.steps.split('\n').map((n) => n.trim()).filter(Boolean);
@@ -74,7 +74,7 @@ export default function TeaDetail() {
           </Pressable>
           <View style={{ alignItems: 'center', flex: 1 }}>
             <Text style={s.bigNumber}>{volume} ml</Text>
-            <Text style={[s.bigNumber, { color }]}>{formatGrams(grams)}</Text>
+            <Text style={[s.bigNumber, { color }]}>{grams} g</Text>
           </View>
           <Pressable style={s.stepBtn} onPress={() => setMl(volume + 50)}>
             <Text style={s.stepBtnText}>+</Text>
