@@ -7,7 +7,7 @@ import { formatGrams, formatTime, useTeas } from '@/lib/teas';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction, startSteepTimer } from '@/lib/timer';
 
-const PRESETS = [100, 150, 200, 250, 300, 500, 750, 1000];
+const PRESETS = [100, 150, 200, 250, 300, 400, 500];
 
 export default function TeaDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
