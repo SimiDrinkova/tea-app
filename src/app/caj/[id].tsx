@@ -1,17 +1,21 @@
 import { router, Stack, useLocalSearchParams, useNavigation } from 'expo-router';
-import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button, Card, Chip, SectionTitle } from '@/components/ui';
 import {
+  formatDate,
   formatGrams,
   formatHours,
   formatTime,
   isLowStock,
+  LogEntry,
   newId,
+  shopHref,
   useTeas,
 } from '@/lib/teas';
 import { goHome } from '@/lib/nav';
+import { loadNextSteep, saveNextSteep } from '@/lib/session';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction, startSteepTimer } from '@/lib/timer';
 
@@ -26,6 +30,14 @@ export default function TeaDetail() {
   const [ml, setMl] = useState<number | null>(null);
   const [cold, setCold] = useState(false);
   const [lastUsed, setLastUsed] = useState<number | null>(null);
+  const [nextSteep, setNextSteep] = useState(0);
+  const [newEntryId, setNewEntryId] = useState<string | null>(null);
+  const [note, setNote] = useState('');
+  const [showAllLog, setShowAllLog] = useState(false);
+
+  useEffect(() => {
+    if (id) loadNextSteep(id).then(setNextSteep);
+  }, [id]);
   const navigation = useNavigation();
 
   if (!loaded) return null;
@@ -66,8 +78,47 @@ export default function TeaDetail() {
     setLastUsed(null);
   };
 
+  const runSteep = (i: number) => {
+    const next = i + 1;
+    setNextSteep(next);
+    saveNextSteep(tea.id, next);
+    startSteepTimer(tea.steeps[i]);
+  };
+
+  const resetSteeps = () => {
+    setNextSteep(0);
+    saveNextSteep(tea.id, 0);
+  };
+
+  const log = tea.log ?? [];
+
+  const addLog = () => {
+    const entry: LogEntry = { id: newId(), at: new Date().toISOString(), ml: volume, grams, cold: isCold || undefined };
+    update(tea.id, { log: [entry, ...log] });
+    setNewEntryId(entry.id);
+    setNote('');
+  };
+
+  const saveNote = () => {
+    update(tea.id, { log: log.map((e) => (e.id === newEntryId ? { ...e, note: note.trim() || undefined } : e)) });
+    setNewEntryId(null);
+  };
+
+  const removeLog = (entryId: string) =>
+    confirmAction('Vymazať tento záznam z denníka?', () => {
+      update(tea.id, { log: log.filter((e) => e.id !== entryId) });
+      if (entryId === newEntryId) setNewEntryId(null);
+    });
+
+  const openShop = () => {
+    if (!tea.shopUrl) return;
+    const url = shopHref(tea.shopUrl);
+    if (Platform.OS === 'web') window.open(url, '_blank', 'noopener');
+    else Linking.openURL(url);
+  };
+
   const duplicate = () => {
-    const copy = { ...tea, id: newId(), name: `${tea.name} (kópia)`, favorite: false, stockGrams: undefined };
+    const copy = { ...tea, id: newId(), name: `${tea.name} (kópia)`, favorite: false, stockGrams: undefined, log: undefined };
     save(copy);
     router.replace({ pathname: '/upravit', params: { id: copy.id } });
   };
@@ -98,6 +149,11 @@ export default function TeaDetail() {
         </View>
         <Text style={s.title}>{tea.name}</Text>
         {!!tea.origin && <Text style={s.origin}>{tea.origin}</Text>}
+        {!!tea.shopUrl && (
+          <Pressable onPress={openShop} hitSlop={6} style={{ alignSelf: 'flex-start' }}>
+            <Text style={s.shopLink}>🛒 Pozrieť v e-shope</Text>
+          </Pressable>
+        )}
         <View style={s.stars}>
           {[1, 2, 3, 4, 5].map((n) => (
             <Pressable
@@ -172,14 +228,34 @@ export default function TeaDetail() {
       {!isCold && tea.steeps.length > 0 && (
         <Card style={{ gap: 10 }}>
           <SectionTitle>Lúhovanie</SectionTitle>
+          {nextSteep < tea.steeps.length ? (
+            <Pressable
+              onPress={() => runSteep(nextSteep)}
+              style={({ pressed }) => [s.bigTimer, { backgroundColor: color }, pressed && { opacity: 0.85 }]}>
+              <Text style={s.bigTimerSmall}>Na rade je</Text>
+              <Text style={s.bigTimerText}>
+                ⏱ {nextSteep + 1}. nálev · {formatTime(tea.steeps[nextSteep])}
+              </Text>
+            </Pressable>
+          ) : (
+            <View style={[s.bigTimer, { backgroundColor: C.chip }]}>
+              <Text style={[s.bigTimerText, { color: C.accent }]}>Všetky nálevy sú hotové 🍵</Text>
+            </View>
+          )}
           {tea.steeps.map((sec, i) => (
-            <View key={i} style={s.steepRow}>
+            <View key={i} style={[s.steepRow, i < nextSteep && { opacity: 0.45 }]}>
               <Text style={s.body}>
+                {i < nextSteep ? '✓ ' : ''}
                 {i + 1}. nálev · <Text style={{ fontWeight: '700' }}>{formatTime(sec)}</Text>
               </Text>
-              <TimerButton color={color} onPress={() => startSteepTimer(sec)} />
+              <TimerButton color={color} onPress={() => runSteep(i)} />
             </View>
           ))}
+          {nextSteep > 0 && (
+            <Pressable onPress={resetSteeps} hitSlop={8}>
+              <Text style={[s.hint, { color: C.accent, fontWeight: '700' }]}>↺ Začať odznova</Text>
+            </Pressable>
+          )}
           <Text style={s.hint}>Časovač beží v iPhone cez Skratku a zazvoní aj pri zamknutom telefóne.</Text>
         </Card>
       )}
@@ -232,6 +308,7 @@ export default function TeaDetail() {
                 : `Dochádza ti, zostáva už len ${formatGrams(tea.stockGrams)}. Čas objednať nový.`}
             </Text>
           )}
+          {low && !!tea.shopUrl && <Button title="🛒 Objednať" onPress={openShop} />}
           <Button
             title={`Pripravila som – odpočítať ${Math.min(grams, tea.stockGrams)} g`}
             variant="soft"
@@ -252,6 +329,49 @@ export default function TeaDetail() {
           </Text>
         </Pressable>
       )}
+
+      <Card style={{ gap: 12 }}>
+        <SectionTitle>📝 Denník</SectionTitle>
+        {newEntryId ? (
+          <View style={{ gap: 10 }}>
+            <Text style={s.hint}>
+              Zapísané: {formatVolume(volume)} · {grams} g{isCold ? ' · cold brew' : ''}. Chceš pridať poznámku?
+            </Text>
+            <TextInput
+              value={note}
+              onChangeText={setNote}
+              placeholder="napr. trochu horký, nabudúce 90 °C"
+              placeholderTextColor="#B9A693"
+              multiline
+              style={s.noteInput}
+            />
+            <Button title={note.trim() ? 'Uložiť poznámku' : 'Hotovo'} variant="soft" onPress={saveNote} />
+          </View>
+        ) : (
+          <Button title={`Zapísať dnešný čaj (${formatVolume(volume)} · ${grams} g)`} variant="soft" onPress={addLog} />
+        )}
+        {log.length === 0 && <Text style={s.hint}>Zatiaľ žiadne záznamy. Zápis do denníka zásobu nemení.</Text>}
+        {(showAllLog ? log : log.slice(0, 5)).map((e) => (
+          <View key={e.id} style={s.logRow}>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={s.logDate}>
+                {formatDate(e.at)} · {formatVolume(e.ml)} · {e.grams} g{e.cold ? ' · 🧊' : ''}
+              </Text>
+              {!!e.note && <Text style={s.logNote}>{e.note}</Text>}
+            </View>
+            <Pressable onPress={() => removeLog(e.id)} hitSlop={10} accessibilityLabel="Vymazať záznam">
+              <Text style={s.logDelete}>×</Text>
+            </Pressable>
+          </View>
+        ))}
+        {log.length > 5 && (
+          <Pressable onPress={() => setShowAllLog(!showAllLog)} hitSlop={8}>
+            <Text style={[s.hint, { color: C.accent, fontWeight: '700', textAlign: 'center' }]}>
+              {showAllLog ? 'Zobraziť menej' : `Zobraziť všetky (${log.length})`}
+            </Text>
+          </Pressable>
+        )}
+      </Card>
 
       <View style={{ gap: 10, marginTop: 12 }}>
         <Button title="Duplikovať čaj" variant="soft" onPress={duplicate} />
@@ -327,6 +447,25 @@ const s = StyleSheet.create({
   timerBtnText: { color: '#FFF', fontWeight: '700', fontSize: 14 },
   hint: { color: C.textSoft, fontSize: 13, lineHeight: 19 },
   stock: { fontFamily: serif, fontSize: 24, color: C.text, marginBottom: 10 },
+  shopLink: { color: C.accent, fontSize: 15, fontWeight: '600', marginTop: 2 },
+  bigTimer: { borderRadius: 18, paddingVertical: 14, paddingHorizontal: 16, alignItems: 'center', gap: 2 },
+  bigTimerSmall: { color: 'rgba(255,255,255,0.85)', fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.8 },
+  bigTimerText: { color: '#FFF', fontSize: 19, fontWeight: '700' },
+  noteInput: {
+    backgroundColor: C.card,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 14,
+    padding: 12,
+    minHeight: 70,
+    fontSize: 16,
+    color: C.text,
+    textAlignVertical: 'top',
+  },
+  logRow: { flexDirection: 'row', gap: 10, borderTopWidth: 1, borderTopColor: C.border, paddingTop: 10 },
+  logDate: { color: C.text, fontSize: 14, fontWeight: '600' },
+  logNote: { color: C.textSoft, fontSize: 14, fontStyle: 'italic' },
+  logDelete: { color: C.textSoft, fontSize: 22, paddingHorizontal: 4 },
   lowCard: { borderColor: '#E3B7AE', backgroundColor: '#FBF0EC' },
   stepNum: {
     width: 28,

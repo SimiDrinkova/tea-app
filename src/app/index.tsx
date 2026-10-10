@@ -1,9 +1,10 @@
 import { Link, router } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Card, Chip } from '@/components/ui';
+import { backupDueDays, exportBackup, snoozeBackup } from '@/lib/backup';
 import { formatGrams, isLowStock, Tea, useTeas } from '@/lib/teas';
 import { C, serif, TEA_TYPES, TYPE_COLORS, TeaType } from '@/lib/theme';
 
@@ -20,6 +21,15 @@ export default function TeaList() {
   const [query, setQuery] = useState('');
   const [type, setType] = useState<TeaType | null>(null);
   const [sort, setSort] = useState<SortKey>('favorite');
+  const [backupDue, setBackupDue] = useState<number | null>(null);
+
+  useEffect(() => {
+    backupDueDays().then(setBackupDue).catch(() => {});
+  }, []);
+
+  const backupNow = async () => {
+    if (await exportBackup(teas)) setBackupDue(null);
+  };
 
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -75,6 +85,27 @@ export default function TeaList() {
                 <Text style={[s.sortOption, sort === k && s.sortActive]}>{SORTS[k].label}</Text>
               </Pressable>
             ))}
+          </View>
+        )}
+
+        {backupDue !== null && teas.length > 0 && (
+          <View style={s.backupBanner}>
+            <Text style={s.backupText}>
+              💾 Zálohu si nerobila {backupDue} dní. Tvoje čaje sú len v tomto telefóne.
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 16, alignItems: 'center' }}>
+              <Pressable onPress={backupNow} hitSlop={6}>
+                <Text style={s.backupAction}>Zálohovať</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => {
+                  snoozeBackup();
+                  setBackupDue(null);
+                }}
+                hitSlop={6}>
+                <Text style={s.backupLater}>Neskôr</Text>
+              </Pressable>
+            </View>
           </View>
         )}
 
@@ -189,6 +220,17 @@ const s = StyleSheet.create({
     fontWeight: '600',
     overflow: 'hidden',
   },
+  backupBanner: {
+    backgroundColor: '#EAF0F2',
+    borderRadius: 16,
+    padding: 14,
+    gap: 10,
+    borderWidth: 1,
+    borderColor: '#D5E0E4',
+  },
+  backupText: { color: C.text, fontSize: 14, lineHeight: 20 },
+  backupAction: { color: C.accent, fontWeight: '700', fontSize: 15 },
+  backupLater: { color: C.textSoft, fontSize: 15 },
   lowBadge: { color: C.danger, fontSize: 12, fontWeight: '700' },
   emptyTitle: { fontFamily: serif, fontSize: 20, color: C.text, marginTop: 10, marginBottom: 4 },
   fab: {

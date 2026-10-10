@@ -20,6 +20,17 @@ export type Tea = {
   rating?: number; // 1–5 hviezdičiek
   stockGrams?: number; // koľko gramov mám doma; undefined = nesledujem
   lowStockGrams?: number; // upozorniť, keď klesne pod
+  shopUrl?: string; // odkaz na čaj v e-shope
+  log?: LogEntry[]; // denník, najnovšie prvé
+};
+
+export type LogEntry = {
+  id: string;
+  at: string; // ISO dátum a čas
+  ml: number;
+  grams: number;
+  cold?: boolean;
+  note?: string;
 };
 
 export const isLowStock = (t: Tea) =>
@@ -138,6 +149,20 @@ export function formatTime(sec: number) {
   const s = sec % 60;
   if (!m) return `${s} s`;
   return s ? `${m}:${String(s).padStart(2, '0')} min` : `${m} min`;
+}
+
+export function formatDate(iso: string) {
+  const d = new Date(iso);
+  const today = new Date();
+  const yesterday = new Date(Date.now() - 86400000);
+  const time = d.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
+  if (d.toDateString() === today.toDateString()) return `Dnes ${time}`;
+  if (d.toDateString() === yesterday.toDateString()) return `Včera ${time}`;
+  return `${d.getDate()}. ${d.getMonth() + 1}. ${d.getFullYear()}`;
+}
+
+export function shopHref(url: string) {
+  return /^https?:\/\//i.test(url) ? url : `https://${url}`;
 }
 
 export function formatHours(h: number) {

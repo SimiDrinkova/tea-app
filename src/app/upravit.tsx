@@ -30,6 +30,7 @@ export default function EditTea() {
   const [stock, setStock] = useState(
     existing?.stockGrams !== undefined ? String(existing.stockGrams).replace('.', ',') : '',
   );
+  const [shopUrl, setShopUrl] = useState(existing?.shopUrl ?? '');
   const [lowStock, setLowStock] = useState(String(existing?.lowStockGrams ?? DEFAULT_LOW_STOCK));
   const [hasCold, setHasCold] = useState(!!existing?.coldBrew);
   const [coldMl, setColdMl] = useState(String(existing?.coldBrew?.baseMl ?? 500));
@@ -76,6 +77,8 @@ export default function EditTea() {
         .map(Math.round),
       steps: steps.trim(),
       favorite: existing?.favorite,
+      log: existing?.log,
+      shopUrl: shopUrl.trim() || undefined,
       rating: existing?.rating,
       stockGrams: stockNum,
       lowStockGrams: stockNum !== undefined ? lowNum : existing?.lowStockGrams,
@@ -178,6 +181,16 @@ export default function EditTea() {
         </View>
         <Text style={s.unit}>Keď si pripravíš čaj, appka odráta gramy a upozorní ťa, keď ti bude dochádzať.</Text>
       </View>
+
+      <Field
+        label="Odkaz na e-shop"
+        value={shopUrl}
+        onChangeText={setShopUrl}
+        inputMode="url"
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="napr. manutea.sk/assam-monipur"
+      />
 
       <View style={s.coldBox}>
         <Pressable style={s.coldHeader} onPress={() => setHasCold(!hasCold)}>

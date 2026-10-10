@@ -1,23 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Card, SectionTitle } from '@/components/ui';
-import { Tea, useTeas } from '@/lib/teas';
+import { exportBackup, lastBackupDate } from '@/lib/backup';
+import { formatDate, Tea, useTeas } from '@/lib/teas';
 import { C, serif } from '@/lib/theme';
 import { confirmAction, SHORTCUT_NAME, startSteepTimer } from '@/lib/timer';
 
 export default function Settings() {
   const { teas, replaceAll } = useTeas();
   const [message, setMessage] = useState('');
+  const [lastBackup, setLastBackup] = useState<string | null>(null);
 
-  const exportBackup = () => {
-    if (Platform.OS !== 'web') return;
-    const blob = new Blob([JSON.stringify({ version: 1, teas }, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `moj-caj-zaloha-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    setMessage(`Záloha s ${teas.length} čajmi je stiahnutá.`);
+  useEffect(() => {
+    lastBackupDate().then(setLastBackup);
+  }, []);
+
+  const backup = async () => {
+    if (await exportBackup(teas)) {
+      setMessage(`Záloha s ${teas.length} čajmi je uložená.`);
+      setLastBackup(new Date().toISOString());
+    }
   };
 
   const importBackup = () => {
@@ -77,9 +80,13 @@ export default function Settings() {
         <SectionTitle>💾 Záloha</SectionTitle>
         <Text style={s.body}>
           Tvoje čaje sú uložené len v tomto telefóne. Ak vymažeš dáta Safari, stratia sa, preto si občas stiahni zálohu
-          (napríklad do Súborov alebo na iCloud).
+          (do Súborov alebo na iCloud Drive).
         </Text>
-        <Button title="Stiahnuť zálohu" variant="soft" onPress={exportBackup} />
+        <Text style={s.hint}>
+          {lastBackup ? `Posledná záloha: ${formatDate(lastBackup)}` : 'Zálohu si si ešte nespravila.'} Appka ti
+          zálohu pripomenie raz za mesiac.
+        </Text>
+        <Button title="Uložiť zálohu" variant="soft" onPress={backup} />
         <Button title="Obnoviť zo zálohy" variant="soft" onPress={importBackup} />
         {!!message && <Text style={[s.hint, { color: C.olive }]}>{message}</Text>}
       </Card>
