@@ -15,6 +15,7 @@ const snapshot = (t: Tea) => JSON.stringify(t);
 
 // Či má uložený čaj stále presne tie hodnoty, ktoré prišli zo zoznamu (teda som ho neupravovala).
 function unchanged(stored: Tea, seenJson: string) {
+  if (!seenJson) return true; // staršia verzia si obsah nepamätala, berieme ako neupravený
   try {
     const seen = JSON.parse(seenJson) as Record<string, unknown>;
     return Object.keys(seen).every(
