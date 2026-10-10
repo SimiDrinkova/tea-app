@@ -13,8 +13,8 @@
       "character": "plný, vyrovnaný, veľmi silný, s klasickou trpkosťou",
       "tasting": "slad, med, plné telo, trpkosť",
       "description": "Silný čierny čaj z Assamu s tmavým medeným nálevom. Výborný ráno a znesie aj mlieko. V Indii sa pije silný, sladený, niekedy s kardamónom.",
-      "baseMl": 250,
-      "baseGrams": 3,
+      "baseMl": 300,
+      "baseGrams": 4,
       "tempC": 100,
       "steeps": [
         180,
