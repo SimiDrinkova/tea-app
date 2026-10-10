@@ -57,6 +57,11 @@ export default function TeaList() {
             <Text style={s.kicker}>Moja čajovňa</Text>
             <Text style={s.title}>Môj čaj</Text>
           </View>
+          <Link href="/sprievodca" asChild>
+            <Pressable style={s.iconBtnSpaced} accessibilityLabel="Sprievodca">
+              <Text style={{ fontSize: 19 }}>📖</Text>
+            </Pressable>
+          </Link>
           <Link href="/historia" asChild>
             {/* Link asChild na webe neznesie pole štýlov, preto jeden objekt. */}
             <Pressable style={s.iconBtnSpaced} accessibilityLabel="História">
