@@ -31,7 +31,6 @@ export default function TeaDetail() {
   const [cold, setCold] = useState(false);
   const [lastUsed, setLastUsed] = useState<number | null>(null);
   const [nextSteep, setNextSteep] = useState(0);
-  const [newEntryId, setNewEntryId] = useState<string | null>(null);
   const [note, setNote] = useState('');
   const [showAllLog, setShowAllLog] = useState(false);
 
@@ -90,25 +89,17 @@ export default function TeaDetail() {
     saveNextSteep(tea.id, 0);
   };
 
-  const log = tea.log ?? [];
+  const log = (tea.log ?? []).filter((e) => e.note);
 
-  const addLog = () => {
-    const entry: LogEntry = { id: newId(), at: new Date().toISOString(), ml: volume, grams, cold: isCold || undefined };
+  const addNote = () => {
+    if (!note.trim()) return;
+    const entry: LogEntry = { id: newId(), at: new Date().toISOString(), note: note.trim() };
     update(tea.id, { log: [entry, ...log] });
-    setNewEntryId(entry.id);
     setNote('');
   };
 
-  const saveNote = () => {
-    update(tea.id, { log: log.map((e) => (e.id === newEntryId ? { ...e, note: note.trim() || undefined } : e)) });
-    setNewEntryId(null);
-  };
-
   const removeLog = (entryId: string) =>
-    confirmAction('Vymazať tento záznam z denníka?', () => {
-      update(tea.id, { log: log.filter((e) => e.id !== entryId) });
-      if (entryId === newEntryId) setNewEntryId(null);
-    });
+    confirmAction('Vymazať túto poznámku?', () => update(tea.id, { log: log.filter((e) => e.id !== entryId) }));
 
   const openShop = () => {
     if (!tea.shopUrl) return;
@@ -332,34 +323,22 @@ export default function TeaDetail() {
 
       <Card style={{ gap: 12 }}>
         <SectionTitle>📝 Denník</SectionTitle>
-        {newEntryId ? (
-          <View style={{ gap: 10 }}>
-            <Text style={s.hint}>
-              Zapísané: {formatVolume(volume)} · {grams} g{isCold ? ' · cold brew' : ''}. Chceš pridať poznámku?
-            </Text>
-            <TextInput
-              value={note}
-              onChangeText={setNote}
-              placeholder="napr. trochu horký, nabudúce 90 °C"
-              placeholderTextColor="#B9A693"
-              multiline
-              style={s.noteInput}
-            />
-            <Button title={note.trim() ? 'Uložiť poznámku' : 'Hotovo'} variant="soft" onPress={saveNote} />
-          </View>
-        ) : (
-          <Button title={`Zapísať dnešný čaj (${formatVolume(volume)} · ${grams} g)`} variant="soft" onPress={addLog} />
-        )}
-        {log.length === 0 && <Text style={s.hint}>Zatiaľ žiadne záznamy. Zápis do denníka zásobu nemení.</Text>}
+        <TextInput
+          value={note}
+          onChangeText={setNote}
+          placeholder="Tvoja poznámka, napr. trochu horký, nabudúce 90 °C"
+          placeholderTextColor="#B9A693"
+          multiline
+          style={s.noteInput}
+        />
+        {!!note.trim() && <Button title="Pridať poznámku" variant="soft" onPress={addNote} />}
         {(showAllLog ? log : log.slice(0, 5)).map((e) => (
           <View key={e.id} style={s.logRow}>
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={s.logDate}>
-                {formatDate(e.at)} · {formatVolume(e.ml)} · {e.grams} g{e.cold ? ' · 🧊' : ''}
-              </Text>
-              {!!e.note && <Text style={s.logNote}>{e.note}</Text>}
+              <Text style={s.logDate}>{formatDate(e.at)}</Text>
+              <Text style={s.logNote}>{e.note}</Text>
             </View>
-            <Pressable onPress={() => removeLog(e.id)} hitSlop={10} accessibilityLabel="Vymazať záznam">
+            <Pressable onPress={() => removeLog(e.id)} hitSlop={10} accessibilityLabel="Vymazať poznámku">
               <Text style={s.logDelete}>×</Text>
             </Pressable>
           </View>
@@ -463,8 +442,8 @@ const s = StyleSheet.create({
     textAlignVertical: 'top',
   },
   logRow: { flexDirection: 'row', gap: 10, borderTopWidth: 1, borderTopColor: C.border, paddingTop: 10 },
-  logDate: { color: C.text, fontSize: 14, fontWeight: '600' },
-  logNote: { color: C.textSoft, fontSize: 14, fontStyle: 'italic' },
+  logDate: { color: C.textSoft, fontSize: 12, fontWeight: '600' },
+  logNote: { color: C.text, fontSize: 15, lineHeight: 21 },
   logDelete: { color: C.textSoft, fontSize: 22, paddingHorizontal: 4 },
   lowCard: { borderColor: '#E3B7AE', backgroundColor: '#FBF0EC' },
   stepNum: {

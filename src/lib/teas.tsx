@@ -21,16 +21,14 @@ export type Tea = {
   stockGrams?: number; // koľko gramov mám doma; undefined = nesledujem
   lowStockGrams?: number; // upozorniť, keď klesne pod
   shopUrl?: string; // odkaz na čaj v e-shope
-  log?: LogEntry[]; // denník, najnovšie prvé
+  log?: LogEntry[]; // denník poznámok, najnovšie prvé
 };
 
+// Moje poznámky k čaju (denník), najnovšie prvé.
 export type LogEntry = {
   id: string;
   at: string; // ISO dátum a čas
-  ml: number;
-  grams: number;
-  cold?: boolean;
-  note?: string;
+  note: string;
 };
 
 export const isLowStock = (t: Tea) =>
