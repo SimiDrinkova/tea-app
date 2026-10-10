@@ -5,25 +5,19 @@ import type { Tea } from './teas';
 
 // Moje čaje zverejnené spolu s appkou (public/moje-caje.json).
 // - Nový čaj sa pridá len raz, takže čaj, ktorý si v telefóne zmažem, sa znova neobjaví.
-// - Keď sa čaj v zozname neskôr opraví, zmena sa prenesie, ale len ak som ho v appke neupravovala.
+// - Keď sa čaj v zozname neskôr opraví, zmena sa prenesie, ale len ak som ho v appke neupravovala
+//   (formulár Upraviť nastaví `edited`; hodnotenie, zásoba, história ani poznámky sa nerátajú).
 const URL = '/tea-app/moje-caje.json';
 const SEEN_KEY = 'caj-app/catalogSeen';
 
-type Seen = Record<string, string>; // id → JSON verzie zo zoznamu, ktorú appka naposledy videla
+type Seen = Record<string, string>; // id → JSON verzie zo zoznamu, ktorú appka naposledy videla (stačí, že id je známe)
 
 const snapshot = (t: Tea) => JSON.stringify(t);
 
-// Či má uložený čaj stále presne tie hodnoty, ktoré prišli zo zoznamu (teda som ho neupravovala).
-function unchanged(stored: Tea, seenJson: string) {
-  if (!seenJson) return true; // staršia verzia si obsah nepamätala, berieme ako neupravený
-  try {
-    const seen = JSON.parse(seenJson) as Record<string, unknown>;
-    return Object.keys(seen).every(
-      (k) => JSON.stringify((stored as Record<string, unknown>)[k]) === JSON.stringify(seen[k]),
-    );
-  } catch {
-    return false;
-  }
+// Líši sa uložený čaj od verzie v zozname? Porovnáva len polia zo zoznamu,
+// takže moje hodnotenie, zásoba, história a poznámky sa neberú do úvahy.
+function differs(stored: Tea, entry: Tea) {
+  return (Object.keys(entry) as (keyof Tea)[]).some((k) => JSON.stringify(stored[k]) !== JSON.stringify(entry[k]));
 }
 
 async function loadSeen(): Promise<Seen> {
@@ -54,7 +48,7 @@ export async function syncCatalog(existing: Tea[]): Promise<Tea[] | null> {
           teas = [entry, ...teas];
           changed = true;
         }
-      } else if (seen[entry.id] !== json && stored && unchanged(stored, seen[entry.id])) {
+      } else if (stored && !stored.edited && differs(stored, entry)) {
         // opravený recept/popis; moje hodnotenie, zásoba, história a poznámky ostanú
         teas = teas.map((t) => (t.id === entry.id ? { ...t, ...entry } : t));
         changed = true;

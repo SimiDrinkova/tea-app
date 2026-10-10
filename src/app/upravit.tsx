@@ -102,6 +102,7 @@ function EditTea() {
       log: existing?.log,
       drunk: existing?.drunk,
       caffeinePerGram: caffeineNum,
+      edited: true,
       shopUrl: shopUrl.trim() || undefined,
       rating: existing?.rating,
       stockGrams: stockNum,

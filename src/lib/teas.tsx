@@ -30,6 +30,7 @@ export type Tea = {
   log?: LogEntry[]; // denník poznámok, najnovšie prvé
   drunk?: Drink[]; // história pitia, najnovšie prvé
   caffeinePerGram?: number; // vlastný odhad kofeínu v mg na 1 g; inak podľa druhu
+  edited?: boolean; // upravený cez formulár, takže ho zoznam mojich čajov neprepíše
 };
 
 export type Drink = {
