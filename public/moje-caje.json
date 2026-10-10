@@ -117,6 +117,35 @@
         "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nSceď a vypi do 3 – 4 dní."
       },
       "shopUrl": "https://www.manutea.sk/ceylon-op-1-cierny-caj-x1105"
+    },
+    {
+      "id": "earl-grey",
+      "name": "Earl Grey",
+      "type": "Čierny",
+      "origin": "Srí Lanka, Ruhuna",
+      "country": "Srí Lanka (Cejlón)",
+      "region": "Ruhuna (600 – 900 m n. m.)",
+      "harvest": "neskorý zber",
+      "leaf": "čierny čaj Ceylon OP 1 (95 %) s bergamotovou silicou",
+      "character": "osviežujúci, citrusový, s oblým silným základom a výraznou, no príjemnou trpkosťou",
+      "tasting": "bergamot, citrus, slad, jemná trpkosť",
+      "description": "Najznámejší ochutený čaj na svete: silný cejlónsky čaj s bergamotom, citrusovým ovocím podobným citrónu. Nálev má príjemnú tmavomedenú farbu a bergamot osviežuje oblý základ silného čaju. Podľa tradície ním v 30. rokoch 19. storočia pohostili britského premiéra, grófa Greya, a z jeho rodiny sa recept rozšíril po celej Británii. V Anglicku sa pije s mliekom a cukrom, inde v Európe s citrónom. Výborný je aj ako ľadový čaj.",
+      "baseMl": 300,
+      "baseGrams": 4,
+      "tempC": 95,
+      "steeps": [
+        180,
+        240
+      ],
+      "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vodou s teplotou 95 °C.\nLúhuj prikryté 3 minúty a sceď. Lístky nevytláčaj – uvoľnila by sa horkosť. Silnejší čaj urob radšej z väčšieho množstva lístkov, nie dlhším lúhovaním.\nBez mlieka môžeš pridať plátok citróna a trochu cukru. Citrón nedávaj spolu s mliekom – mlieko by sa zrazilo.\nDruhý nálev lúhuj 4 minúty (bergamot bude už jemnejší).",
+      "milkSteps": "V šálke (ako v Anglicku) · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} a lúhuj 4 minúty.\nSceď a dolej {50 – 80 ml} teplého mlieka.\nPridaj {1} lyžičku cukru.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 6,
+        "hours": 10,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 10 – 12 hodín.\nSceď a vypi do 3 – 4 dní.\nPodávaj s ľadom, prípadne s plátkom citróna."
+      },
+      "shopUrl": "https://www.manutea.sk/earl-grey-cierny-caj-x1120"
     }
   ]
 }
