@@ -219,29 +219,27 @@ export default function TeaDetail() {
       {!isCold && tea.steeps.length > 0 && (
         <Card style={{ gap: 10 }}>
           <SectionTitle>Lúhovanie</SectionTitle>
-          {nextSteep < tea.steeps.length ? (
-            <Pressable
-              onPress={() => runSteep(nextSteep)}
-              style={({ pressed }) => [s.bigTimer, { backgroundColor: color }, pressed && { opacity: 0.85 }]}>
-              <Text style={s.bigTimerSmall}>Na rade je</Text>
-              <Text style={s.bigTimerText}>
-                ⏱ {nextSteep + 1}. nálev · {formatTime(tea.steeps[nextSteep])}
-              </Text>
-            </Pressable>
-          ) : (
-            <View style={[s.bigTimer, { backgroundColor: C.chip }]}>
-              <Text style={[s.bigTimerText, { color: C.accent }]}>Všetky nálevy sú hotové 🍵</Text>
-            </View>
-          )}
           {tea.steeps.map((sec, i) => (
-            <View key={i} style={[s.steepRow, i < nextSteep && { opacity: 0.45 }]}>
-              <Text style={s.body}>
-                {i < nextSteep ? '✓ ' : ''}
-                {i + 1}. nálev · <Text style={{ fontWeight: '700' }}>{formatTime(sec)}</Text>
-              </Text>
+            <View
+              key={i}
+              style={[
+                s.steepRow,
+                i < nextSteep && { opacity: 0.45 },
+                i === nextSteep && [s.steepNext, { borderColor: color }],
+              ]}>
+              <View style={{ gap: 1 }}>
+                {i === nextSteep && <Text style={[s.nextLabel, { color }]}>Na rade</Text>}
+                <Text style={s.body}>
+                  {i < nextSteep ? '✓ ' : ''}
+                  {i + 1}. nálev · <Text style={{ fontWeight: '700' }}>{formatTime(sec)}</Text>
+                </Text>
+              </View>
               <TimerButton color={color} onPress={() => runSteep(i)} />
             </View>
           ))}
+          {nextSteep >= tea.steeps.length && (
+            <Text style={[s.body, { color: C.olive, fontWeight: '600' }]}>Všetky nálevy sú hotové 🍵</Text>
+          )}
           {nextSteep > 0 && (
             <Pressable onPress={resetSteeps} hitSlop={8}>
               <Text style={[s.hint, { color: C.accent, fontWeight: '700' }]}>↺ Začať odznova</Text>
@@ -427,9 +425,8 @@ const s = StyleSheet.create({
   hint: { color: C.textSoft, fontSize: 13, lineHeight: 19 },
   stock: { fontFamily: serif, fontSize: 24, color: C.text, marginBottom: 10 },
   shopLink: { color: C.accent, fontSize: 15, fontWeight: '600', marginTop: 2 },
-  bigTimer: { borderRadius: 18, paddingVertical: 14, paddingHorizontal: 16, alignItems: 'center', gap: 2 },
-  bigTimerSmall: { color: 'rgba(255,255,255,0.85)', fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.8 },
-  bigTimerText: { color: '#FFF', fontSize: 19, fontWeight: '700' },
+  steepNext: { borderWidth: 1.5, borderRadius: 14, marginHorizontal: -10, paddingHorizontal: 10, paddingVertical: 8 },
+  nextLabel: { fontSize: 11, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.8 },
   noteInput: {
     backgroundColor: C.card,
     borderWidth: 1,
