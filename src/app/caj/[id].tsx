@@ -9,6 +9,7 @@ import {
   formatHours,
   formatTime,
   isLowStock,
+  isNewBrew,
   lastDrunkLabel,
   LogEntry,
   newId,
@@ -80,15 +81,16 @@ export default function TeaDetail() {
   };
 
   const recordDrink = (coldBrew: boolean) => {
-    const drunk = withDrink(tea, coldBrew);
+    const drunk = withDrink(tea, coldBrew, grams, volume);
     if (drunk) update(tea.id, { drunk });
   };
 
+  // Do histórie sa zapisuje nová konvička: 1. nálev, alebo prvý časovač po dlhšej pauze.
   const runSteep = (i: number) => {
     const next = i + 1;
     setNextSteep(next);
     saveNextSteep(tea.id, next);
-    recordDrink(false);
+    if (isNewBrew(tea, i)) recordDrink(false);
     startSteepTimer(tea.steeps[i]);
   };
 

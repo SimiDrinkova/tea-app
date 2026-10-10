@@ -1,14 +1,20 @@
 import { router } from 'expo-router';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Card } from '@/components/ui';
-import { dayLabel, useTeas } from '@/lib/teas';
+import { DEFAULT_LIMIT, loadLimit } from '@/lib/caffeine';
+import { dayLabel, formatGrams, sumCaffeine, useTeas } from '@/lib/teas';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction } from '@/lib/timer';
 
 export default function History() {
   const { teas, update } = useTeas();
+  const [limit, setLimit] = useState(DEFAULT_LIMIT);
+
+  useEffect(() => {
+    loadLimit().then(setLimit);
+  }, []);
 
   // Všetky pitia zo všetkých čajov, zoskupené po dňoch, najnovšie hore.
   const days = useMemo(() => {
@@ -25,24 +31,59 @@ export default function History() {
   }, [teas]);
 
   const total = days.reduce((n, d) => n + d.items.length, 0);
+  const today = days[0]?.label === 'Dnes' ? days[0].items : [];
+  const todayMg = sumCaffeine(today);
+  const ratio = Math.min(1, todayMg / limit);
+  const over = todayMg > limit;
 
   return (
     <ScrollView contentContainerStyle={s.page}>
+      <Card style={{ gap: 10 }}>
+        <View style={s.todayHead}>
+          <Text style={s.todayTitle}>Kofeín dnes</Text>
+          <Text style={[s.todayMg, over && { color: C.danger }]}>
+            ≈ {todayMg} <Text style={s.todayOf}>z {limit} mg</Text>
+          </Text>
+        </View>
+        <View style={s.bar}>
+          <View
+            style={[
+              s.barFill,
+              { width: `${Math.max(ratio * 100, todayMg ? 3 : 0)}%` },
+              ratio > 0.75 && { backgroundColor: '#C9852E' },
+              over && { backgroundColor: C.danger },
+            ]}
+          />
+        </View>
+        <Text style={s.soft}>
+          {over
+            ? `Dnes si prekročila odporúčané maximum o ≈ ${todayMg - limit} mg.`
+            : todayMg
+              ? `Do odporúčaného maxima ti zostáva ≈ ${limit - todayMg} mg.`
+              : 'Dnes si ešte nepila čaj s kofeínom.'}{' '}
+          Odporúčanie: {limit === 200 ? 'v tehotenstve a pri dojčení' : 'pre dospelých'} do {limit} mg denne (EFSA).
+          Hodnoty sú len orientačný odhad.
+        </Text>
+      </Card>
+
       {total === 0 ? (
         <Card style={{ alignItems: 'center', paddingVertical: 32, gap: 6 }}>
           <Text style={{ fontSize: 40 }}>🕘</Text>
           <Text style={s.emptyTitle}>Zatiaľ žiadna história</Text>
           <Text style={[s.soft, { textAlign: 'center' }]}>
-            Keď pri čaji spustíš časovač, appka si zapíše, že si ho v ten deň pila.
+            Keď pri čaji spustíš časovač 1. nálevu alebo cold brew, appka si to zapíše aj s gramami a odhadom kofeínu.
           </Text>
         </Card>
       ) : (
-        <Text style={s.soft}>Spolu {total}× · zapisuje sa samo pri spustení časovača, raz za deň pre každý čaj.</Text>
+        <Text style={s.soft}>Spolu {total}× · zapisuje sa samo pri spustení 1. nálevu alebo cold brew časovača.</Text>
       )}
 
       {days.map((day) => (
         <View key={day.label} style={{ gap: 8 }}>
-          <Text style={s.day}>{day.label}</Text>
+          <View style={s.dayHead}>
+            <Text style={s.day}>{day.label}</Text>
+            <Text style={s.dayMg}>≈ {sumCaffeine(day.items)} mg kofeínu</Text>
+          </View>
           <Card style={{ padding: 6 }}>
             {day.items.map((item, i) => (
               <View key={item.tea.id + item.at} style={[s.row, i > 0 && s.rowBorder]}>
@@ -54,9 +95,16 @@ export default function History() {
                     {item.tea.name}
                     {item.cold ? ' 🧊' : ''}
                   </Text>
-                  <Text style={s.time}>
-                    {new Date(item.at).toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' })}
-                  </Text>
+                  <View style={{ alignItems: 'flex-end' }}>
+                    <Text style={s.time}>
+                      {new Date(item.at).toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' })}
+                    </Text>
+                    {item.grams !== undefined && (
+                      <Text style={s.meta}>
+                        {formatGrams(item.grams)} · ≈ {item.caffeineMg ?? 0} mg
+                      </Text>
+                    )}
+                  </View>
                 </Pressable>
                 <Pressable
                   hitSlop={10}
@@ -88,5 +136,14 @@ const s = StyleSheet.create({
   dot: { width: 12, height: 12, borderRadius: 6 },
   name: { flex: 1, color: C.text, fontSize: 16 },
   time: { color: C.textSoft, fontSize: 14 },
+  meta: { color: C.textSoft, fontSize: 12 },
+  dayHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
+  dayMg: { color: C.textSoft, fontSize: 13 },
+  todayHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
+  todayTitle: { fontFamily: serif, fontSize: 19, color: C.text },
+  todayMg: { fontFamily: serif, fontSize: 24, color: C.text },
+  todayOf: { fontSize: 15, color: C.textSoft },
+  bar: { height: 10, borderRadius: 5, backgroundColor: C.chip, overflow: 'hidden' },
+  barFill: { height: '100%', borderRadius: 5, backgroundColor: C.olive },
   delete: { color: C.textSoft, fontSize: 22, paddingHorizontal: 4 },
 });

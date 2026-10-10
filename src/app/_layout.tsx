@@ -44,7 +44,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false, title: 'Môj čaj' }} />
         <Stack.Screen name="caj/[id]" options={withHomeFallback('')} />
         <Stack.Screen name="upravit" options={withHomeFallback('Čaj')} />
-        <Stack.Screen name="nastavenia" options={withHomeFallback('Časovač a záloha')} />
+        <Stack.Screen name="nastavenia" options={withHomeFallback('Nastavenia')} />
         <Stack.Screen name="historia" options={withHomeFallback('História')} />
       </Stack>
     </TeasProvider>

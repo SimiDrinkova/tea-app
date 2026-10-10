@@ -23,21 +23,61 @@ export type Tea = {
   shopUrl?: string; // odkaz na čaj v e-shope
   log?: LogEntry[]; // denník poznámok, najnovšie prvé
   drunk?: Drink[]; // história pitia, najnovšie prvé
+  caffeinePerGram?: number; // vlastný odhad kofeínu v mg na 1 g; inak podľa druhu
 };
 
 export type Drink = {
   at: string; // ISO dátum a čas
   cold?: boolean;
+  grams?: number;
+  ml?: number;
+  caffeineMg?: number; // odhad v čase prípravy
 };
+
+// Orientačný odhad vylúhovaného kofeínu na 1 g čaju (nie meranie).
+export const CAFFEINE_PER_GRAM: Record<TeaType, number> = {
+  Čierny: 20,
+  'Pu-erh': 20,
+  Oolong: 16,
+  Zelený: 14,
+  Biely: 12,
+  Bylinný: 0,
+  Iný: 15,
+};
+const COLD_BREW_FACTOR = 2 / 3; // studená voda vytiahne menej kofeínu
+
+export const caffeinePerGram = (tea: Tea) => tea.caffeinePerGram ?? CAFFEINE_PER_GRAM[tea.type];
+
+export function estimateCaffeine(tea: Tea, grams: number, cold: boolean) {
+  return Math.round(grams * caffeinePerGram(tea) * (cold ? COLD_BREW_FACTOR : 1));
+}
+
+const RECENT_MS = 10 * 60 * 1000;
 
 const sameDay = (a: string, b: Date) => new Date(a).toDateString() === b.toDateString();
 
-// Zapíše pitie, ale najviac raz za deň pre jeden čaj.
-export function withDrink(tea: Tea, cold: boolean): Drink[] | null {
+// Zapíše novú prípravu. Ak bol ten istý čaj zapísaný pred menej ako 10 min,
+// berieme to ako tú istú konvičku (napr. omylom spustený časovač dvakrát).
+export function withDrink(tea: Tea, cold: boolean, grams: number, ml: number): Drink[] | null {
   const drunk = tea.drunk ?? [];
-  if (drunk.some((d) => sameDay(d.at, new Date()))) return null;
-  return [{ at: new Date().toISOString(), cold: cold || undefined }, ...drunk];
+  if (drunk[0] && Date.now() - Date.parse(drunk[0].at) < RECENT_MS) return null;
+  const entry: Drink = {
+    at: new Date().toISOString(),
+    cold: cold || undefined,
+    grams,
+    ml,
+    caffeineMg: estimateCaffeine(tea, grams, cold),
+  };
+  return [entry, ...drunk];
 }
+
+// Nová konvička = 1. nálev, alebo akýkoľvek nálev po viac ako 3 hodinách od posledného zápisu.
+export function isNewBrew(tea: Tea, steepIndex: number) {
+  const last = tea.drunk?.[0];
+  return steepIndex === 0 || !last || Date.now() - Date.parse(last.at) > 3 * 3600 * 1000;
+}
+
+export const sumCaffeine = (drinks: Drink[]) => drinks.reduce((n, d) => n + (d.caffeineMg ?? 0), 0);
 
 export function dayLabel(iso: string) {
   const d = new Date(iso);

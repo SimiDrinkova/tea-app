@@ -60,7 +60,7 @@ export default function TeaList() {
             </Pressable>
           </Link>
           <Link href="/nastavenia" asChild>
-            <Pressable style={s.iconBtn} accessibilityLabel="Časovač a záloha">
+            <Pressable style={s.iconBtn} accessibilityLabel="Nastavenia">
               <Text style={{ fontSize: 20 }}>⚙︎</Text>
             </Pressable>
           </Link>

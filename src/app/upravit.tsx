@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button, Chip, Field } from '@/components/ui';
-import { DEFAULT_LOW_STOCK, newId, Tea, useTeas } from '@/lib/teas';
+import { CAFFEINE_PER_GRAM, DEFAULT_LOW_STOCK, newId, Tea, useTeas } from '@/lib/teas';
 import { C, TEA_TYPES, TYPE_COLORS, TeaType } from '@/lib/theme';
 
 type SteepDraft = { min: string; sec: string };
@@ -30,6 +30,9 @@ export default function EditTea() {
   const [stock, setStock] = useState(
     existing?.stockGrams !== undefined ? String(existing.stockGrams).replace('.', ',') : '',
   );
+  const [caffeine, setCaffeine] = useState(
+    existing?.caffeinePerGram !== undefined ? String(existing.caffeinePerGram).replace('.', ',') : '',
+  );
   const [shopUrl, setShopUrl] = useState(existing?.shopUrl ?? '');
   const [lowStock, setLowStock] = useState(String(existing?.lowStockGrams ?? DEFAULT_LOW_STOCK));
   const [hasCold, setHasCold] = useState(!!existing?.coldBrew);
@@ -55,6 +58,9 @@ export default function EditTea() {
     const lowNum = toNum(lowStock);
     if (stockNum !== undefined && !(stockNum >= 0)) return setError('Zásoba musí byť číslo (alebo nechaj prázdne).');
     if (stockNum !== undefined && !(lowNum >= 0)) return setError('Hranica pre upozornenie musí byť číslo.');
+    const caffeineNum = caffeine.trim() ? toNum(caffeine) : undefined;
+    if (caffeineNum !== undefined && !(caffeineNum >= 0))
+      return setError('Kofeín musí byť číslo (alebo nechaj prázdne).');
     const cMl = toNum(coldMl);
     const cG = toNum(coldGrams);
     const cH = toNum(coldHours);
@@ -79,6 +85,7 @@ export default function EditTea() {
       favorite: existing?.favorite,
       log: existing?.log,
       drunk: existing?.drunk,
+      caffeinePerGram: caffeineNum,
       shopUrl: shopUrl.trim() || undefined,
       rating: existing?.rating,
       stockGrams: stockNum,
@@ -181,6 +188,17 @@ export default function EditTea() {
           />
         </View>
         <Text style={s.unit}>Keď si pripravíš čaj, appka odráta gramy a upozorní ťa, keď ti bude dochádzať.</Text>
+      </View>
+
+      <View style={{ gap: 6 }}>
+        <Field
+          label="Kofeín (mg na 1 g čaju)"
+          value={caffeine}
+          onChangeText={setCaffeine}
+          inputMode="decimal"
+          placeholder={`odhad podľa druhu: ${CAFFEINE_PER_GRAM[type]} mg`}
+        />
+        <Text style={s.unit}>Nechaj prázdne, ak presnú hodnotu nepoznáš. Použije sa orientačný odhad podľa druhu.</Text>
       </View>
 
       <Field
