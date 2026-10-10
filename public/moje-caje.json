@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "teas": [
+    {
+      "id": "assam-monipur",
+      "name": "Assam TGFOP1 Second Flush Monipur",
+      "type": "Čierny",
+      "origin": "India, Assam (nížina, ~150 m n. m.)",
+      "description": "Silný čierny čaj z druhého, letného zberu. Tmavé lístky s vysokým podielom výhonkov (TGFOP1 = celolistový čaj s množstvom tipsov, najvyššia kvalita v rámci triedy). Nálev je tmavý, medený. Chuť je plná, vyrovnaná a veľmi silná, s klasickou trpkosťou. Znesie mlieko – v Indii sa pije silný, sladený, niekedy s kardamónom.",
+      "tasting": "slad, plné telo, trpkosť, med",
+      "baseMl": 250,
+      "baseGrams": 3,
+      "tempC": 100,
+      "steeps": [180, 240, 300],
+      "steps": "Nahrej konvičku horúcou vodou.\nNasyp čaj a zalej vriacou vodou (100 °C).\nLúhuj prikryté 3 minúty a sceď. Silnejší alebo s mliekom nechaj lúhovať až 5 minút.\nĎalšie nálevy lúhuj vždy o minútu dlhšie.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 6,
+        "hours": 10,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nSceď a vypi do 3 – 4 dní."
+      },
+      "shopUrl": "https://www.manutea.sk/assam-tgfop1-second-flush-monipur-cierny-caj-x193"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
+import { newCatalogTeas } from './catalog';
 import type { TeaType } from './theme';
 
 export type Tea = {
@@ -184,9 +185,18 @@ export function TeasProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
-      .then((raw) => setTeas(raw ? withSeedUpdates(JSON.parse(raw)) : SEED))
-      .catch(() => setTeas(SEED))
-      .finally(() => setLoaded(true));
+      .then((raw) => (raw ? withSeedUpdates(JSON.parse(raw)) : SEED))
+      .catch(() => SEED)
+      .then(async (stored) => {
+        setTeas(stored);
+        setLoaded(true);
+        const fresh = await newCatalogTeas(stored);
+        if (fresh.length) {
+          const next = [...fresh, ...stored];
+          setTeas(next);
+          AsyncStorage.setItem(KEY, JSON.stringify(next)).catch(() => {});
+        }
+      });
   }, []);
 
   const persist = (next: Tea[]) => {
