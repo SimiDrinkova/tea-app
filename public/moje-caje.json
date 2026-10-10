@@ -30,6 +30,35 @@
         "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nSceď a vypi do 3 – 4 dní."
       },
       "shopUrl": "https://www.manutea.sk/assam-tgfop1-second-flush-monipur-cierny-caj-x193"
+    },
+    {
+      "id": "darjeeling-castleton-sf",
+      "name": "Darjeeling Castleton FTGFOP1 Second Flush BIO",
+      "type": "Čierny",
+      "origin": "India, Darjeeling",
+      "country": "India",
+      "region": "Darjeeling, záhrada Castleton v Kurseongu (~1 830 m n. m.)",
+      "harvest": "Second Flush (druhý, letný zber, jún – júl)",
+      "leaf": "FTGFOP1: drobnejšie, ručne zbierané lístky tmavohnedej až svetlozelenej farby, BIO",
+      "character": "elegantný, hladký, aromatický, svieži",
+      "tasting": "muškát, broskyňa, jemné korenie, med, ruža",
+      "description": "Prémiový Darjeeling zo slávnej záhrady Castleton v hmlistom Kurseongu, ktorá funguje od roku 1885. Druhý zber je známy typickou muškátovou chuťou (tónmi muškátového hrozna), vďaka ktorej sa Darjeelingu hovorí „šampanské medzi čajmi“. Nálev je zlatožltý, chuť elegantná a hladká a môže pripomínať broskyne s ľahkým korením. Väčšina úrody z Castletonu sa predáva len na aukciách. Najlepšie vynikne bez mlieka.",
+      "baseMl": 300,
+      "baseGrams": 4,
+      "tempC": 95,
+      "steeps": [
+        180,
+        240,
+        300
+      ],
+      "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vodou s teplotou 95 °C (chvíľu po prevarení).\nLúhuj prikryté 3 minúty a sceď.\nĎalšie nálevy lúhuj vždy o minútu dlhšie.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 5,
+        "hours": 8,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín.\nSceď a vypi do 3 – 4 dní."
+      },
+      "shopUrl": "https://www.manutea.sk/darjeeling-castleton-ftgfop1-second-flush-bio-cierny-caj-x1751"
     }
   ]
 }
