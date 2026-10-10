@@ -10,7 +10,6 @@ export type Chapter = {
   title: string;
   summary: string;
   body: string; // „## “ podnadpis, „- “ odrážka, „| a | b |“ riadok tabuľky, **tučné**
-  sources?: { label: string; url: string }[];
 };
 
 export function useGuide() {

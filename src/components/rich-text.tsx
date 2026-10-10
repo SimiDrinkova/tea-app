@@ -1,4 +1,4 @@
-import { Linking, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { C, serif } from '@/lib/theme';
 
@@ -83,20 +83,6 @@ export function RichText({ body }: { body: string }) {
   );
 }
 
-export function Sources({ sources }: { sources: { label: string; url: string }[] }) {
-  const open = (url: string) => (Platform.OS === 'web' ? window.open(url, '_blank', 'noopener') : Linking.openURL(url));
-  return (
-    <View style={{ gap: 6 }}>
-      <Text style={s.sourcesTitle}>Zdroje</Text>
-      {sources.map((src) => (
-        <Pressable key={src.url} onPress={() => open(src.url)} hitSlop={4}>
-          <Text style={s.source}>{src.label}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
-}
-
 const s = StyleSheet.create({
   h: { fontFamily: serif, fontSize: 21, color: C.text },
   p: { color: C.text, fontSize: 16, lineHeight: 25 },
@@ -107,6 +93,4 @@ const s = StyleSheet.create({
   trBorder: { borderTopWidth: 1, borderTopColor: C.border },
   td: { flex: 2, flexBasis: 0, minWidth: 0, padding: 10, color: C.text, fontSize: 14, lineHeight: 20 },
   tdFirst: { flex: 1.25, fontWeight: '600' },
-  sourcesTitle: { color: C.textSoft, fontSize: 12, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
-  source: { color: C.accent, fontSize: 14, lineHeight: 20, textDecorationLine: 'underline' },
 });

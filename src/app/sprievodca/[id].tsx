@@ -1,7 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 
-import { RichText, Sources } from '@/components/rich-text';
+import { RichText } from '@/components/rich-text';
 import { useGuide } from '@/lib/guide';
 import { C, serif } from '@/lib/theme';
 
@@ -19,11 +19,6 @@ export default function GuideChapter() {
       <Text style={s.kicker}>Kapitola {index + 1}</Text>
       <Text style={s.title}>{ch.title}</Text>
       <RichText body={ch.body} />
-      {!!ch.sources?.length && (
-        <View style={s.sources}>
-          <Sources sources={ch.sources} />
-        </View>
-      )}
       {next && (
         <Pressable
           onPress={() => router.replace({ pathname: '/sprievodca/[id]', params: { id: next.id } })}
@@ -40,7 +35,6 @@ const s = StyleSheet.create({
   page: { padding: 20, paddingBottom: 60, gap: 12, maxWidth: 640, width: '100%', alignSelf: 'center' },
   kicker: { color: C.olive, fontSize: 13, fontWeight: '600', letterSpacing: 1.2, textTransform: 'uppercase' },
   title: { fontFamily: serif, fontSize: 30, color: C.text, marginBottom: 8 },
-  sources: { borderTopWidth: 1, borderTopColor: C.border, paddingTop: 16, marginTop: 12 },
   next: { marginTop: 18, backgroundColor: C.chip, borderRadius: 18, padding: 16, gap: 2 },
   nextSmall: { color: C.textSoft, fontSize: 12, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
   nextTitle: { fontFamily: serif, fontSize: 18, color: C.accent },

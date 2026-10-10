@@ -5,421 +5,79 @@
       "id": "co-je-cierny-caj",
       "title": "Čo je čierny čaj",
       "summary": "Jedna rastlina, rôzne čaje. Prečo je čierny čaj čierny a prečo ho Číňania volajú červený.",
-      "body": "Všetok „pravý“ čaj – čierny, zelený, biely aj oolong – pochádza z jedinej rastliny: **čajovníka čínskeho** (Camellia sinensis). Bylinkové a ovocné „čaje“ ako mäta či rooibos sú v skutočnosti nálevy z iných rastlín.\nČím sa teda čierny čaj líši od zeleného? Nie rastlinou, ale tým, čo sa s lístkami stane po zbere. Čierny čaj je **najviac oxidovaný** zo všetkých druhov.\n## Oxidácia, nie fermentácia\nKeď sa čerstvý lístok poškodí, jeho vlastné enzýmy začnú reagovať so vzduchom – podobne ako keď nakrojené jablko zhnedne. Tomuto procesu sa hovorí **oxidácia**. U zeleného čaju sa zastaví hneď na začiatku zahriatím, u čierneho čaju sa nechá prebehnúť takmer úplne. Lístky pri tom stmavnú a získajú sladovú, plnú chuť.\nNa obaloch často uvidíš slovo „fermentácia“. Je to zaužívaný, ale nepresný názov – pri výrobe čierneho čaju nepracujú žiadne mikroorganizmy, ide len o oxidáciu pomocou enzýmov v samotnom lístku.\n## Dve odrody čajovníka\n| Odroda | Čím je typická |\n| Čínska (var. sinensis) | Menšie lístky, ker do 3 m, znesie chladné hory (Darjeeling až do 2 200 m). Dáva jemné, voňavé čaje. |\n| Assamská (var. assamica) | Veľké lístky, pochádza zo severovýchodnej Indie, rastie v teplých a vlhkých nížinách. Dáva plné, sladové, silné čaje. |\nTo vysvetľuje, prečo je Darjeeling taký iný ako Assam, hoci sú oba z Indie: rastú v inej výške a z inej odrody čajovníka.\n## Prečo „červený“ čaj\nV Číne sa čiernemu čaju hovorí **hong cha**, teda „červený čaj“ – podľa červenkastej farby nálevu. Pozor na zámenu: to, čo Číňania volajú „čierny čaj“ (hei cha), je úplne iná kategória – tmavé, dlhodobo dozrievajúce čaje ako pu-erh.",
-      "sources": [
-        {
-          "label": "Wikipedia – Camellia sinensis",
-          "url": "https://en.wikipedia.org/wiki/Camellia_sinensis"
-        },
-        {
-          "label": "Wikipedia – Black tea",
-          "url": "https://en.wikipedia.org/wiki/Black_tea"
-        },
-        {
-          "label": "Wikipedia – Assam tea",
-          "url": "https://en.wikipedia.org/wiki/Assam_tea"
-        },
-        {
-          "label": "Molecules (2022) – enzymatická oxidácia čajových katechínov",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8840101"
-        }
-      ]
+      "body": "Všetok „pravý“ čaj – čierny, zelený, biely aj oolong – pochádza z jedinej rastliny: **čajovníka čínskeho** (Camellia sinensis). Bylinkové a ovocné „čaje“ ako mäta či rooibos sú v skutočnosti nálevy z iných rastlín.\nČím sa teda čierny čaj líši od zeleného? Nie rastlinou, ale tým, čo sa s lístkami stane po zbere. Čierny čaj je **najviac oxidovaný** zo všetkých druhov.\n## Oxidácia, nie fermentácia\nKeď sa čerstvý lístok poškodí, jeho vlastné enzýmy začnú reagovať so vzduchom – podobne ako keď nakrojené jablko zhnedne. Tomuto procesu sa hovorí **oxidácia**. U zeleného čaju sa zastaví hneď na začiatku zahriatím, u čierneho čaju sa nechá prebehnúť takmer úplne. Lístky pri tom stmavnú a získajú sladovú, plnú chuť.\nNa obaloch často uvidíš slovo „fermentácia“. Je to zaužívaný, ale nepresný názov – pri výrobe čierneho čaju nepracujú žiadne mikroorganizmy, ide len o oxidáciu pomocou enzýmov v samotnom lístku.\n## Dve odrody čajovníka\n| Odroda | Čím je typická |\n| Čínska (var. sinensis) | Menšie lístky, ker do 3 m, znesie chladné hory (Darjeeling až do 2 200 m). Dáva jemné, voňavé čaje. |\n| Assamská (var. assamica) | Veľké lístky, pochádza zo severovýchodnej Indie, rastie v teplých a vlhkých nížinách. Dáva plné, sladové, silné čaje. |\nTo vysvetľuje, prečo je Darjeeling taký iný ako Assam, hoci sú oba z Indie: rastú v inej výške a z inej odrody čajovníka.\n## Prečo „červený“ čaj\nV Číne sa čiernemu čaju hovorí **hong cha**, teda „červený čaj“ – podľa červenkastej farby nálevu. Pozor na zámenu: to, čo Číňania volajú „čierny čaj“ (hei cha), je úplne iná kategória – tmavé, dlhodobo dozrievajúce čaje ako pu-erh."
     },
     {
       "id": "vyroba",
       "title": "Ako vzniká",
       "summary": "Od zberu cez vädnutie, zvinovanie a oxidáciu až po sušenie. A rozdiel medzi celým lístkom a vrecúškom.",
-      "body": "Z čerstvého zeleného lístka sa na čierny čaj premení v piatich krokoch.\n## 1. Zber\nNajjemnejší zber sa volá **„dva lístky a púčik“** – trhá sa len vrchný, ešte nerozvinutý púčik a dva najmladšie lístky pod ním. Kvalitné čaje sa zbierajú ručne, lacnejšie strojovo.\n## 2. Vädnutie\nLístky sa rozprestrú a prefukuje ich vzduch, kým nestratia časť vody (zvyčajne cez noc, okolo 18 – 20 hodín). Zmäknú, aby sa dali zvinúť bez polámania, a začína sa tvoriť ich aróma.\n## 3. Zvinovanie: ortodoxne alebo CTC\nTu sa cesta čaju rozdeľuje na dve vetvy:\n- **Ortodoxná výroba** – tradičná. Lístky sa zvinujú a krútia, čím sa narušia ich bunky a uvoľnia šťavy. Výsledkom sú celé alebo lámané lístky s bohatou chuťou a arómou. Všetky tvoje čaje sú ortodoxné, Darjeeling sa ani inak nevyrába.\n- **CTC (crush, tear, curl)** – „rozdrviť, roztrhnúť, zvinúť“. Ozubené valce rozdrvia lístky na drobné tvrdé guľôčky. Takýto čaj sa lúhuje rýchlo, je tmavý a silný – preto sa používa do vrecúšok. Vznikol v Assame v roku 1930 a dnes je ním vyše 80 % indického čaju.\n## 4. Oxidácia\nZvinuté lístky odpočívajú v teple (okolo 24 – 29 °C) a vlhku od necelej hodiny do pár hodín. Zelené látky v lístku (katechíny) sa menia na dve skupiny farbív:\n- **theaflavíny** – oranžové, dávajú čaju jas a sviežosť,\n- **thearubigíny** – červenohnedé, dávajú telo a farbu.\nMajster v továrni rozhoduje, kedy oxidáciu zastaviť – od toho závisí, či bude čaj svieži a jasný, alebo plný a tmavý.\n## 5. Sušenie a triedenie\nHorúci vzduch oxidáciu zastaví a čaj vysuší, aby vydržal. Nakoniec sa preoseje cez sitá a rozdelí podľa veľkosti na celé lístky, lámané lístky, drobné „fannings“ a prach („dust“). Z toho vznikajú skratky, ktoré vidíš na obale – o nich je ďalšia kapitola.",
-      "sources": [
-        {
-          "label": "Wikipedia – Black tea",
-          "url": "https://en.wikipedia.org/wiki/Black_tea"
-        },
-        {
-          "label": "Wikipedia – Crush, tear, curl",
-          "url": "https://en.wikipedia.org/wiki/Crush,_tear,_curl"
-        },
-        {
-          "label": "UPASI Tea Research – ortodoxná výroba",
-          "url": "https://www.upasitearesearch.org/orthodox/"
-        },
-        {
-          "label": "Tea Research Institute of Sri Lanka – vädnutie",
-          "url": "https://dl.nsf.gov.lk/bitstreams/2e8d033b-460d-4e81-ba38-a112b07a9d14/download"
-        },
-        {
-          "label": "Molecules (2022) – oxidácia, theaflavíny a thearubigíny",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8840101"
-        }
-      ]
+      "body": "Z čerstvého zeleného lístka sa na čierny čaj premení v piatich krokoch.\n## 1. Zber\nNajjemnejší zber sa volá **„dva lístky a púčik“** – trhá sa len vrchný, ešte nerozvinutý púčik a dva najmladšie lístky pod ním. Kvalitné čaje sa zbierajú ručne, lacnejšie strojovo.\n## 2. Vädnutie\nLístky sa rozprestrú a prefukuje ich vzduch, kým nestratia časť vody (zvyčajne cez noc, okolo 18 – 20 hodín). Zmäknú, aby sa dali zvinúť bez polámania, a začína sa tvoriť ich aróma.\n## 3. Zvinovanie: ortodoxne alebo CTC\nTu sa cesta čaju rozdeľuje na dve vetvy:\n- **Ortodoxná výroba** – tradičná. Lístky sa zvinujú a krútia, čím sa narušia ich bunky a uvoľnia šťavy. Výsledkom sú celé alebo lámané lístky s bohatou chuťou a arómou. Všetky tvoje čaje sú ortodoxné, Darjeeling sa ani inak nevyrába.\n- **CTC (crush, tear, curl)** – „rozdrviť, roztrhnúť, zvinúť“. Ozubené valce rozdrvia lístky na drobné tvrdé guľôčky. Takýto čaj sa lúhuje rýchlo, je tmavý a silný – preto sa používa do vrecúšok. Vznikol v Assame v roku 1930 a dnes je ním vyše 80 % indického čaju.\n## 4. Oxidácia\nZvinuté lístky odpočívajú v teple (okolo 24 – 29 °C) a vlhku od necelej hodiny do pár hodín. Zelené látky v lístku (katechíny) sa menia na dve skupiny farbív:\n- **theaflavíny** – oranžové, dávajú čaju jas a sviežosť,\n- **thearubigíny** – červenohnedé, dávajú telo a farbu.\nMajster v továrni rozhoduje, kedy oxidáciu zastaviť – od toho závisí, či bude čaj svieži a jasný, alebo plný a tmavý.\n## 5. Sušenie a triedenie\nHorúci vzduch oxidáciu zastaví a čaj vysuší, aby vydržal. Nakoniec sa preoseje cez sitá a rozdelí podľa veľkosti na celé lístky, lámané lístky, drobné „fannings“ a prach („dust“). Z toho vznikajú skratky, ktoré vidíš na obale – o nich je ďalšia kapitola."
     },
     {
       "id": "skratky",
       "title": "Čo znamenajú skratky",
       "summary": "OP, FOP, TGFOP, FTGFOP1, BOP… Čo prezrádzajú písmenká na obale a čo naopak nie.",
-      "body": "Písmenká za názvom čaju – napríklad **TGFOP1** pri tvojom Assame alebo **FTGFOP1** pri Darjeelingu – sú **triedy listu**. Hovoria, aký veľký a celý je lístok a koľko je v ňom púčikov. Používajú sa hlavne v Indii, na Srí Lanke a v Nepále.\n## Celé lístky\n| Skratka | Význam |\n| OP | Orange Pekoe – dlhé, celé lístky, bez púčikov |\n| FOP | Flowery OP – s trochou púčikov |\n| GFOP | Golden FOP – viac zlatých púčikov |\n| TGFOP | Tippy GFOP – veľa púčikov (tipsov); bežná trieda v Assame a Darjeelingu |\n| FTGFOP | Finest TGFOP – najlepší výber |\n| SFTGFOP | Special FTGFOP – najvyššie označenie |\nČíslica **1** na konci (napr. FTGFOP1) znamená najlepší lístok v rámci danej triedy.\nAko si to zapamätať: každé písmenko pridané spredu niečo „pridáva“ – F kvety (púčiky), G zlatú farbu, T veľa tipsov, F výber, S výnimočnosť.\n## Lámané a drobné lístky\n| Skratka | Význam |\n| BOP | Broken OP – lámané lístky; silnejší a rýchlejšie sa lúhujúci čaj |\n| FBOP | Flowery BOP – lámané lístky s púčikmi |\n| BOPF, PF, OF | Fannings – drobné úlomky, najmä do vrecúšok |\n| Dust | prach – najjemnejšia frakcia |\n## Odkiaľ sa vzalo „Orange Pekoe“\n- **Pekoe** pochádza pravdepodobne z čínskeho nárečia a znamená „biele chĺpky“ – jemné páperie na mladých púčikoch.\n- **Orange** nemá nič spoločné s pomarančom. Najčastejšie sa spája s holandským kráľovským rodom Orange-Nassau (marketing holandskej Východoindickej spoločnosti) alebo s medenou farbou lístkov. Ani jedno vysvetlenie nie je potvrdené.\n## Na čo si dať pozor\n- Trieda opisuje **vzhľad lístka**, nie priamo chuť. Viac písmen neznamená automaticky lepší čaj – sčasti je to aj marketing.\n- **Čínske čaje tento systém nepoužívajú.** Preto pri Golden Yunnane nenájdeš žiadne TGFOP – v Číne sa kvalita označuje inak.\n- **Souchong** (ako v Lapsang Souchong) je staršie obchodné označenie väčších, spodnejších lístkov.",
-      "sources": [
-        {
-          "label": "Wikipedia – Tea leaf grading",
-          "url": "https://en.wikipedia.org/wiki/Tea_leaf_grading"
-        },
-        {
-          "label": "Paper & Tea – Orange Pekoe",
-          "url": "https://www.paperandtea.com/blogs/glossary/orange-pekoe"
-        },
-        {
-          "label": "The Whistling Kettle – ovplyvňuje trieda chuť?",
-          "url": "https://www.thewhistlingkettle.com/blogs/tea/does-tea-grade-affect-tea-flavor"
-        },
-        {
-          "label": "Tea Journey – OP, BOP, STGFOP",
-          "url": "https://teajourney.pub/pekoe-tea-grades-unmuddling-op-bop-stgfop-system/"
-        }
-      ]
+      "body": "Písmenká za názvom čaju – napríklad **TGFOP1** pri tvojom Assame alebo **FTGFOP1** pri Darjeelingu – sú **triedy listu**. Hovoria, aký veľký a celý je lístok a koľko je v ňom púčikov. Používajú sa hlavne v Indii, na Srí Lanke a v Nepále.\n## Celé lístky\n| Skratka | Význam |\n| OP | Orange Pekoe – dlhé, celé lístky, bez púčikov |\n| FOP | Flowery OP – s trochou púčikov |\n| GFOP | Golden FOP – viac zlatých púčikov |\n| TGFOP | Tippy GFOP – veľa púčikov (tipsov); bežná trieda v Assame a Darjeelingu |\n| FTGFOP | Finest TGFOP – najlepší výber |\n| SFTGFOP | Special FTGFOP – najvyššie označenie |\nČíslica **1** na konci (napr. FTGFOP1) znamená najlepší lístok v rámci danej triedy.\nAko si to zapamätať: každé písmenko pridané spredu niečo „pridáva“ – F kvety (púčiky), G zlatú farbu, T veľa tipsov, F výber, S výnimočnosť.\n## Lámané a drobné lístky\n| Skratka | Význam |\n| BOP | Broken OP – lámané lístky; silnejší a rýchlejšie sa lúhujúci čaj |\n| FBOP | Flowery BOP – lámané lístky s púčikmi |\n| BOPF, PF, OF | Fannings – drobné úlomky, najmä do vrecúšok |\n| Dust | prach – najjemnejšia frakcia |\n## Odkiaľ sa vzalo „Orange Pekoe“\n- **Pekoe** pochádza pravdepodobne z čínskeho nárečia a znamená „biele chĺpky“ – jemné páperie na mladých púčikoch.\n- **Orange** nemá nič spoločné s pomarančom. Najčastejšie sa spája s holandským kráľovským rodom Orange-Nassau (marketing holandskej Východoindickej spoločnosti) alebo s medenou farbou lístkov. Ani jedno vysvetlenie nie je potvrdené.\n## Na čo si dať pozor\n- Trieda opisuje **vzhľad lístka**, nie priamo chuť. Viac písmen neznamená automaticky lepší čaj – sčasti je to aj marketing.\n- **Čínske čaje tento systém nepoužívajú.** Preto pri Golden Yunnane nenájdeš žiadne TGFOP – v Číne sa kvalita označuje inak.\n- **Souchong** (ako v Lapsang Souchong) je staršie obchodné označenie väčších, spodnejších lístkov."
     },
     {
       "id": "zbery",
       "title": "Zbery (flushes)",
       "summary": "First flush, second flush, monzún, jeseň. Prečo ten istý čaj chutí na jar inak ako v lete.",
-      "body": "Čajovník nerastie celý rok rovnako. V Indii po zimnom odpočinku vyrazia nové lístky v niekoľkých vlnách – anglicky **flushes**. Každá vlna dáva čaj inej chuti, preto sa pri kvalitných indických čajoch uvádza aj zber.\n## Darjeeling\n| Zber | Kedy | Aký je |\n| First flush (prvý) | marec – máj | mladé jemné lístky; svetlý, kvetinový, až nazelenalý |\n| Second flush (druhý) | máj – jún | plnší, s typickou muškátovou chuťou (tvoj Castleton) |\n| Monzúnový | júl – september | väčšie lístky, menej chuti, väčšinou do zmesí |\n| Jesenný (autumnal) | október – november | plnšie telo, tmavší nálev, jemný muškát |\nPrečo je first flush Darjeeling taký svetlý? Lístky dlho a silno vädnú, čím sa oslabia enzýmy a čaj zoxiduje menej. Preto niekedy vyzerá skoro ako zelený a pripravuje sa chladnejšou vodou.\n## Assam\n| Zber | Kedy | Aký je |\n| First flush | koniec februára – apríl | ľahší a svieži |\n| Second flush | koniec mája – jún (niekde až do augusta) | najcenenejší: sladový, plný, so zlatými tipsami (tvoj Monipur) |\n| Monzúnový | júl – september | silný a tmavý |\nPresné mesiace sa v rôznych zdrojoch trochu líšia – záleží od počasia v danom roku.\n## Srí Lanka\nNa Cejlóne sa čaj zbiera **celý rok**. Každý región má však svoju „sezónu kvality“ podľa monzúnov – napríklad Dimbula najlepšie od januára do marca, Uva od júla do septembra.\n## Čína\nV Číne sa zbery označujú inak (napr. jarný a jesenný). Tvoj Golden Yunnan je z jesenného zberu.",
-      "sources": [
-        {
-          "label": "Wikipedia – Darjeeling tea",
-          "url": "https://en.wikipedia.org/wiki/Darjeeling_tea"
-        },
-        {
-          "label": "Wikipedia – Assam tea",
-          "url": "https://en.wikipedia.org/wiki/Assam_tea"
-        },
-        {
-          "label": "Artful Tea – First flush Darjeeling",
-          "url": "https://artfultea.com/blogs/tea-wisdom/what-is-first-flush-darjeeling"
-        },
-        {
-          "label": "Dethlefsen & Balk – Assam",
-          "url": "https://www.dethlefsen-balk.de/en/tea-catalogue/orthodox-tea/assam-10061/"
-        },
-        {
-          "label": "Sri Lanka Tea Board – Dimbula",
-          "url": "https://srilankateaboard.lk/ceylon-tea/tea-growing-regions/dimbula/"
-        }
-      ]
+      "body": "Čajovník nerastie celý rok rovnako. V Indii po zimnom odpočinku vyrazia nové lístky v niekoľkých vlnách – anglicky **flushes**. Každá vlna dáva čaj inej chuti, preto sa pri kvalitných indických čajoch uvádza aj zber.\n## Darjeeling\n| Zber | Kedy | Aký je |\n| First flush (prvý) | marec – máj | mladé jemné lístky; svetlý, kvetinový, až nazelenalý |\n| Second flush (druhý) | máj – jún | plnší, s typickou muškátovou chuťou (tvoj Castleton) |\n| Monzúnový | júl – september | väčšie lístky, menej chuti, väčšinou do zmesí |\n| Jesenný (autumnal) | október – november | plnšie telo, tmavší nálev, jemný muškát |\nPrečo je first flush Darjeeling taký svetlý? Lístky dlho a silno vädnú, čím sa oslabia enzýmy a čaj zoxiduje menej. Preto niekedy vyzerá skoro ako zelený a pripravuje sa chladnejšou vodou.\n## Assam\n| Zber | Kedy | Aký je |\n| First flush | koniec februára – apríl | ľahší a svieži |\n| Second flush | koniec mája – jún (niekde až do augusta) | najcenenejší: sladový, plný, so zlatými tipsami (tvoj Monipur) |\n| Monzúnový | júl – september | silný a tmavý |\nPresné mesiace sa v rôznych zdrojoch trochu líšia – záleží od počasia v danom roku.\n## Srí Lanka\nNa Cejlóne sa čaj zbiera **celý rok**. Každý región má však svoju „sezónu kvality“ podľa monzúnov – napríklad Dimbula najlepšie od januára do marca, Uva od júla do septembra.\n## Čína\nV Číne sa zbery označujú inak (napr. jarný a jesenný). Tvoj Golden Yunnan je z jesenného zberu."
     },
     {
       "id": "oblasti",
       "title": "Odkiaľ pochádza",
       "summary": "Assam, Darjeeling, Cejlón, Yunnan a ďalšie. Ako miesto a nadmorská výška menia chuť čaju.",
-      "body": "Čierny čaj sa pestuje na mnohých miestach sveta a každé mu dáva iný charakter. Platí jednoduché pravidlo: **čaje z nížin sú silné a plné, čaje z hôr jemnejšie a voňavejšie.**\n## India\n**Assam** – údolie rieky Brahmaputra na severovýchode Indie, v nížine takmer na úrovni mora. Najväčšia čajová oblasť na svete. Horúce a vlhké leto, assamská odroda čajovníka. Čaj je plný, sladový a silný, s jasnou farbou. Väčšina assamského čaju sa vyrába ako CTC do vrecúšok, kvalitné celolistové čaje ako tvoj Monipur sú ortodoxné. Základ raňajkových zmesí, pije sa s mliekom.\n**Darjeeling** – úpätie Himalájí v Západnom Bengálsku, zhruba 600 – 2 000 m n. m. Oficiálne uznaných je 87 záhrad (napr. tvoj Castleton). Pestuje sa čínska odroda čajovníka. Darjeeling bol prvý indický výrobok s chráneným zemepisným označením (2004), v EÚ je chránený od roku 2011. Chuť sa výrazne mení podľa zberu – od kvetinového first flushu po muškátový second flush. Pije sa bez mlieka.\n**Nilgiri** – „Modré hory“ na juhu Indie, 1 000 – 2 500 m. Zbiera sa takmer celý rok, najlepšie v zime. Svieži a voňavý čaj, ktorý po vychladení nezakalí – preto je obľúbený na ľadový čaj.\n## Srí Lanka (Cejlón)\nNa Cejlóne sa čaje delia podľa nadmorskej výšky:\n| Výška | Aký je čaj |\n| Vysoko (nad ~1 200 m) | ľahký, jemný, voňavý, svetlejší nálev |\n| Stredne (~600 – 1 200 m) | plný, vyvážený |\n| Nízko (pod ~600 m) | silný, tmavý, veľké čierne lístky |\nSedem oficiálnych oblastí:\n| Oblasť | Charakter |\n| Nuwara Eliya | najvyššie položená; najjemnejší, najsvetlejší, voňavý čaj |\n| Dimbula | sviežo jemný, zlatooranžový nálev; najlepší január – marec |\n| Uva | výrazne aromatický; najlepší júl – september |\n| Uda Pussellawa | pikantný, ružovkastý nálev so stredným telom |\n| Kandy | plný, robustný a jasný; tu sa cejlónsky čaj začal pestovať |\n| Ruhuna | nížina; tmavý, silný a bohatý (tvoj Ceylon OP 1 a základ Earl Grey) |\n| Sabaragamuwa | nížina; silný, plný, so sýtočerveným nálevom |\nLogo **leva** na obale smie mať len čaj, ktorý je 100 % cejlónsky, zabalený priamo na Srí Lanke a spĺňa normy tamojšej Čajovej rady.\n## Čína\n**Keemun (Qimen)** – provincia Anhui, vyrába sa od roku 1875. Ovocný, „vínový“ čaj s vôňou pripomínajúcou orchidey, jemne dymový a nezvieravý. Historicky dôležitá súčasť English Breakfast.\n**Yunnan (Dian Hong)** – juhozápad Číny. Spoznáš ho podľa zlatých páperistých púčikov. Sladový, sladký a hladký, so zlatooranžovým nálevom (tvoj Golden Yunnan).\n**Lapsang Souchong** – pohorie Wuyi v provincii Fujian. Lístky sa sušia nad dymom z borovicového dreva, takže čaj chutí dymovo, po živici a sušenom ovocí. Existuje aj nedymová verzia (Zhengshan Xiaozhong).\n**Jin Jun Mei** – len z jarných púčikov z tej istej oblasti; sladký, ovocný a kvetinový. Jeden z najdrahších čínskych čiernych čajov, vznikol až okolo roku 2005.\n## Ďalšie krajiny\n- **Keňa** – rovník, 1 500 – 2 700 m, zbiera sa celý rok. Patrí k najväčším vývozcom čierneho čaju na svete, väčšinou CTC do vrecúšok a zmesí. Silná farba, svieža chuť.\n- **Nepál (Ilam)** – hneď vedľa Darjeelingu; podobne muškátové a kvetinové čaje.\n- **Taiwan** – Ruby 18 zo Slnečno-mesačného jazera, s tónmi škorice a mäty.\n- **Turecko** – oblasť Rize pri Čiernom mori. Pije sa silný z dvojitej kanvice (çaydanlık), riedený vodou v malých pohárikoch v tvare tulipánu.\n- **Japonsko** – wakocha, jemný japonský čierny čaj s ľahkou zvieravosťou.",
-      "sources": [
-        {
-          "label": "Wikipedia – Assam tea",
-          "url": "https://en.wikipedia.org/wiki/Assam_tea"
-        },
-        {
-          "label": "Wikipedia – Darjeeling tea",
-          "url": "https://en.wikipedia.org/wiki/Darjeeling_tea"
-        },
-        {
-          "label": "Wikipedia – Nilgiri tea",
-          "url": "https://en.wikipedia.org/wiki/Nilgiri_tea"
-        },
-        {
-          "label": "Pure Ceylon Tea – Tea diversity (oficiálne)",
-          "url": "https://pureceylontea.com/tea-diversity/"
-        },
-        {
-          "label": "WIPO – Ceylon tea (Sri Lanka Tea Board)",
-          "url": "https://www.wipo.org/edocs/mdocs/geoind/en/wipo_geo_bkk_13/wipo_geo_bkk_13_3.pdf"
-        },
-        {
-          "label": "Sri Lanka Export Development Board – Lion logo",
-          "url": "https://www.srilankabusiness.com/tea/about-tea/ceylon-tea-logo.html"
-        },
-        {
-          "label": "Wikipedia – Keemun",
-          "url": "https://en.wikipedia.org/wiki/Keemun"
-        },
-        {
-          "label": "Wikipedia – Dianhong",
-          "url": "https://en.wikipedia.org/wiki/Dianhong"
-        },
-        {
-          "label": "Wikipedia – Lapsang souchong",
-          "url": "https://en.wikipedia.org/wiki/Lapsang_souchong"
-        },
-        {
-          "label": "Wikipedia – Jin Jun Mei",
-          "url": "https://en.wikipedia.org/wiki/Jin_Jun_Mei_tea"
-        },
-        {
-          "label": "Wikipedia – Nepali tea",
-          "url": "https://en.wikipedia.org/wiki/Nepali_tea"
-        },
-        {
-          "label": "Wikipedia – Rize tea",
-          "url": "https://en.wikipedia.org/wiki/Rize_tea"
-        }
-      ]
+      "body": "Čierny čaj sa pestuje na mnohých miestach sveta a každé mu dáva iný charakter. Platí jednoduché pravidlo: **čaje z nížin sú silné a plné, čaje z hôr jemnejšie a voňavejšie.**\n## India\n**Assam** – údolie rieky Brahmaputra na severovýchode Indie, v nížine takmer na úrovni mora. Najväčšia čajová oblasť na svete. Horúce a vlhké leto, assamská odroda čajovníka. Čaj je plný, sladový a silný, s jasnou farbou. Väčšina assamského čaju sa vyrába ako CTC do vrecúšok, kvalitné celolistové čaje ako tvoj Monipur sú ortodoxné. Základ raňajkových zmesí, pije sa s mliekom.\n**Darjeeling** – úpätie Himalájí v Západnom Bengálsku, zhruba 600 – 2 000 m n. m. Oficiálne uznaných je 87 záhrad (napr. tvoj Castleton). Pestuje sa čínska odroda čajovníka. Darjeeling bol prvý indický výrobok s chráneným zemepisným označením (2004), v EÚ je chránený od roku 2011. Chuť sa výrazne mení podľa zberu – od kvetinového first flushu po muškátový second flush. Pije sa bez mlieka.\n**Nilgiri** – „Modré hory“ na juhu Indie, 1 000 – 2 500 m. Zbiera sa takmer celý rok, najlepšie v zime. Svieži a voňavý čaj, ktorý po vychladení nezakalí – preto je obľúbený na ľadový čaj.\n## Srí Lanka (Cejlón)\nNa Cejlóne sa čaje delia podľa nadmorskej výšky:\n| Výška | Aký je čaj |\n| Vysoko (nad ~1 200 m) | ľahký, jemný, voňavý, svetlejší nálev |\n| Stredne (~600 – 1 200 m) | plný, vyvážený |\n| Nízko (pod ~600 m) | silný, tmavý, veľké čierne lístky |\nSedem oficiálnych oblastí:\n| Oblasť | Charakter |\n| Nuwara Eliya | najvyššie položená; najjemnejší, najsvetlejší, voňavý čaj |\n| Dimbula | sviežo jemný, zlatooranžový nálev; najlepší január – marec |\n| Uva | výrazne aromatický; najlepší júl – september |\n| Uda Pussellawa | pikantný, ružovkastý nálev so stredným telom |\n| Kandy | plný, robustný a jasný; tu sa cejlónsky čaj začal pestovať |\n| Ruhuna | nížina; tmavý, silný a bohatý (tvoj Ceylon OP 1 a základ Earl Grey) |\n| Sabaragamuwa | nížina; silný, plný, so sýtočerveným nálevom |\nLogo **leva** na obale smie mať len čaj, ktorý je 100 % cejlónsky, zabalený priamo na Srí Lanke a spĺňa normy tamojšej Čajovej rady.\n## Čína\n**Keemun (Qimen)** – provincia Anhui, vyrába sa od roku 1875. Ovocný, „vínový“ čaj s vôňou pripomínajúcou orchidey, jemne dymový a nezvieravý. Historicky dôležitá súčasť English Breakfast.\n**Yunnan (Dian Hong)** – juhozápad Číny. Spoznáš ho podľa zlatých páperistých púčikov. Sladový, sladký a hladký, so zlatooranžovým nálevom (tvoj Golden Yunnan).\n**Lapsang Souchong** – pohorie Wuyi v provincii Fujian. Lístky sa sušia nad dymom z borovicového dreva, takže čaj chutí dymovo, po živici a sušenom ovocí. Existuje aj nedymová verzia (Zhengshan Xiaozhong).\n**Jin Jun Mei** – len z jarných púčikov z tej istej oblasti; sladký, ovocný a kvetinový. Jeden z najdrahších čínskych čiernych čajov, vznikol až okolo roku 2005.\n## Ďalšie krajiny\n- **Keňa** – rovník, 1 500 – 2 700 m, zbiera sa celý rok. Patrí k najväčším vývozcom čierneho čaju na svete, väčšinou CTC do vrecúšok a zmesí. Silná farba, svieža chuť.\n- **Nepál (Ilam)** – hneď vedľa Darjeelingu; podobne muškátové a kvetinové čaje.\n- **Taiwan** – Ruby 18 zo Slnečno-mesačného jazera, s tónmi škorice a mäty.\n- **Turecko** – oblasť Rize pri Čiernom mori. Pije sa silný z dvojitej kanvice (çaydanlık), riedený vodou v malých pohárikoch v tvare tulipánu.\n- **Japonsko** – wakocha, jemný japonský čierny čaj s ľahkou zvieravosťou."
     },
     {
       "id": "priprava",
       "title": "Ako ho pripraviť",
       "summary": "Voda, teplota, množstvo, čas a koľko nálevov čaj znesie. Všetko, na čom záleží v šálke.",
-      "body": "Dobrý čaj sa dá ľahko pokaziť a zlý sa dá trochu zachrániť – rozhodujú štyri veci: voda, teplota, množstvo lístkov a čas.\n## Voda\nPoužívaj **čerstvú, dobrú vodu**, ideálne filtrovanú. Tvrdá voda s veľa vápnikom robí čaj tmavším a matnejším a na hladine sa vytvorí tenký film („škrupinka“) – to sa čajové látky viažu s vápnikom. Pomôže filter alebo kvapka citróna.\nČasto sa radí vodu neprevárať dvakrát. Vedecky to nie je úplne potvrdené, ale je rozumné variť vždy len toľko vody, koľko potrebuješ.\n## Teplota\n- **Väčšina čiernych čajov: 95 – 100 °C** – vriaca voda alebo chvíľu po prevarení.\n- **Jemné čaje** (first flush Darjeeling, niektoré čaje s púčikmi): 85 – 95 °C. Príliš horúca voda z nich vytiahne horkosť a zvieravosť.\nKonvičku je dobré pred prípravou vypláchnuť horúcou vodou, aby čaj nevychladol príliš rýchlo.\n## Množstvo\nBežne **2 – 3 g na 200 – 250 ml** (v appke máme 3 g na 200 ml a 4 g na 300 ml). Ak môžeš, čaj **váž**: lyžička veľkých krútených lístkov váži oveľa menej ako lyžička drobného lámaného čaju.\n## Čas\nČierny čaj sa lúhuje **3 – 5 minút**. Čím dlhšie, tým viac trieslovín sa uvoľní – čaj je silnejší, ale aj trpkejší. Ak chceš silnejší čaj, **pridaj radšej lístky, nie čas**.\nTipy:\n- **Lístky nevytláčaj** – ani lyžičkou, ani vrecúško prstami. Uvoľní sa horkosť.\n- **Daj lístkom priestor.** Celé lístky sa vo vode rozvinú na niekoľkonásobok. V malom sitku sa nevylúhujú dobre.\n## Vrecúško alebo sypaný čaj\nVo vrecúškach je zvyčajne drvený čaj (fannings, dust, CTC). Lúhuje sa rýchlo, je hneď tmavý a silný, ale rýchlo aj zhorkne a druhý nálev už nedá. Celolistový sypaný čaj sa lúhuje pomalšie, je jemnejší a znesie viac nálevov.\n## Koľko nálevov\n- **Celé lístky:** zvyčajne 2 – 3 nálevy, každý o minútu dlhší.\n- **Ochutené čaje:** zvyčajne 2, aróma slabne ako prvá.\n- **Vrecúška:** 1.\nAko spoznáš, že sú lístky vylúhované: nálev je bledý, vodnatý a stratil vôňu.\n## Čínsky spôsob (gongfu)\nV Číne sa čaj často pripravuje inak: v malej kanvičke alebo misôčke (gaiwan) s veľkým množstvom lístkov (okolo 5 – 7 g na 100 – 150 ml) a veľmi krátkymi nálevmi – prvý okolo 30 sekúnd, každý ďalší o chvíľu dlhší. Čierny čaj tak zvládne 4 – 6 nálevov a každý chutí trochu inak. Je to pekný spôsob, ako čaj spoznať.\n## Medzinárodná norma\nExistuje aj norma ISO 3103 na profesionálne ochutnávanie čaju: 2 g na 100 ml vriacej vody, 6 minút. Slúži na porovnávanie čajov vedľa seba, nie na každodenné pitie – takýto čaj je veľmi silný.",
-      "sources": [
-        {
-          "label": "Wikipedia – ISO 3103",
-          "url": "https://en.wikipedia.org/wiki/ISO_3103"
-        },
-        {
-          "label": "Soft Matter (2023) – čajový film a tvrdá voda",
-          "url": "https://pubs.rsc.org/en/content/articlehtml/2023/sm/d3sm00169e"
-        },
-        {
-          "label": "McGill Office for Science and Society – prevarená voda",
-          "url": "https://www.mcgill.ca/oss/node/2269"
-        },
-        {
-          "label": "The Tea Makers – príprava Darjeelingu",
-          "url": "https://www.theteamakers.co.uk/blogs/how-to-brew-tea-hub/how-to-brew-darjeeling-tea"
-        },
-        {
-          "label": "Red Blossom Tea – horkosť vs. zvieravosť",
-          "url": "https://redblossomtea.com/blogs/red-blossom-blog/tasting-notes-bitterness-vs-astringency"
-        },
-        {
-          "label": "Red Blossom Tea – gongfu",
-          "url": "https://redblossomtea.com/blogs/red-blossom-blog/3-reasons-to-try-brewing-gong-fu-tea"
-        },
-        {
-          "label": "America's Test Kitchen – gong fu cha",
-          "url": "https://www.americastestkitchen.com/articles/gong-fu-cha-brewing-tea-with-skill"
-        }
-      ]
+      "body": "Dobrý čaj sa dá ľahko pokaziť a zlý sa dá trochu zachrániť – rozhodujú štyri veci: voda, teplota, množstvo lístkov a čas.\n## Voda\nPoužívaj **čerstvú, dobrú vodu**, ideálne filtrovanú. Tvrdá voda s veľa vápnikom robí čaj tmavším a matnejším a na hladine sa vytvorí tenký film („škrupinka“) – to sa čajové látky viažu s vápnikom. Pomôže filter alebo kvapka citróna.\nČasto sa radí vodu neprevárať dvakrát. Vedecky to nie je úplne potvrdené, ale je rozumné variť vždy len toľko vody, koľko potrebuješ.\n## Teplota\n- **Väčšina čiernych čajov: 95 – 100 °C** – vriaca voda alebo chvíľu po prevarení.\n- **Jemné čaje** (first flush Darjeeling, niektoré čaje s púčikmi): 85 – 95 °C. Príliš horúca voda z nich vytiahne horkosť a zvieravosť.\nKonvičku je dobré pred prípravou vypláchnuť horúcou vodou, aby čaj nevychladol príliš rýchlo.\n## Množstvo\nBežne **2 – 3 g na 200 – 250 ml** (v appke máme 3 g na 200 ml a 4 g na 300 ml). Ak môžeš, čaj **váž**: lyžička veľkých krútených lístkov váži oveľa menej ako lyžička drobného lámaného čaju.\n## Čas\nČierny čaj sa lúhuje **3 – 5 minút**. Čím dlhšie, tým viac trieslovín sa uvoľní – čaj je silnejší, ale aj trpkejší. Ak chceš silnejší čaj, **pridaj radšej lístky, nie čas**.\nTipy:\n- **Lístky nevytláčaj** – ani lyžičkou, ani vrecúško prstami. Uvoľní sa horkosť.\n- **Daj lístkom priestor.** Celé lístky sa vo vode rozvinú na niekoľkonásobok. V malom sitku sa nevylúhujú dobre.\n## Vrecúško alebo sypaný čaj\nVo vrecúškach je zvyčajne drvený čaj (fannings, dust, CTC). Lúhuje sa rýchlo, je hneď tmavý a silný, ale rýchlo aj zhorkne a druhý nálev už nedá. Celolistový sypaný čaj sa lúhuje pomalšie, je jemnejší a znesie viac nálevov.\n## Koľko nálevov\n- **Celé lístky:** zvyčajne 2 – 3 nálevy, každý o minútu dlhší.\n- **Ochutené čaje:** zvyčajne 2, aróma slabne ako prvá.\n- **Vrecúška:** 1.\nAko spoznáš, že sú lístky vylúhované: nálev je bledý, vodnatý a stratil vôňu.\n## Čínsky spôsob (gongfu)\nV Číne sa čaj často pripravuje inak: v malej kanvičke alebo misôčke (gaiwan) s veľkým množstvom lístkov (okolo 5 – 7 g na 100 – 150 ml) a veľmi krátkymi nálevmi – prvý okolo 30 sekúnd, každý ďalší o chvíľu dlhší. Čierny čaj tak zvládne 4 – 6 nálevov a každý chutí trochu inak. Je to pekný spôsob, ako čaj spoznať.\n## Medzinárodná norma\nExistuje aj norma ISO 3103 na profesionálne ochutnávanie čaju: 2 g na 100 ml vriacej vody, 6 minút. Slúži na porovnávanie čajov vedľa seba, nie na každodenné pitie – takýto čaj je veľmi silný."
     },
     {
       "id": "mlieko",
       "title": "Mlieko, citrón, cukor",
       "summary": "Ktoré čaje znesú mlieko, prečo citrón zosvetlí čaj a prečo ich nikdy nedávať spolu.",
-      "body": "## Mlieko\nMlieko patrí k **silným, sladovým čajom**: Assam, Ceylon, kenské čaje a raňajkové zmesi. Ich plná chuť sa v mlieku nestratí.\nNaopak **Darjeeling** a väčšina čínskych čajov sa pijú bez mlieka – mlieko by prekrylo ich jemnú, kvetinovú či muškátovú chuť.\n**Mlieko najprv, alebo nakoniec?** Večný britský spor. Britská Kráľovská chemická spoločnosť v roku 2003 odporučila liať mlieko do šálky najprv – mliečne bielkoviny sa vraj pri náhlom kontakte s veľmi horúcim čajom prehrejú a mlieko chutí „staro“. Nebola to však vedecká štúdia a iní vedci nesúhlasili. Skús oboje a rozhodni sa podľa chuti.\nDo šálky sa bežne pridáva studené čerstvé mlieko. Pri masala chai sa mlieko naopak varí spolu s čajom – to je iná, tiež dobrá chuť.\n## Citrón\nCitrón čaj **zosvetlí**. Kyselina zmení červenohnedé farbivá čaju na svetlejšie a zároveň zmenší film na hladine pri tvrdej vode. Dobre sa hodí k Earl Grey a cejlónskym čajom.\n## Nikdy nie spolu\n**Citrón a mlieko do jednej šálky nedávaj.** Kyselina mlieko zrazí na vločky. Nie je to nebezpečné, ale vyzerá a chutí to zle.\n## Cukor a med\nCukor zmierňuje horkosť aj zvieravosť čaju – v jednej štúdii znížil pocit zvieravosti o 30 – 40 %. Preto silné čaje s mliekom často chutia lepšie trochu osladené. Med je bežná alternatíva.\n## Ako sa čaj pije vo svete\n- **Británia:** silná zmes s kvapkou studeného mlieka, prípadne cukru.\n- **India:** masala chai – čaj varený s mliekom, cukrom a korením.\n- **Rusko:** silný čajový koncentrát (zavarka) riedený horúcou vodou zo samovaru, často s citrónom alebo džemom.\n- **Turecko:** silný čaj z dvojitej kanvice, riedený vodou, v malých tulipánových pohárikoch, bez mlieka.",
-      "sources": [
-        {
-          "label": "FoodNavigator – A storm in a tea cup (RSC 2003)",
-          "url": "https://www.foodnavigator.com/Article/2003/06/27/A-storm-in-a-tea-cup"
-        },
-        {
-          "label": "The Conversation – prečo citrón zosvetlí čaj",
-          "url": "https://theconversation.com/ive-always-wondered-why-does-lemon-juice-lighten-the-colour-of-tea-91324"
-        },
-        {
-          "label": "Tasting Table – mlieko a citrón",
-          "url": "https://www.tastingtable.com/1409923/avoid-mix-milk-lemon-tea/"
-        },
-        {
-          "label": "Štúdia o cukre a zvieravosti čaju (DOAJ)",
-          "url": "https://doaj.org/article/ae62644fe8fd48a2a8f8b72251bb0e41"
-        },
-        {
-          "label": "Tea and Coffee – Darjeeling vs. Assam",
-          "url": "https://www.tea-and-coffee.com/blog/darjeeling-vs-assam"
-        }
-      ]
+      "body": "## Mlieko\nMlieko patrí k **silným, sladovým čajom**: Assam, Ceylon, kenské čaje a raňajkové zmesi. Ich plná chuť sa v mlieku nestratí.\nNaopak **Darjeeling** a väčšina čínskych čajov sa pijú bez mlieka – mlieko by prekrylo ich jemnú, kvetinovú či muškátovú chuť.\n**Mlieko najprv, alebo nakoniec?** Večný britský spor. Britská Kráľovská chemická spoločnosť v roku 2003 odporučila liať mlieko do šálky najprv – mliečne bielkoviny sa vraj pri náhlom kontakte s veľmi horúcim čajom prehrejú a mlieko chutí „staro“. Nebola to však vedecká štúdia a iní vedci nesúhlasili. Skús oboje a rozhodni sa podľa chuti.\nDo šálky sa bežne pridáva studené čerstvé mlieko. Pri masala chai sa mlieko naopak varí spolu s čajom – to je iná, tiež dobrá chuť.\n## Citrón\nCitrón čaj **zosvetlí**. Kyselina zmení červenohnedé farbivá čaju na svetlejšie a zároveň zmenší film na hladine pri tvrdej vode. Dobre sa hodí k Earl Grey a cejlónskym čajom.\n## Nikdy nie spolu\n**Citrón a mlieko do jednej šálky nedávaj.** Kyselina mlieko zrazí na vločky. Nie je to nebezpečné, ale vyzerá a chutí to zle.\n## Cukor a med\nCukor zmierňuje horkosť aj zvieravosť čaju – v jednej štúdii znížil pocit zvieravosti o 30 – 40 %. Preto silné čaje s mliekom často chutia lepšie trochu osladené. Med je bežná alternatíva.\n## Ako sa čaj pije vo svete\n- **Británia:** silná zmes s kvapkou studeného mlieka, prípadne cukru.\n- **India:** masala chai – čaj varený s mliekom, cukrom a korením.\n- **Rusko:** silný čajový koncentrát (zavarka) riedený horúcou vodou zo samovaru, často s citrónom alebo džemom.\n- **Turecko:** silný čaj z dvojitej kanvice, riedený vodou, v malých tulipánových pohárikoch, bez mlieka."
     },
     {
       "id": "studeny",
       "title": "Cold brew a ľadový čaj",
       "summary": "Dva rôzne spôsoby studeného čaju, prečo nie na slnku a prečo sa čaj v chladničke zakalí.",
-      "body": "Studený čaj sa dá pripraviť dvoma spôsobmi a chutia rozdielne.\n## Cold brew\nLístky sa zalejú **studenou vodou** a lúhujú sa v **chladničke** niekoľko hodín (čierny čaj zvyčajne 6 – 12 h). Čaj je jemný, sladší, menej trpký – za studena sa uvoľní menej trieslovín. Čierny čaj takto takmer nezhorkne, dlhšie lúhovanie ho len zosilní. Po vylúhovaní lístky sceď.\nPomer je vecou chuti: zdroje uvádzajú od 4 do 12 g na 500 ml. Tvoje recepty v appke sú nastavené na 8 – 10 g.\n**Vydrží 2 – 3 dni** v chladničke, najviac 4. Ak sa zakalí do sirupovita, ťahá sa alebo je slizký, vylej ho.\n## Ľadový čaj\nČaj sa uvarí **horúci** a potom sa vychladí alebo naleje na ľad. Pozor: ľad ho zriedi, preto ho priprav **dvakrát silnejší** (dvojnásobok lístkov).\n## Prečo nie na slnku\n„Slnečný čaj“ lúhovaný v pohári na slnku je obľúbený, ale neodporúča sa. Voda sa ohreje dosť na to, aby sa v nej množili baktérie, no nie dosť na to, aby ich zabila. Cold brew vždy nechávaj v **chladničke**.\n## Prečo sa čaj zakalí\nKeď silný čierny čaj vychladne, často zbelie a zakalí sa („creaming“). Kofeín a čajové farbivá sa pri chlade spoja do jemného zákalu. **Je to neškodné** a dokonca to znamená, že je čaj silný. Ak chceš číry ľadový čaj:\n- priprav ho ako cold brew, ten sa takmer nekalí,\n- nechaj horúci čaj najprv vychladnúť pri izbovej teplote, až potom ho daj do chladničky,\n- použi mäkšiu vodu alebo pridaj kvapku citróna.",
-      "sources": [
-        {
-          "label": "Harney & Sons – How to make iced tea",
-          "url": "https://www.harney.com/blogs/news/how-to-make-iced-tea"
-        },
-        {
-          "label": "Arbor Teas – iced tea a cold brew",
-          "url": "https://arborteas.com/pages/how-to-make-iced-tea"
-        },
-        {
-          "label": "University of Illinois Extension – nebezpečenstvo slnečného čaju",
-          "url": "https://extension.illinois.edu/blogs/simply-nutritious-quick-and-delicious/2018-07-05-dangers-sun-tea"
-        },
-        {
-          "label": "Ohio State University – Is sun tea safe?",
-          "url": "https://livesmartohio.osu.edu/uncategorized/miller-59osu-edu/is-sun-tea-safe"
-        },
-        {
-          "label": "America's Test Kitchen – prečo sa ľadový čaj zakalí",
-          "url": "https://www.americastestkitchen.com/articles/7450-why-does-iced-tea-get-cloudy"
-        },
-        {
-          "label": "Lantano et al. (2015) – cold brew vs. horúca príprava",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4648929"
-        }
-      ]
+      "body": "Studený čaj sa dá pripraviť dvoma spôsobmi a chutia rozdielne.\n## Cold brew\nLístky sa zalejú **studenou vodou** a lúhujú sa v **chladničke** niekoľko hodín (čierny čaj zvyčajne 6 – 12 h). Čaj je jemný, sladší, menej trpký – za studena sa uvoľní menej trieslovín. Čierny čaj takto takmer nezhorkne, dlhšie lúhovanie ho len zosilní. Po vylúhovaní lístky sceď.\nPomer je vecou chuti: zdroje uvádzajú od 4 do 12 g na 500 ml. Tvoje recepty v appke sú nastavené na 8 – 10 g.\n**Vydrží 2 – 3 dni** v chladničke, najviac 4. Ak sa zakalí do sirupovita, ťahá sa alebo je slizký, vylej ho.\n## Ľadový čaj\nČaj sa uvarí **horúci** a potom sa vychladí alebo naleje na ľad. Pozor: ľad ho zriedi, preto ho priprav **dvakrát silnejší** (dvojnásobok lístkov).\n## Prečo nie na slnku\n„Slnečný čaj“ lúhovaný v pohári na slnku je obľúbený, ale neodporúča sa. Voda sa ohreje dosť na to, aby sa v nej množili baktérie, no nie dosť na to, aby ich zabila. Cold brew vždy nechávaj v **chladničke**.\n## Prečo sa čaj zakalí\nKeď silný čierny čaj vychladne, často zbelie a zakalí sa („creaming“). Kofeín a čajové farbivá sa pri chlade spoja do jemného zákalu. **Je to neškodné** a dokonca to znamená, že je čaj silný. Ak chceš číry ľadový čaj:\n- priprav ho ako cold brew, ten sa takmer nekalí,\n- nechaj horúci čaj najprv vychladnúť pri izbovej teplote, až potom ho daj do chladničky,\n- použi mäkšiu vodu alebo pridaj kvapku citróna."
     },
     {
       "id": "zmesi",
       "title": "Ochutené čaje a zmesi",
       "summary": "Earl Grey, English Breakfast, Russian Caravan, masala chai. Čo je v nich a prečo zmesi vôbec existujú.",
-      "body": "## Prečo zmesi\nČaj z jednej záhrady chutí každý rok a každý zber trochu inak. Výrobcovia preto miešajú čaje z rôznych oblastí a zberov a každú novú várku porovnávajú s predchádzajúcou, aby zmes chutila **stále rovnako**. Čaje z jednej záhrady (ako tvoj Castleton) sú naopak zaujímavé práve tým, že sa menia.\n## Známe zmesi\n**Earl Grey** – čierny čaj ochutený **bergamotom**, malým citrusovým plodom, krížencom citróna a horkého pomaranča. Približne 90 % bergamotového oleja pochádza z Kalábrie v Taliansku. Tradične sa používa olej z kôry, lacnejšie verzie používajú iné arómy. Historickým základom bol čínsky Keemun, dnes často Ceylon (ako pri tvojom). Lady Grey je verzia so sevillským pomarančom alebo nevädzou.\n**English Breakfast** – pôvodne z čínskych čajov, dnes najčastejšie Assam, Ceylon a Keňa. Silný čaj stavaný na mlieko a cukor.\n**Irish Breakfast** – ešte silnejší, s prevahou Assamu (niekedy čistý Assam), sladový, s mliekom.\n**Scottish Breakfast** – silný a sladový; vraj prispôsobený mäkkej škótskej vode.\n**Russian Caravan** – pomenovaný podľa ťavích karaván, ktoré v 18. storočí vozili čaj z Číny cez Rusko. Zvyčajne Keemun, Lapsang Souchong a oolong: sladový, sladký a jemne dymový.\n**Masala chai** – čierny čaj (zvyčajne Assam) varený s mliekom, cukrom a korením. Najčastejšie kardamón, zázvor a škorica, ďalej klinček a čierne korenie. Recept sa líši podľa regiónu aj rodiny a rovnako sa líšia aj hotové zmesi – podiel čaju v nich môže byť 25 až 80 %. Masovo sa rozšíril začiatkom 20. storočia vďaka kampani Indickej čajovej asociácie.\n## Ochutený a parfumovaný čaj\n- **Ochutený (flavoured):** k čaju sa pridajú oleje alebo arómy, prírodné či umelé. Lacnejšie a nezávislé od sezóny.\n- **Parfumovaný (scented):** čaj nasaje vôňu zo skutočných surovín – napríklad jazmínový čaj sa niekoľkokrát vrství s čerstvými kvetmi, ktoré sa potom odstránia. Je to oveľa pracnejšie.\nOchutené čaje znesú zvyčajne len **2 nálevy** – pridaná aróma sa vylúhuje ako prvá.",
-      "sources": [
-        {
-          "label": "Wikipedia – Earl Grey tea",
-          "url": "https://en.wikipedia.org/wiki/Earl_Grey_tea"
-        },
-        {
-          "label": "Wikipedia – English breakfast tea",
-          "url": "https://en.wikipedia.org/wiki/English_breakfast_tea"
-        },
-        {
-          "label": "Harney & Sons – Irish Breakfast",
-          "url": "https://harney.com/en-pt/products/irish-breakfast-tea"
-        },
-        {
-          "label": "Wikipedia – Russian Caravan",
-          "url": "https://en.wikipedia.org/wiki/Russian_Caravan"
-        },
-        {
-          "label": "Wikipedia – Masala chai",
-          "url": "https://en.wikipedia.org/wiki/Masala_chai"
-        },
-        {
-          "label": "Red Blossom Tea – spôsoby ochucovania čaju",
-          "url": "https://redblossomtea.com/blogs/red-blossom-blog/types-of-flavored-tea-3-ways-of-adding-flavors"
-        },
-        {
-          "label": "Newby Teas – miešanie čajov",
-          "url": "https://www.newbyteas.com/blogs/all-blogs/learn-about-tea-blending"
-        }
-      ]
+      "body": "## Prečo zmesi\nČaj z jednej záhrady chutí každý rok a každý zber trochu inak. Výrobcovia preto miešajú čaje z rôznych oblastí a zberov a každú novú várku porovnávajú s predchádzajúcou, aby zmes chutila **stále rovnako**. Čaje z jednej záhrady (ako tvoj Castleton) sú naopak zaujímavé práve tým, že sa menia.\n## Známe zmesi\n**Earl Grey** – čierny čaj ochutený **bergamotom**, malým citrusovým plodom, krížencom citróna a horkého pomaranča. Približne 90 % bergamotového oleja pochádza z Kalábrie v Taliansku. Tradične sa používa olej z kôry, lacnejšie verzie používajú iné arómy. Historickým základom bol čínsky Keemun, dnes často Ceylon (ako pri tvojom). Lady Grey je verzia so sevillským pomarančom alebo nevädzou.\n**English Breakfast** – pôvodne z čínskych čajov, dnes najčastejšie Assam, Ceylon a Keňa. Silný čaj stavaný na mlieko a cukor.\n**Irish Breakfast** – ešte silnejší, s prevahou Assamu (niekedy čistý Assam), sladový, s mliekom.\n**Scottish Breakfast** – silný a sladový; vraj prispôsobený mäkkej škótskej vode.\n**Russian Caravan** – pomenovaný podľa ťavích karaván, ktoré v 18. storočí vozili čaj z Číny cez Rusko. Zvyčajne Keemun, Lapsang Souchong a oolong: sladový, sladký a jemne dymový.\n**Masala chai** – čierny čaj (zvyčajne Assam) varený s mliekom, cukrom a korením. Najčastejšie kardamón, zázvor a škorica, ďalej klinček a čierne korenie. Recept sa líši podľa regiónu aj rodiny a rovnako sa líšia aj hotové zmesi – podiel čaju v nich môže byť 25 až 80 %. Masovo sa rozšíril začiatkom 20. storočia vďaka kampani Indickej čajovej asociácie.\n## Ochutený a parfumovaný čaj\n- **Ochutený (flavoured):** k čaju sa pridajú oleje alebo arómy, prírodné či umelé. Lacnejšie a nezávislé od sezóny.\n- **Parfumovaný (scented):** čaj nasaje vôňu zo skutočných surovín – napríklad jazmínový čaj sa niekoľkokrát vrství s čerstvými kvetmi, ktoré sa potom odstránia. Je to oveľa pracnejšie.\nOchutené čaje znesú zvyčajne len **2 nálevy** – pridaná aróma sa vylúhuje ako prvá."
     },
     {
       "id": "skladovanie",
       "title": "Skladovanie",
       "summary": "Päť nepriateľov čaju, prečo nie do chladničky a ako spoznáš starý čaj.",
-      "body": "Čaj má päť nepriateľov: **svetlo, vzduch, vlhkosť, teplo a pachy**. Čaj ľahko nasaje vôňu kávy či korenia, ktoré sú vedľa neho.\n## Ako ho skladovať\n- vo **vzduchotesnej, nepriehľadnej** dóze (plechovka, keramika) alebo v pôvodnom uzatvárateľnom vrecku,\n- v **chladnej, tmavej a suchej** skrinke, nie nad sporákom ani pri okne,\n- **ďaleko od kávy a korenia**,\n- dózu radšej menšiu a plnú, aby v nej bolo čo najmenej vzduchu.\n## Nie do chladničky\nSuchý čierny čaj do chladničky nepatrí. Pri vyberaní na ňom kondenzuje vlhkosť a nasaje pachy z jedál. Čierny čaj je odolný a izbovú teplotu znesie dobre.\n## Ako dlho vydrží\nNajlepší je **do 1 – 2 rokov**. Čaj sa „nepokazí“ ako jedlo, len postupne stráca vôňu a chuť. Ochutené čaje (napr. Earl Grey) strácajú arómu rýchlejšie.\n## Ako spoznáš starý čaj\nSlabo vonia, chutí ploché, „papierovo“ a nálev je matný. Ak je cítiť zatuchnutý, vlhký alebo je na ňom pleseň, vyhoď ho.",
-      "sources": [
-        {
-          "label": "Smith Tea – trvanlivosť a skladovanie",
-          "url": "https://smithtea.com/pages/shelf-life-storage"
-        },
-        {
-          "label": "Tea Epicure – How to store tea",
-          "url": "https://teaepicure.com/how-to-store-tea/"
-        },
-        {
-          "label": "Vahdam – How long does tea last",
-          "url": "https://www.vahdam.com/blogs/tea-wisdom/how-long-does-tea-last-does-it-expire"
-        }
-      ]
+      "body": "Čaj má päť nepriateľov: **svetlo, vzduch, vlhkosť, teplo a pachy**. Čaj ľahko nasaje vôňu kávy či korenia, ktoré sú vedľa neho.\n## Ako ho skladovať\n- vo **vzduchotesnej, nepriehľadnej** dóze (plechovka, keramika) alebo v pôvodnom uzatvárateľnom vrecku,\n- v **chladnej, tmavej a suchej** skrinke, nie nad sporákom ani pri okne,\n- **ďaleko od kávy a korenia**,\n- dózu radšej menšiu a plnú, aby v nej bolo čo najmenej vzduchu.\n## Nie do chladničky\nSuchý čierny čaj do chladničky nepatrí. Pri vyberaní na ňom kondenzuje vlhkosť a nasaje pachy z jedál. Čierny čaj je odolný a izbovú teplotu znesie dobre.\n## Ako dlho vydrží\nNajlepší je **do 1 – 2 rokov**. Čaj sa „nepokazí“ ako jedlo, len postupne stráca vôňu a chuť. Ochutené čaje (napr. Earl Grey) strácajú arómu rýchlejšie.\n## Ako spoznáš starý čaj\nSlabo vonia, chutí ploché, „papierovo“ a nálev je matný. Ak je cítiť zatuchnutý, vlhký alebo je na ňom pleseň, vyhoď ho."
     },
     {
       "id": "slovnik",
       "title": "Chuťový slovník",
       "summary": "Sladový, svieži, zvieravý, muškátový… Slová, ktorými sa opisuje čaj, aby si rozumela popisom.",
-      "body": "Keď čítaš popisy čajov, narazíš na slová, ktoré používajú ochutnávači. Tu sú tie najdôležitejšie.\n## Čo sa hodnotí\n| Pojem | Význam |\n| Suchý list | čaj pred zaliatím – tvar, farba, vôňa |\n| Nálev (liquor) | hotový čaj v šálke |\n| Vylúhovaný list | mokré lístky po zaliatí – ukážu kvalitu lístka |\n## Chuť a pocit v ústach\n| Pojem | Význam |\n| Sladový (malty) | plná, chlebovo-sladová chuť; typická pre Assam |\n| Sušienkový (biscuity) | príjemný „pečený“ tón dobrého Assamu |\n| Svieži (brisk) | živý, osviežujúci, nie plochý – neznamená horký |\n| Jasný (bright) | živý, číry, červený nálev; opakom je „matný“ |\n| Telo (body) | „váha“ čaju v ústach: ľahké, stredné, plné |\n| Muškátový (muscatel) | tón muškátového hrozna; typický pre Darjeeling second flush |\n| Medený (coppery) | farba nálevu či listu ako nová medená minca – znak dobrej výroby |\n| Zemitý (earthy) | tóny vlhkej zeme, dreva, kože |\n| Dymový (smoky) | ako Lapsang Souchong |\n| Vínový (winey) | jemný, vínu podobný tón, napr. pri Keemune |\n| Medový, kakaový, kvetinový, ovocný | chuťové skupiny, ktoré pripomínajú tieto potraviny |\n| Tipsy (tippy) | čaj s veľa púčikmi, často zlatými |\n| Charakter | typická vlastnosť, podľa ktorej spoznáš pôvod čaju |\n| Dochuť (finish) | čo ostane v ústach po prehltnutí |\n## Horký verzus zvieravý\nToto sa často zamieňa, a pritom je to rozdiel:\n- **Horkosť** je **chuť** – cítiš ju jazykom, hlavne vzadu. Zvyčajne znamená prelúhovaný alebo slabší čaj.\n- **Zvieravosť (trpkosť)** je **pocit** – ústa sú suché a „stiahnuté“, ako po nezrelom ovocí. Čajové látky sa viažu na bielkoviny v slinách. Mierna zvieravosť je pri čiernom čaji žiaduca a ochutnávači jej hovoria svieži charakter.\nZvieravosť sa v ústach postupne zosilňuje aj 15 sekúnd a môže pretrvať niekoľko minút. Cukor ju zmierni.",
-      "sources": [
-        {
-          "label": "Twinings – čajový slovník",
-          "url": "https://twinings.co.uk/blogs/news/our-communi-tea-about-tea-tea-glossary"
-        },
-        {
-          "label": "Simple Loose Leaf – A tea taster's glossary",
-          "url": "https://svtea.com/blogs/news/a-tea-taster-s-glossary"
-        },
-        {
-          "label": "Red Blossom Tea – horkosť vs. zvieravosť",
-          "url": "https://redblossomtea.com/blogs/red-blossom-blog/tasting-notes-bitterness-vs-astringency"
-        },
-        {
-          "label": "Štúdia o zvieravosti čaju (DOAJ)",
-          "url": "https://doaj.org/article/ae62644fe8fd48a2a8f8b72251bb0e41"
-        },
-        {
-          "label": "RateTea – tippy tea",
-          "url": "https://ratetea.com/topic/tippy-tea/60/"
-        }
-      ]
+      "body": "Keď čítaš popisy čajov, narazíš na slová, ktoré používajú ochutnávači. Tu sú tie najdôležitejšie.\n## Čo sa hodnotí\n| Pojem | Význam |\n| Suchý list | čaj pred zaliatím – tvar, farba, vôňa |\n| Nálev (liquor) | hotový čaj v šálke |\n| Vylúhovaný list | mokré lístky po zaliatí – ukážu kvalitu lístka |\n## Chuť a pocit v ústach\n| Pojem | Význam |\n| Sladový (malty) | plná, chlebovo-sladová chuť; typická pre Assam |\n| Sušienkový (biscuity) | príjemný „pečený“ tón dobrého Assamu |\n| Svieži (brisk) | živý, osviežujúci, nie plochý – neznamená horký |\n| Jasný (bright) | živý, číry, červený nálev; opakom je „matný“ |\n| Telo (body) | „váha“ čaju v ústach: ľahké, stredné, plné |\n| Muškátový (muscatel) | tón muškátového hrozna; typický pre Darjeeling second flush |\n| Medený (coppery) | farba nálevu či listu ako nová medená minca – znak dobrej výroby |\n| Zemitý (earthy) | tóny vlhkej zeme, dreva, kože |\n| Dymový (smoky) | ako Lapsang Souchong |\n| Vínový (winey) | jemný, vínu podobný tón, napr. pri Keemune |\n| Medový, kakaový, kvetinový, ovocný | chuťové skupiny, ktoré pripomínajú tieto potraviny |\n| Tipsy (tippy) | čaj s veľa púčikmi, často zlatými |\n| Charakter | typická vlastnosť, podľa ktorej spoznáš pôvod čaju |\n| Dochuť (finish) | čo ostane v ústach po prehltnutí |\n## Horký verzus zvieravý\nToto sa často zamieňa, a pritom je to rozdiel:\n- **Horkosť** je **chuť** – cítiš ju jazykom, hlavne vzadu. Zvyčajne znamená prelúhovaný alebo slabší čaj.\n- **Zvieravosť (trpkosť)** je **pocit** – ústa sú suché a „stiahnuté“, ako po nezrelom ovocí. Čajové látky sa viažu na bielkoviny v slinách. Mierna zvieravosť je pri čiernom čaji žiaduca a ochutnávači jej hovoria svieži charakter.\nZvieravosť sa v ústach postupne zosilňuje aj 15 sekúnd a môže pretrvať niekoľko minút. Cukor ju zmierni."
     },
     {
       "id": "kofein",
       "title": "Kofeín",
       "summary": "Má čierny čaj viac kofeínu ako zelený? Dá sa kofeín „vypláchnuť“? Mýty a čo je naozaj známe.",
-      "body": "Presné množstvo kofeínu v šálke sa doma zistiť nedá – závisí od konkrétneho čaju, množstva lístkov, teploty aj času. Dá sa však povedať, čo ho ovplyvňuje.\n## Čo je známe\n- Čierny čaj obsahuje kofeín, ale v šálke ho býva **menej ako v káve**.\n- Viac kofeínu majú **púčiky a mladé lístky**, takže čaje s veľa tipsami ho môžu mať viac.\n- Viac kofeínu sa vylúhuje pri **viac lístkoch, horúcejšej vode a dlhšom lúhovaní**. Drvený čaj vo vrecúšku ho uvoľní rýchlejšie ako celé lístky.\n## Mýtus: čierny čaj má vždy viac kofeínu ako zelený\nNie je to pravda. Všetky čaje sú z tej istej rastliny a rozhoduje skôr druh lístka a príprava než to, či je čaj čierny alebo zelený.\n## Mýtus: kofeín sa dá „vypláchnuť“\nČasto sa radí zaliať čaj na 30 sekúnd, vyliať a tým odstrániť väčšinu kofeínu. Podľa štúdie z roku 1996 sa však za 30 sekúnd uvoľní len okolo 9 % kofeínu, za 3 minúty asi polovica. Prepláchnutím sa teda kofeínu nezbavíš.\n## Prečo čaj pôsobí „pokojnejšie“ ako káva\nČaj obsahuje aj aminokyselinu **L-teanín**. Ľudia často opisujú, že čaj povzbudí jemnejšie a pokojnejšie ako káva. Niektoré menšie štúdie s L-teanínom a kofeínom naznačujú lepšiu pozornosť, išlo však o doplnky, nie o šálky čaju – ber to ako bežnú skúsenosť, nie ako dokázaný fakt.\n## Čaj bez kofeínu\nKofeín sa z čaju odstraňuje najčastejšie pomocou **oxidu uhličitého** (šetrnejšia metóda, ktorá zachová viac chuti) alebo rozpúšťadla etylacetátu. Ani „bezkofeínový“ čaj nie je úplne bez kofeínu – malé množstvo v ňom ostane.",
-      "sources": [
-        {
-          "label": "Red Blossom Tea – 4 mýty o kofeíne v čaji",
-          "url": "https://redblossomtea.com/blogs/red-blossom-blog/4-myths-about-caffeine-in-tea"
-        },
-        {
-          "label": "Happy Earth Tea – dá sa kofeín vypláchnuť?",
-          "url": "https://happyearthtea.com/blogs/tea-101-about-tea/can-caffeine-be-rinsed-from-tea"
-        },
-        {
-          "label": "PubMed – L-teanín a kofeín (štúdia)",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/24946991/"
-        },
-        {
-          "label": "Monash University – účinky L-teanínu a kofeínu",
-          "url": "https://research.monash.edu/en/publications/acute-effects-of-tea-constituents-l-theanine-caffeine-and-epigall/"
-        },
-        {
-          "label": "RateTea – tippy tea",
-          "url": "https://ratetea.com/topic/tippy-tea/60/"
-        }
-      ]
+      "body": "Presné množstvo kofeínu v šálke sa doma zistiť nedá – závisí od konkrétneho čaju, množstva lístkov, teploty aj času. Dá sa však povedať, čo ho ovplyvňuje.\n## Čo je známe\n- Čierny čaj obsahuje kofeín, ale v šálke ho býva **menej ako v káve**.\n- Viac kofeínu majú **púčiky a mladé lístky**, takže čaje s veľa tipsami ho môžu mať viac.\n- Viac kofeínu sa vylúhuje pri **viac lístkoch, horúcejšej vode a dlhšom lúhovaní**. Drvený čaj vo vrecúšku ho uvoľní rýchlejšie ako celé lístky.\n## Mýtus: čierny čaj má vždy viac kofeínu ako zelený\nNie je to pravda. Všetky čaje sú z tej istej rastliny a rozhoduje skôr druh lístka a príprava než to, či je čaj čierny alebo zelený.\n## Mýtus: kofeín sa dá „vypláchnuť“\nČasto sa radí zaliať čaj na 30 sekúnd, vyliať a tým odstrániť väčšinu kofeínu. Podľa štúdie z roku 1996 sa však za 30 sekúnd uvoľní len okolo 9 % kofeínu, za 3 minúty asi polovica. Prepláchnutím sa teda kofeínu nezbavíš.\n## Prečo čaj pôsobí „pokojnejšie“ ako káva\nČaj obsahuje aj aminokyselinu **L-teanín**. Ľudia často opisujú, že čaj povzbudí jemnejšie a pokojnejšie ako káva. Niektoré menšie štúdie s L-teanínom a kofeínom naznačujú lepšiu pozornosť, išlo však o doplnky, nie o šálky čaju – ber to ako bežnú skúsenosť, nie ako dokázaný fakt.\n## Čaj bez kofeínu\nKofeín sa z čaju odstraňuje najčastejšie pomocou **oxidu uhličitého** (šetrnejšia metóda, ktorá zachová viac chuti) alebo rozpúšťadla etylacetátu. Ani „bezkofeínový“ čaj nie je úplne bez kofeínu – malé množstvo v ňom ostane."
     },
     {
       "id": "historia",
       "title": "Krátka história",
       "summary": "Od dymového čaju z hôr Wuyi cez britské salóny až po plantáže v Assame a na Cejlóne.",
-      "body": "## Začiatky v Číne\nČierny čaj vznikol v Číne. Prvé záznamy o **Lapsang Souchongu** z hôr Wuyi v provincii Fujian pochádzajú zo 17. storočia. Legenda hovorí, že vojaci donútili roľníkov sušiť lístky rýchlo nad borovicovým ohňom – je to však len pekný príbeh, doložený nie je.\n## Čaj prichádza do Európy\nČínsky čaj do Európy vozili najprv Holanďania, potom britská Východoindická spoločnosť. V Londýne sa začal predávať v roku 1657. Módnym ho na kráľovskom dvore urobila portugalská princezná **Katarína z Braganzy**, manželka Karola II. (1662). V 20. rokoch 18. storočia predbehol v Británii čierny čaj zelený a spolu s ním prišiel zvyk piť ho s mliekom a cukrom. **Popoludňajší čaj** zaviedla okolo roku 1840 vojvodkyňa Anna z Bedfordu.\n## Assam: čajovník, ktorý rástol v Indii\nV roku 1823 ukázali miestni ľudia Škótovi **Robertovi Bruceovi** v Assame divoký čajovník. Jeho brat Charles poslal vzorky do Kalkaty, kde ho určili ako čaj. V roku 1839 sa v Londýne vydražil prvý assamský čaj a vznikla Assamská spoločnosť.\nBriti medzitým chceli čínske čajovníky. Botanik **Robert Fortune** ich v roku 1848 prepašoval z Číny do Indie spolu so skúsenými čajovými majstrami – čínske úrady ich predaj zakazovali.\n## Darjeeling\nV Darjeelingu vysadil prvé čajovníky Archibald Campbell v roku 1841, prvé obchodné záhrady vznikli v roku 1856. Rastú tu prevažne čínske čajovníky.\n## Cejlón: od kávy k čaju\nSrí Lanka bola pôvodne kávovou krajinou. Od roku 1869 však kávovníky zničila plesňová choroba (hrdza kávovníka) a pestovatelia prešli na čaj. Škót **James Taylor** vysadil čajovník na plantáži Loolecondera v roku 1867 a v roku 1872 tam postavil továreň.\n## Ďalšie čínske čaje\n- **Keemun** sa začal vyrábať okolo roku 1875, keď sa do provincie Anhui dostal postup výroby čierneho čaju z Fujianu.\n- **Dian Hong** (Yunnan) sa prvýkrát vyrobil v okrese Fengqing až v rokoch 1938 – 1939.\n## Earl Grey\nČaj nesie meno pravdepodobne po **Charlesovi Greyovi**, britskom premiérovi z 30. rokov 19. storočia. Príbeh o vďačnom čínskom mandarínovi, ktorý mu recept daroval, je legenda – Grey v Číne nikdy nebol a bergamotový čaj tam nepoznali. Doložené je, že čaj ochutený bergamotom existoval už v roku 1824 a pod menom „Earl Grey“ sa predával od 80. rokov 19. storočia.",
-      "sources": [
-        {
-          "label": "Wikipedia – Black tea",
-          "url": "https://en.wikipedia.org/wiki/Black_tea"
-        },
-        {
-          "label": "Wikipedia – Tea in the United Kingdom",
-          "url": "https://en.wikipedia.org/wiki/Tea_in_the_United_Kingdom"
-        },
-        {
-          "label": "Wikipedia – Assam tea",
-          "url": "https://en.wikipedia.org/wiki/Assam_tea"
-        },
-        {
-          "label": "Wikipedia – Robert Fortune",
-          "url": "https://en.wikipedia.org/wiki/Robert_Fortune"
-        },
-        {
-          "label": "Wikipedia – Darjeeling tea",
-          "url": "https://en.wikipedia.org/wiki/Darjeeling_tea"
-        },
-        {
-          "label": "Wikipedia – Tea production in Sri Lanka",
-          "url": "https://en.wikipedia.org/wiki/Tea_production_in_Sri_Lanka"
-        },
-        {
-          "label": "Wikipedia – James Taylor (tea planter)",
-          "url": "https://en.wikipedia.org/wiki/James_Taylor_(tea_planter)"
-        },
-        {
-          "label": "Twinings – Keemun",
-          "url": "https://twinings.co.uk/world-of-tea/keemun"
-        },
-        {
-          "label": "Tea Guardian – Dian Hong",
-          "url": "https://www.teaguardian.com/?p=14356"
-        },
-        {
-          "label": "Wikipedia – Earl Grey tea",
-          "url": "https://en.wikipedia.org/wiki/Earl_Grey_tea"
-        },
-        {
-          "label": "Teasenz – história Lapsang Souchong",
-          "url": "https://teasenz.eu/blogs/tea-magazine/lapasang-souchong-history"
-        }
-      ]
+      "body": "## Začiatky v Číne\nČierny čaj vznikol v Číne. Prvé záznamy o **Lapsang Souchongu** z hôr Wuyi v provincii Fujian pochádzajú zo 17. storočia. Legenda hovorí, že vojaci donútili roľníkov sušiť lístky rýchlo nad borovicovým ohňom – je to však len pekný príbeh, doložený nie je.\n## Čaj prichádza do Európy\nČínsky čaj do Európy vozili najprv Holanďania, potom britská Východoindická spoločnosť. V Londýne sa začal predávať v roku 1657. Módnym ho na kráľovskom dvore urobila portugalská princezná **Katarína z Braganzy**, manželka Karola II. (1662). V 20. rokoch 18. storočia predbehol v Británii čierny čaj zelený a spolu s ním prišiel zvyk piť ho s mliekom a cukrom. **Popoludňajší čaj** zaviedla okolo roku 1840 vojvodkyňa Anna z Bedfordu.\n## Assam: čajovník, ktorý rástol v Indii\nV roku 1823 ukázali miestni ľudia Škótovi **Robertovi Bruceovi** v Assame divoký čajovník. Jeho brat Charles poslal vzorky do Kalkaty, kde ho určili ako čaj. V roku 1839 sa v Londýne vydražil prvý assamský čaj a vznikla Assamská spoločnosť.\nBriti medzitým chceli čínske čajovníky. Botanik **Robert Fortune** ich v roku 1848 prepašoval z Číny do Indie spolu so skúsenými čajovými majstrami – čínske úrady ich predaj zakazovali.\n## Darjeeling\nV Darjeelingu vysadil prvé čajovníky Archibald Campbell v roku 1841, prvé obchodné záhrady vznikli v roku 1856. Rastú tu prevažne čínske čajovníky.\n## Cejlón: od kávy k čaju\nSrí Lanka bola pôvodne kávovou krajinou. Od roku 1869 však kávovníky zničila plesňová choroba (hrdza kávovníka) a pestovatelia prešli na čaj. Škót **James Taylor** vysadil čajovník na plantáži Loolecondera v roku 1867 a v roku 1872 tam postavil továreň.\n## Ďalšie čínske čaje\n- **Keemun** sa začal vyrábať okolo roku 1875, keď sa do provincie Anhui dostal postup výroby čierneho čaju z Fujianu.\n- **Dian Hong** (Yunnan) sa prvýkrát vyrobil v okrese Fengqing až v rokoch 1938 – 1939.\n## Earl Grey\nČaj nesie meno pravdepodobne po **Charlesovi Greyovi**, britskom premiérovi z 30. rokov 19. storočia. Príbeh o vďačnom čínskom mandarínovi, ktorý mu recept daroval, je legenda – Grey v Číne nikdy nebol a bergamotový čaj tam nepoznali. Doložené je, že čaj ochutený bergamotom existoval už v roku 1824 a pod menom „Earl Grey“ sa predával od 80. rokov 19. storočia."
     }
   ]
 }
