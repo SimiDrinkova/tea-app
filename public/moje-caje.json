@@ -25,9 +25,9 @@
       "milkSteps": "V šálke (anglický spôsob) · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} vriacej vody a lúhuj 5 minút.\nSceď a dolej {50 – 80 ml} teplého mlieka (nie vriaceho).\nPodľa chuti oslaď cukrom alebo medom.\nNa sporáku (indický chai) · 350 ml:\nV hrnci priveď do varu {200 ml} vody s {2 – 3} roztlačenými strukmi kardamónu.\nPridaj {4 g} čaju a nechaj jemne variť 2 – 3 minúty.\nPrilej {150 ml} mlieka a {1 – 2} lyžičky cukru a nechaj znova zovrieť.\nSceď do šálok a podávaj so sladkým pečivom.",
       "coldBrew": {
         "baseMl": 500,
-        "baseGrams": 5,
-        "hours": 10,
-        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní.\nAk ho chceš piť s mliekom, daj 6 g."
+        "baseGrams": 10,
+        "hours": 8,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín (ak ho chceš silnejší, nechaj až 10 h).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
       },
       "shopUrl": "https://www.manutea.sk/assam-tgfop1-second-flush-monipur-cierny-caj-x193"
     },
@@ -54,9 +54,9 @@
       "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vodou s teplotou 95 °C (chvíľu po prevarení).\nLúhuj prikryté 3 minúty a sceď.\nĎalšie nálevy lúhuj vždy o minútu dlhšie.",
       "coldBrew": {
         "baseMl": 500,
-        "baseGrams": 5,
-        "hours": 8,
-        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín (ochutnaj už po 6 h).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
+        "baseGrams": 8,
+        "hours": 6,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 6 hodín (ochutnaj, najviac 8 h – aby nezanikla muškátová chuť).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
       },
       "shopUrl": "https://www.manutea.sk/darjeeling-castleton-ftgfop1-second-flush-bio-cierny-caj-x1751"
     },
@@ -83,9 +83,9 @@
       "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vodou s teplotou 95 °C.\nLúhuj prikryté 3 minúty a sceď.\nDruhý nálev lúhuj 4 minúty, tretí 6 minút – čaj sa lúhuje pomaly a dlhší čas znesie bez horkosti.",
       "coldBrew": {
         "baseMl": 500,
-        "baseGrams": 5,
-        "hours": 8,
-        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 6 – 8 hodín (ak je slabý, nechaj až 12 h).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
+        "baseGrams": 8,
+        "hours": 7,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 7 hodín (6 – 8 h podľa chuti).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
       },
       "shopUrl": "https://www.manutea.sk/golden-yunnan-superior-bio-cierny-caj-x1603"
     },
@@ -113,9 +113,9 @@
       "milkSteps": "V šálke · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} vriacej vody a lúhuj 5 minút.\nSceď a dolej {50 – 80 ml} teplého mlieka.\nPridaj {1} lyžičku cukru alebo medu – podľa Manutea je najlepší s mliekom aj cukrom.",
       "coldBrew": {
         "baseMl": 500,
-        "baseGrams": 6,
+        "baseGrams": 10,
         "hours": 10,
-        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 10 – 12 hodín.\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní.\nPodávaj s plátkom citróna."
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 10 hodín.\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní.\nPodávaj s plátkom citróna."
       },
       "shopUrl": "https://www.manutea.sk/ceylon-op-1-cierny-caj-x1105"
     },
@@ -142,9 +142,9 @@
       "milkSteps": "V šálke (ako v Anglicku) · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} a lúhuj 4 minúty.\nSceď a dolej {50 – 80 ml} teplého mlieka.\nPridaj {1} lyžičku cukru.",
       "coldBrew": {
         "baseMl": 500,
-        "baseGrams": 5,
-        "hours": 10,
-        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 dní – bergamot postupne vyprcháva.\nPodávaj s ľadom, prípadne s plátkom citróna."
+        "baseGrams": 9,
+        "hours": 8,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín.\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 dní – bergamot postupne vyprcháva.\nPodávaj s ľadom, prípadne s plátkom citróna."
       },
       "shopUrl": "https://www.manutea.sk/earl-grey-cierny-caj-x1120"
     },
