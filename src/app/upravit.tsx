@@ -3,21 +3,32 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button, Chip, Field } from '@/components/ui';
-import { CAFFEINE_PER_GRAM, DEFAULT_LOW_STOCK, newId, Tea, useTeas } from '@/lib/teas';
+import { CAFFEINE_PER_GRAM, DEFAULT_LOW_STOCK, newId, originParts, Tea, useTeas } from '@/lib/teas';
 import { C, TEA_TYPES, TYPE_COLORS, TeaType } from '@/lib/theme';
 
 type SteepDraft = { min: string; sec: string };
 
 const toNum = (v: string) => Number(v.replace(',', '.'));
 
-export default function EditTea() {
+// Formulár vykreslíme až po načítaní čajov, inak by sa pri priamom otvorení nepredvyplnil.
+export default function EditTeaScreen() {
+  const { loaded } = useTeas();
+  return loaded ? <EditTea /> : null;
+}
+
+function EditTea() {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const { teas, save } = useTeas();
   const existing = teas.find((t) => t.id === id);
 
   const [name, setName] = useState(existing?.name ?? '');
   const [type, setType] = useState<TeaType>(existing?.type ?? 'Čierny');
-  const [origin, setOrigin] = useState(existing?.origin ?? '');
+  const parts = existing ? originParts(existing) : { country: '', region: '' };
+  const [country, setCountry] = useState(parts.country);
+  const [region, setRegion] = useState(parts.region);
+  const [harvest, setHarvest] = useState(existing?.harvest ?? '');
+  const [leaf, setLeaf] = useState(existing?.leaf ?? '');
+  const [character, setCharacter] = useState(existing?.character ?? '');
   const [description, setDescription] = useState(existing?.description ?? '');
   const [tasting, setTasting] = useState(existing?.tasting ?? '');
   const [baseMl, setBaseMl] = useState(String(existing?.baseMl ?? 250));
@@ -71,7 +82,12 @@ export default function EditTea() {
       id: existing?.id ?? newId(),
       name: name.trim(),
       type,
-      origin: origin.trim(),
+      origin: [country.trim(), region.trim()].filter(Boolean).join(', '),
+      country: country.trim() || undefined,
+      region: region.trim() || undefined,
+      harvest: harvest.trim() || undefined,
+      leaf: leaf.trim() || undefined,
+      character: character.trim() || undefined,
       description: description.trim(),
       tasting: tasting.trim(),
       baseMl: ml,
@@ -112,19 +128,25 @@ export default function EditTea() {
         </View>
       </View>
 
-      <Field label="Pôvod" value={origin} onChangeText={setOrigin} placeholder="napr. India, Darjeeling" />
+      <View style={s.row}>
+        <Field label="Krajina" value={country} onChangeText={setCountry} placeholder="napr. India" containerStyle={{ flex: 1 }} />
+        <Field label="Región" value={region} onChangeText={setRegion} placeholder="napr. Darjeeling" containerStyle={{ flex: 1 }} />
+      </View>
+      <Field label="Zber" value={harvest} onChangeText={setHarvest} placeholder="napr. First Flush (jarný zber)" />
+      <Field label="List" value={leaf} onChangeText={setLeaf} placeholder="napr. FTGFOP1, celé lístky s tipsami" />
+      <Field label="Charakter" value={character} onChangeText={setCharacter} placeholder="napr. svieži, kvetinový, jemný" />
+      <Field
+        label="Čo hľadať"
+        value={tasting}
+        onChangeText={setTasting}
+        placeholder="chuťové tóny, oddeľ čiarkou: med, kvety, broskyňa"
+      />
       <Field
         label="Popis"
         value={description}
         onChangeText={setDescription}
         multiline
         placeholder="Aký je to čaj, kedy ho rada piješ…"
-      />
-      <Field
-        label="Čo v ňom cítiť"
-        value={tasting}
-        onChangeText={setTasting}
-        placeholder="oddeľ čiarkou: med, kvety, broskyňa"
       />
 
       <View style={s.row}>

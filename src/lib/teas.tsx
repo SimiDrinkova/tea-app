@@ -1,16 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
-import { newCatalogTeas } from './catalog';
+import { syncCatalog } from './catalog';
 import type { TeaType } from './theme';
 
 export type Tea = {
   id: string;
   name: string;
   type: TeaType;
-  origin: string;
+  origin: string; // krajina a región spolu (pre zoznam a vyhľadávanie)
+  country?: string;
+  region?: string;
+  harvest?: string; // zber, napr. Second Flush
+  leaf?: string; // list / trieda, napr. TGFOP1
+  character?: string;
   description: string;
-  tasting: string; // čo v čaji cítiť, oddelené čiarkou
+  tasting: string; // čo hľadať v chuti, oddelené čiarkou
   baseMl: number; // pre koľko ml je gramáž
   baseGrams: number;
   tempC: number;
@@ -105,6 +110,13 @@ export type LogEntry = {
   note: string;
 };
 
+// Krajina a región; staršie čaje majú len spoločné pole „pôvod“ (napr. „India, Assam“).
+export function originParts(t: Tea) {
+  if (t.country || t.region) return { country: t.country ?? '', region: t.region ?? '' };
+  const [country = '', ...rest] = t.origin.split(',').map((x) => x.trim());
+  return { country, region: rest.join(', ') };
+}
+
 export const isLowStock = (t: Tea) =>
   t.stockGrams !== undefined && t.stockGrams <= (t.lowStockGrams ?? DEFAULT_LOW_STOCK);
 
@@ -190,9 +202,8 @@ export function TeasProvider({ children }: { children: ReactNode }) {
       .then(async (stored) => {
         setTeas(stored);
         setLoaded(true);
-        const fresh = await newCatalogTeas(stored);
-        if (fresh.length) {
-          const next = [...fresh, ...stored];
+        const next = await syncCatalog(stored);
+        if (next) {
           setTeas(next);
           AsyncStorage.setItem(KEY, JSON.stringify(next)).catch(() => {});
         }

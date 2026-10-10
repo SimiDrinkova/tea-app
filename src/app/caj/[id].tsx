@@ -13,6 +13,7 @@ import {
   lastDrunkLabel,
   LogEntry,
   newId,
+  originParts,
   shopHref,
   useTeas,
   withDrink,
@@ -58,6 +59,16 @@ export default function TeaDetail() {
   const grams = Math.max(1, Math.round((recipe.baseGrams * volume) / recipe.baseMl));
   const color = TYPE_COLORS[tea.type];
   const notes = tea.tasting.split(',').map((n) => n.trim()).filter(Boolean);
+  const { country, region } = originParts(tea);
+  const facts = (
+    [
+      ['Krajina', country],
+      ['Región', region],
+      ['Zber', tea.harvest],
+      ['List', tea.leaf],
+      ['Charakter', tea.character],
+    ] as [string, string | undefined][]
+  ).filter((f): f is [string, string] => !!f[1]);
   const steps = recipe.steps.split('\n').map((n) => n.trim()).filter(Boolean);
   const presets = Array.from(new Set([...(isCold ? COLD_PRESETS : PRESETS), recipe.baseMl])).sort((a, b) => a - b);
   const low = isLowStock(tea);
@@ -162,7 +173,6 @@ export default function TeaDetail() {
           <Text style={s.badgeText}>{tea.type}</Text>
         </View>
         <Text style={s.title}>{tea.name}</Text>
-        {!!tea.origin && <Text style={s.origin}>{tea.origin}</Text>}
         {!!tea.shopUrl && (
           <Pressable onPress={openShop} hitSlop={6} style={{ alignSelf: 'flex-start' }}>
             <Text style={s.shopLink}>🛒 Pozrieť v e-shope</Text>
@@ -190,9 +200,20 @@ export default function TeaDetail() {
 
       {!!tea.description && <Text style={s.body}>{tea.description}</Text>}
 
+      {facts.length > 0 && (
+        <Card style={{ gap: 0, paddingVertical: 6 }}>
+          {facts.map(([label, value], i) => (
+            <View key={label} style={[s.factRow, i > 0 && s.factBorder]}>
+              <Text style={s.factLabel}>{label}</Text>
+              <Text style={s.factValue}>{value}</Text>
+            </View>
+          ))}
+        </Card>
+      )}
+
       {notes.length > 0 && (
         <View>
-          <SectionTitle>Čo v ňom cítiť</SectionTitle>
+          <SectionTitle>Čo hľadať</SectionTitle>
           <View style={s.wrap}>
             {notes.map((n) => (
               <Chip key={n} label={n} />
@@ -427,7 +448,10 @@ const s = StyleSheet.create({
   badge: { alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
   badgeText: { color: '#FFF', fontSize: 12, fontWeight: '700', letterSpacing: 0.6, textTransform: 'uppercase' },
   title: { fontFamily: serif, fontSize: 34, color: C.text },
-  origin: { color: C.textSoft, fontSize: 15 },
+  factRow: { flexDirection: 'row', gap: 12, paddingVertical: 10 },
+  factBorder: { borderTopWidth: 1, borderTopColor: C.border },
+  factLabel: { width: 98, color: C.textSoft, fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.5, paddingTop: 2 },
+  factValue: { flex: 1, color: C.text, fontSize: 16, lineHeight: 22 },
   stars: { flexDirection: 'row', gap: 4, marginTop: 2 },
   star: { fontSize: 26, color: '#DCCDB8' },
   body: { color: C.text, fontSize: 16, lineHeight: 24 },

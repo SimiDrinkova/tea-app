@@ -38,7 +38,11 @@ export default function TeaList() {
       .filter(
         (t) =>
           (!type || t.type === type) &&
-          (!q || [t.name, t.origin, t.tasting, t.description].join(' ').toLowerCase().includes(q)),
+          (!q ||
+            [t.name, t.origin, t.tasting, t.description, t.harvest, t.leaf, t.character]
+              .join(' ')
+              .toLowerCase()
+              .includes(q)),
       )
       .sort(SORTS[sort].cmp);
   }, [teas, query, type, sort]);
