@@ -335,6 +335,8 @@ export default function TeaDetail() {
         </View>
       )}
 
+      {!isCold && !!tea.milkSteps?.trim() && <MilkSteps text={tea.milkSteps} color={color} />}
+
       {tea.stockGrams !== undefined ? (
         <Card style={[{ gap: 12 }, low && s.lowCard]}>
           <View style={s.steepRow}>
@@ -422,6 +424,38 @@ function formatVolume(ml: number) {
   return ml >= 1000 ? `${String(ml / 1000).replace('.', ',')} l` : `${ml} ml`;
 }
 
+// Riadok končiaci dvojbodkou je nadpis spôsobu prípravy, ostatné riadky sú číslované kroky.
+function MilkSteps({ text, color }: { text: string; color: string }) {
+  // Riadok končiaci dvojbodkou je nadpis spôsobu prípravy, ostatné riadky sú kroky číslované od nadpisu.
+  const lines = text
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .reduce<{ text: string; num: number }[]>((acc, line) => {
+      const prev = acc[acc.length - 1]?.num ?? 0; // nadpis má 0, takže číslovanie začne znova od 1
+      return [...acc, { text: line, num: line.endsWith(':') ? 0 : prev + 1 }];
+    }, []);
+  return (
+    <Card style={{ gap: 12 }}>
+      <SectionTitle>🥛 S mliekom</SectionTitle>
+      {lines.map((line, i) =>
+        line.text.endsWith(':') ? (
+          <Text key={i} style={[s.milkHeading, i > 0 && { marginTop: 6 }]}>
+            {line.text.slice(0, -1)}
+          </Text>
+        ) : (
+          <View key={i} style={{ flexDirection: 'row', gap: 12 }}>
+            <View style={[s.stepNum, { borderColor: color }]}>
+              <Text style={[s.stepNumText, { color }]}>{line.num}</Text>
+            </View>
+            <Text style={[s.body, { flex: 1 }]}>{line.text}</Text>
+          </View>
+        ),
+      )}
+    </Card>
+  );
+}
+
 function TimerButton({ color, onPress }: { color: string; onPress: () => void }) {
   return (
     <Pressable
@@ -448,6 +482,7 @@ const s = StyleSheet.create({
   badge: { alignSelf: 'flex-start', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
   badgeText: { color: '#FFF', fontSize: 12, fontWeight: '700', letterSpacing: 0.6, textTransform: 'uppercase' },
   title: { fontFamily: serif, fontSize: 34, color: C.text },
+  milkHeading: { color: C.accent, fontSize: 14, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
   factRow: { flexDirection: 'row', gap: 12, paddingVertical: 10 },
   factBorder: { borderTopWidth: 1, borderTopColor: C.border },
   factLabel: { width: 98, color: C.textSoft, fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.5, paddingTop: 2 },

@@ -21,6 +21,7 @@ export type Tea = {
   tempC: number;
   steeps: number[]; // časy lúhovania v sekundách
   steps: string; // postup prípravy, jeden krok na riadok
+  milkSteps?: string; // príprava s mliekom; riadok končiaci „:“ je nadpis spôsobu
   coldBrew?: ColdBrew;
   favorite?: boolean;
   rating?: number; // 1–5 hviezdičiek

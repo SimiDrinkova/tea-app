@@ -38,6 +38,7 @@ function EditTea() {
     existing?.steeps.map((s) => ({ min: String(Math.floor(s / 60)), sec: String(s % 60) })) ?? [{ min: '3', sec: '0' }],
   );
   const [steps, setSteps] = useState(existing?.steps ?? '');
+  const [milkSteps, setMilkSteps] = useState(existing?.milkSteps ?? '');
   const [stock, setStock] = useState(
     existing?.stockGrams !== undefined ? String(existing.stockGrams).replace('.', ',') : '',
   );
@@ -92,6 +93,7 @@ function EditTea() {
         .filter((sec) => sec > 0)
         .map(Math.round),
       steps: steps.trim(),
+      milkSteps: milkSteps.trim() || undefined,
       favorite: existing?.favorite,
       log: existing?.log,
       drunk: existing?.drunk,
@@ -183,6 +185,14 @@ function EditTea() {
         multiline
         placeholder={'Každý krok na nový riadok\nNahrej konvičku\nZalej vodou…'}
         style={{ minHeight: 140 }}
+      />
+      <Field
+        label="S mliekom (nepovinné)"
+        value={milkSteps}
+        onChangeText={setMilkSteps}
+        multiline
+        placeholder={'Každý krok na nový riadok. Riadok s dvojbodkou na konci je nadpis, napr.\nV šálke:\nLúhuj 5 minút\nDolej mlieko…'}
+        style={{ minHeight: 120 }}
       />
 
       <View style={{ gap: 8 }}>
