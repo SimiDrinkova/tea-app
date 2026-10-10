@@ -174,6 +174,36 @@
         "hours": 12,
         "steps": "Toto je silný koncentrát, nie hotový nápoj.\nNasyp čaj do fľaše a zalej studenou vodou.\nDaj do chladničky na 12 – 24 hodín (dlhšie = výraznejší kardamón).\nLístky a korenie sceď.\nPri podávaní zrieď 1 : 1 mliekom, mlieko pridávaj až do pohára, nie do fľaše.\nOsladenie podľa chuti. Koncentrát vypi do 3 dní."
       }
+    },
+    {
+      "id": "yunnak-dian-hong-1938",
+      "name": "Yunnák – červený čaj Dian Hong 1938",
+      "type": "Čierny",
+      "origin": "Čína, Yunnan",
+      "country": "Čína",
+      "region": "Yunnan",
+      "harvest": "jarný zber, apríl 2024",
+      "leaf": "celé lístky, spracované úplne ručne, bez aróm",
+      "character": "sladkastý, medový, s hlbokým červeným nálevom",
+      "tasting": "med, sušená broskyňa, prirodzená sladkosť",
+      "description": "Dian Hong z provincie Yunnan od Bavimi. V Číne sa čiernemu čaju hovorí „červený“ (hong cha) podľa farby nálevu – a tento má naozaj hlbokú červenú farbu. Chuť je prirodzene sladkastá a medová, v aróme cítiť sušenú broskyňu a med, bez akýchkoľvek pridaných aróm. Je to jeden z najviac exportovaných čínskych čajov. Lístky vydržia niekoľko nálevov.",
+      "baseMl": 100,
+      "baseGrams": 5,
+      "tempC": 95,
+      "steeps": [
+        40,
+        70,
+        90,
+        130
+      ],
+      "steps": "Viacnálevový čaj – priprav ho v malej kanvičke alebo gaiwane.\nZohrej vodu na 95 °C.\nDaj 1 dávku čaju (asi 5 g) do kanvičky.\nZalej 100 ml horúcej vody a prvý nálev lúhuj 40 sekúnd, potom 70, 90 a 130 sekúnd.\nS menším množstvom vody (50 ml) lúhuj kratšie: 30, 50, 70 a 100 sekúnd.\nČasy sú orientačné, nechaj sa viesť chuťou.\nDo hrnčeka: jednu dávku zalej 250 ml vody s teplotou 95 °C a lúhuj 3 – 4 minúty.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 8,
+        "hours": 7,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 7 hodín (6 – 8 h podľa chuti).\nLístky sceď, aby sa ďalej nelúhovali.\nVypi do 2 – 3 dní."
+      },
+      "shopUrl": "https://bavimi.sk/products/yunnak-cerveny-caj-dian-hong"
     }
   ]
 }
