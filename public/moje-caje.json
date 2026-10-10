@@ -59,6 +59,35 @@
         "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín.\nSceď a vypi do 3 – 4 dní."
       },
       "shopUrl": "https://www.manutea.sk/darjeeling-castleton-ftgfop1-second-flush-bio-cierny-caj-x1751"
+    },
+    {
+      "id": "golden-yunnan-superior",
+      "name": "Golden Yunnan Superior BIO",
+      "type": "Čierny",
+      "origin": "Čína, Yunnan",
+      "country": "Čína",
+      "region": "Yunnan, provincia na hranici s Vietnamom (1 200 – 2 000 m n. m.)",
+      "harvest": "jesenný zber, ručne zbieraný",
+      "leaf": "dlhé, tmavé skrútené lístky so zlatými púčikmi (tipsami), BIO",
+      "character": "aromatický, jemne pikantný, pritom jemný a lahodný, bez výraznej horkosti",
+      "tasting": "čokoláda, med, slad, sušené ovocie, jemné korenie",
+      "description": "Golden Yunnan, v Číne známy ako Dian Hong, je čierny čaj z provincie Yunnan s množstvom zlatých púčikov. Má tmavý nálev a aromatickú, až pikantnú chuť, ktorou sa odlišuje od ostatných čiernych čajov, a napriek tomu je jemný a veľmi lahodný. Často pripomína smotanovú čokoládu s ľahkým nádychom korenia, slad, med a sušené ovocie. Čierny čaj sa v Yunnane vyrába až od roku 1939.",
+      "baseMl": 300,
+      "baseGrams": 4,
+      "tempC": 95,
+      "steeps": [
+        180,
+        180,
+        240
+      ],
+      "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vodou s teplotou 95 °C.\nLúhuj prikryté 3 minúty a sceď.\nDruhý nálev lúhuj tiež 3 minúty, tretí o minútu dlhšie.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 5,
+        "hours": 8,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín.\nSceď a vypi do 3 – 4 dní."
+      },
+      "shopUrl": "https://www.manutea.sk/golden-yunnan-superior-bio-cierny-caj-x1603"
     }
   ]
 }
