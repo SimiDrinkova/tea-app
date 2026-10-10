@@ -335,7 +335,7 @@ export default function TeaDetail() {
         </View>
       )}
 
-      {!isCold && !!tea.milkSteps?.trim() && <MilkSteps text={tea.milkSteps} color={color} />}
+      {!isCold && !!tea.milkSteps?.trim() && <MilkSteps text={tea.milkSteps} color={color} volume={volume} />}
 
       {tea.stockGrams !== undefined ? (
         <Card style={[{ gap: 12 }, low && s.lowCard]}>
@@ -425,23 +425,43 @@ function formatVolume(ml: number) {
 }
 
 // Riadok končiaci dvojbodkou je nadpis spôsobu prípravy, ostatné riadky sú číslované kroky.
-function MilkSteps({ text, color }: { text: string; color: string }) {
-  // Riadok končiaci dvojbodkou je nadpis spôsobu prípravy, ostatné riadky sú kroky číslované od nadpisu.
+// Prepočíta množstvá v {zátvorkách} podľa zvoleného objemu, napr. „{4 g}“, „{50 – 80 ml}“, „{2 – 3}“.
+function scaleAmounts(line: string, factor: number) {
+  return line.replace(/\{([^}]+)\}/g, (_, inner: string) => {
+    const unit = /\bg\s*$/.test(inner) ? 'g' : /\bml\s*$/.test(inner) ? 'ml' : '';
+    return inner.replace(/\d+(?:[.,]\d+)?/g, (num) => {
+      const v = Number(num.replace(',', '.')) * factor;
+      if (unit === 'ml') return String(Math.max(10, Math.round(v / 10) * 10));
+      return String(Math.max(1, Math.round(v)));
+    });
+  });
+}
+
+function MilkSteps({ text, color, volume }: { text: string; color: string; volume: number }) {
+  // Riadok končiaci dvojbodkou je nadpis spôsobu; „· 350 ml“ v nadpise je objem, pre ktorý sú
+  // množstvá napísané. Kroky sa číslujú od každého nadpisu znova.
   const lines = text
     .split('\n')
     .map((l) => l.trim())
     .filter(Boolean)
-    .reduce<{ text: string; num: number }[]>((acc, line) => {
-      const prev = acc[acc.length - 1]?.num ?? 0; // nadpis má 0, takže číslovanie začne znova od 1
-      return [...acc, { text: line, num: line.endsWith(':') ? 0 : prev + 1 }];
+    .reduce<{ text: string; num: number; factor: number }[]>((acc, line) => {
+      const prev = acc[acc.length - 1];
+      if (line.endsWith(':')) {
+        const m = line.match(/^(.*?)\s*·\s*(\d+)\s*ml:$/);
+        const factor = m ? volume / Number(m[2]) : 1;
+        return [...acc, { text: m ? `${m[1]} · pre ${volume} ml` : line.slice(0, -1), num: 0, factor }];
+      }
+      // nadpis má num 0, takže číslovanie pod ním začne znova od 1
+      const factor = prev?.factor ?? 1;
+      return [...acc, { text: scaleAmounts(line, factor), num: (prev?.num ?? 0) + 1, factor }];
     }, []);
   return (
     <Card style={{ gap: 12 }}>
       <SectionTitle>🥛 S mliekom</SectionTitle>
       {lines.map((line, i) =>
-        line.text.endsWith(':') ? (
+        line.num === 0 ? (
           <Text key={i} style={[s.milkHeading, i > 0 && { marginTop: 6 }]}>
-            {line.text.slice(0, -1)}
+            {line.text}
           </Text>
         ) : (
           <View key={i} style={{ flexDirection: 'row', gap: 12 }}>
@@ -452,6 +472,7 @@ function MilkSteps({ text, color }: { text: string; color: string }) {
           </View>
         ),
       )}
+      <Text style={s.hint}>Množstvá sa prepočítavajú podľa toho, koľko ml si zvolíš vyššie.</Text>
     </Card>
   );
 }

@@ -191,9 +191,13 @@ function EditTea() {
         value={milkSteps}
         onChangeText={setMilkSteps}
         multiline
-        placeholder={'Každý krok na nový riadok. Riadok s dvojbodkou na konci je nadpis, napr.\nV šálke:\nLúhuj 5 minút\nDolej mlieko…'}
+        placeholder={'Každý krok na nový riadok, napr.\nV šálke · 300 ml:\nLúhuj {5 g} čaju 5 minút\nDolej {50 ml} mlieka'}
         style={{ minHeight: 120 }}
       />
+      <Text style={s.unit}>
+        Riadok s dvojbodkou na konci je nadpis; „· 300 ml“ v ňom znamená, pre koľko ml je recept. Množstvá v
+        {' {zložených zátvorkách}'} sa potom prepočítajú podľa zvoleného objemu.
+      </Text>
 
       <View style={{ gap: 8 }}>
         <View style={s.row}>

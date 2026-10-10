@@ -22,7 +22,7 @@
         300
       ],
       "steps": "Nahrej konvičku horúcou vodou.\nNasyp čaj a zalej vriacou vodou (100 °C).\nLúhuj prikryté 3 minúty a sceď. Silnejší alebo s mliekom nechaj lúhovať až 5 minút.\nĎalšie nálevy lúhuj vždy o minútu dlhšie.",
-      "milkSteps": "V šálke (anglický spôsob):\nPriprav silnejší čaj: 4 g na 300 ml vriacej vody a lúhuj 5 minút.\nSceď a dolej 50 – 80 ml teplého mlieka (nie vriaceho).\nPodľa chuti oslaď cukrom alebo medom.\nNa sporáku (indický chai):\nV hrnci priveď do varu 200 ml vody s 2 – 3 roztlačenými strukmi kardamónu.\nPridaj 4 g čaju a nechaj jemne variť 2 – 3 minúty.\nPrilej 150 ml mlieka a 1 – 2 lyžičky cukru a nechaj znova zovrieť.\nSceď do šálok a podávaj so sladkým pečivom.",
+      "milkSteps": "V šálke (anglický spôsob) · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} vriacej vody a lúhuj 5 minút.\nSceď a dolej {50 – 80 ml} teplého mlieka (nie vriaceho).\nPodľa chuti oslaď cukrom alebo medom.\nNa sporáku (indický chai) · 350 ml:\nV hrnci priveď do varu {200 ml} vody s {2 – 3} roztlačenými strukmi kardamónu.\nPridaj {4 g} čaju a nechaj jemne variť 2 – 3 minúty.\nPrilej {150 ml} mlieka a {1 – 2} lyžičky cukru a nechaj znova zovrieť.\nSceď do šálok a podávaj so sladkým pečivom.",
       "coldBrew": {
         "baseMl": 500,
         "baseGrams": 6,
