@@ -78,6 +78,7 @@ export default function EditTea() {
       steps: steps.trim(),
       favorite: existing?.favorite,
       log: existing?.log,
+      drunk: existing?.drunk,
       shopUrl: shopUrl.trim() || undefined,
       rating: existing?.rating,
       stockGrams: stockNum,

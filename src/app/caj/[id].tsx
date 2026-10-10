@@ -9,10 +9,12 @@ import {
   formatHours,
   formatTime,
   isLowStock,
+  lastDrunkLabel,
   LogEntry,
   newId,
   shopHref,
   useTeas,
+  withDrink,
 } from '@/lib/teas';
 import { goHome } from '@/lib/nav';
 import { loadNextSteep, saveNextSteep } from '@/lib/session';
@@ -77,11 +79,22 @@ export default function TeaDetail() {
     setLastUsed(null);
   };
 
+  const recordDrink = (coldBrew: boolean) => {
+    const drunk = withDrink(tea, coldBrew);
+    if (drunk) update(tea.id, { drunk });
+  };
+
   const runSteep = (i: number) => {
     const next = i + 1;
     setNextSteep(next);
     saveNextSteep(tea.id, next);
+    recordDrink(false);
     startSteepTimer(tea.steeps[i]);
+  };
+
+  const runColdTimer = (hours: number) => {
+    recordDrink(true);
+    startSteepTimer(Math.round(hours * 3600));
   };
 
   const resetSteeps = () => {
@@ -109,7 +122,15 @@ export default function TeaDetail() {
   };
 
   const duplicate = () => {
-    const copy = { ...tea, id: newId(), name: `${tea.name} (kópia)`, favorite: false, stockGrams: undefined, log: undefined };
+    const copy = {
+      ...tea,
+      id: newId(),
+      name: `${tea.name} (kópia)`,
+      favorite: false,
+      stockGrams: undefined,
+      log: undefined,
+      drunk: undefined,
+    };
     save(copy);
     router.replace({ pathname: '/upravit', params: { id: copy.id } });
   };
@@ -156,6 +177,13 @@ export default function TeaDetail() {
             </Pressable>
           ))}
         </View>
+        {lastDrunkLabel(tea) && (
+          <Pressable onPress={() => router.push('/historia')} hitSlop={6} style={{ alignSelf: 'flex-start' }}>
+            <Text style={s.lastDrunk}>
+              🕘 Naposledy {lastDrunkLabel(tea)} · spolu {tea.drunk!.length}×
+            </Text>
+          </Pressable>
+        )}
       </View>
 
       {!!tea.description && <Text style={s.body}>{tea.description}</Text>}
@@ -257,7 +285,7 @@ export default function TeaDetail() {
               Hotové o <Text style={{ fontWeight: '700' }}>{formatHours(tea.coldBrew.hours)}</Text>
             </Text>
             {tea.coldBrew.hours < MAX_TIMER_HOURS && (
-              <TimerButton color={color} onPress={() => startSteepTimer(Math.round(tea.coldBrew!.hours * 3600))} />
+              <TimerButton color={color} onPress={() => runColdTimer(tea.coldBrew!.hours)} />
             )}
           </View>
           <Text style={s.hint}>
@@ -424,6 +452,7 @@ const s = StyleSheet.create({
   timerBtnText: { color: '#FFF', fontWeight: '700', fontSize: 14 },
   hint: { color: C.textSoft, fontSize: 13, lineHeight: 19 },
   stock: { fontFamily: serif, fontSize: 24, color: C.text, marginBottom: 10 },
+  lastDrunk: { color: C.textSoft, fontSize: 14, marginTop: 2 },
   shopLink: { color: C.accent, fontSize: 15, fontWeight: '600', marginTop: 2 },
   steepNext: { borderWidth: 1.5, borderRadius: 14, marginHorizontal: -10, paddingHorizontal: 10, paddingVertical: 8 },
   nextLabel: { fontSize: 11, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.8 },

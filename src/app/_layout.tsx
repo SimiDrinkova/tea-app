@@ -45,6 +45,7 @@ export default function RootLayout() {
         <Stack.Screen name="caj/[id]" options={withHomeFallback('')} />
         <Stack.Screen name="upravit" options={withHomeFallback('Čaj')} />
         <Stack.Screen name="nastavenia" options={withHomeFallback('Časovač a záloha')} />
+        <Stack.Screen name="historia" options={withHomeFallback('História')} />
       </Stack>
     </TeasProvider>
   );

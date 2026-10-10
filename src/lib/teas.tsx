@@ -22,7 +22,37 @@ export type Tea = {
   lowStockGrams?: number; // upozorniť, keď klesne pod
   shopUrl?: string; // odkaz na čaj v e-shope
   log?: LogEntry[]; // denník poznámok, najnovšie prvé
+  drunk?: Drink[]; // história pitia, najnovšie prvé
 };
+
+export type Drink = {
+  at: string; // ISO dátum a čas
+  cold?: boolean;
+};
+
+const sameDay = (a: string, b: Date) => new Date(a).toDateString() === b.toDateString();
+
+// Zapíše pitie, ale najviac raz za deň pre jeden čaj.
+export function withDrink(tea: Tea, cold: boolean): Drink[] | null {
+  const drunk = tea.drunk ?? [];
+  if (drunk.some((d) => sameDay(d.at, new Date()))) return null;
+  return [{ at: new Date().toISOString(), cold: cold || undefined }, ...drunk];
+}
+
+export function dayLabel(iso: string) {
+  const d = new Date(iso);
+  if (sameDay(iso, new Date())) return 'Dnes';
+  if (sameDay(iso, new Date(Date.now() - 86400000))) return 'Včera';
+  const label = d.toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'numeric' });
+  return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+export function lastDrunkLabel(tea: Tea) {
+  const last = tea.drunk?.[0];
+  if (!last) return null;
+  const label = dayLabel(last.at);
+  return label === 'Dnes' || label === 'Včera' ? label.toLowerCase() : label;
+}
 
 // Moje poznámky k čaju (denník), najnovšie prvé.
 export type LogEntry = {

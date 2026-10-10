@@ -53,6 +53,12 @@ export default function TeaList() {
             <Text style={s.kicker}>Moja čajovňa</Text>
             <Text style={s.title}>Môj čaj</Text>
           </View>
+          <Link href="/historia" asChild>
+            {/* Link asChild na webe neznesie pole štýlov, preto jeden objekt. */}
+            <Pressable style={s.iconBtnSpaced} accessibilityLabel="História">
+              <Text style={{ fontSize: 19 }}>🕘</Text>
+            </Pressable>
+          </Link>
           <Link href="/nastavenia" asChild>
             <Pressable style={s.iconBtn} accessibilityLabel="Časovač a záloha">
               <Text style={{ fontSize: 20 }}>⚙︎</Text>
@@ -186,6 +192,15 @@ const s = StyleSheet.create({
     backgroundColor: C.chip,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  iconBtnSpaced: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: C.chip,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
   },
   search: {
     backgroundColor: C.card,
