@@ -1,11 +1,11 @@
-// Lokálny náhľad finálnej verzie: node scripts/preview.js → http://localhost:8765/caj-app/
+// Lokálny náhľad finálnej verzie: node scripts/preview.js → http://localhost:8765/tea-app/
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
 const DIST = path.join(__dirname, '..', 'dist');
-const BASE = '/caj-app';
+const BASE = '/tea-app';
 const PORT = 8765;
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.ico': 'image/x-icon', '.css': 'text/css', '.ttf': 'font/ttf' };
 

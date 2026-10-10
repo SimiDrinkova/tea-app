@@ -6,6 +6,6 @@ import { Platform } from 'react-native';
 // (navigation.canGoBack()), router.canGoBack() tu vracia true aj keď späť nejde.
 export function goHome(canGoBack: boolean) {
   if (canGoBack) router.back();
-  else if (Platform.OS === 'web') window.location.assign('/caj-app/');
+  else if (Platform.OS === 'web') window.location.assign('/tea-app/');
   else router.replace('/');
 }

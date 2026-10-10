@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Môj čaj",
-    "slug": "caj-app",
+    "slug": "tea-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -42,7 +42,7 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true,
-      "baseUrl": "/caj-app"
+      "baseUrl": "/tea-app"
     }
   }
 }

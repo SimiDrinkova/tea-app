@@ -10,8 +10,8 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Môj čaj" />
-    <link rel="manifest" href="/caj-app/manifest.json" />
-    <link rel="apple-touch-icon" href="/caj-app/apple-touch-icon.png" />
+    <link rel="manifest" href="/tea-app/manifest.json" />
+    <link rel="apple-touch-icon" href="/tea-app/apple-touch-icon.png" />
     <style id="expo-reset">
       html,
       body {
@@ -35,7 +35,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/caj-app/sw.js', { scope: '/caj-app/' });
+          navigator.serviceWorker.register('/tea-app/sw.js', { scope: '/tea-app/' });
         });
       }
     </script>
