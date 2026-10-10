@@ -95,8 +95,8 @@ export default function Settings() {
           ))}
         </View>
         <Text style={s.hint}>
-          Podľa EFSA (Európsky úrad pre bezpečnosť potravín). História ukazuje, koľko kofeínu si dnes vypila v
-          porovnaní s týmto maximom.
+          Podľa EFSA (Európsky úrad pre bezpečnosť potravín). Na hlavnej obrazovke uvidíš, koľko kofeínu si dnes
+          vypila v porovnaní s týmto maximom.
         </Text>
       </Card>
 

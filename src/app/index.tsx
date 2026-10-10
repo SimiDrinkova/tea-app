@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { CaffeineBar } from '@/components/caffeine-bar';
 import { Card, Chip } from '@/components/ui';
 import { backupDueDays, exportBackup, snoozeBackup } from '@/lib/backup';
 import { formatGrams, isLowStock, Tea, useTeas } from '@/lib/teas';
@@ -65,6 +66,8 @@ export default function TeaList() {
             </Pressable>
           </Link>
         </View>
+
+        {teas.length > 0 && <CaffeineBar teas={teas} />}
 
         <TextInput
           value={query}

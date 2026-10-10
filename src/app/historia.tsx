@@ -1,20 +1,14 @@
 import { router } from 'expo-router';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Card } from '@/components/ui';
-import { DEFAULT_LIMIT, loadLimit } from '@/lib/caffeine';
 import { dayLabel, formatGrams, sumCaffeine, useTeas } from '@/lib/teas';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction } from '@/lib/timer';
 
 export default function History() {
   const { teas, update } = useTeas();
-  const [limit, setLimit] = useState(DEFAULT_LIMIT);
-
-  useEffect(() => {
-    loadLimit().then(setLimit);
-  }, []);
 
   // Všetky pitia zo všetkých čajov, zoskupené po dňoch, najnovšie hore.
   const days = useMemo(() => {
@@ -31,41 +25,9 @@ export default function History() {
   }, [teas]);
 
   const total = days.reduce((n, d) => n + d.items.length, 0);
-  const today = days[0]?.label === 'Dnes' ? days[0].items : [];
-  const todayMg = sumCaffeine(today);
-  const ratio = Math.min(1, todayMg / limit);
-  const over = todayMg > limit;
 
   return (
     <ScrollView contentContainerStyle={s.page}>
-      <Card style={{ gap: 10 }}>
-        <View style={s.todayHead}>
-          <Text style={s.todayTitle}>Kofeín dnes</Text>
-          <Text style={[s.todayMg, over && { color: C.danger }]}>
-            ≈ {todayMg} <Text style={s.todayOf}>z {limit} mg</Text>
-          </Text>
-        </View>
-        <View style={s.bar}>
-          <View
-            style={[
-              s.barFill,
-              { width: `${Math.max(ratio * 100, todayMg ? 3 : 0)}%` },
-              ratio > 0.75 && { backgroundColor: '#C9852E' },
-              over && { backgroundColor: C.danger },
-            ]}
-          />
-        </View>
-        <Text style={s.soft}>
-          {over
-            ? `Dnes si prekročila odporúčané maximum o ≈ ${todayMg - limit} mg.`
-            : todayMg
-              ? `Do odporúčaného maxima ti zostáva ≈ ${limit - todayMg} mg.`
-              : 'Dnes si ešte nepila čaj s kofeínom.'}{' '}
-          Odporúčanie: {limit === 200 ? 'v tehotenstve a pri dojčení' : 'pre dospelých'} do {limit} mg denne (EFSA).
-          Hodnoty sú len orientačný odhad.
-        </Text>
-      </Card>
-
       {total === 0 ? (
         <Card style={{ alignItems: 'center', paddingVertical: 32, gap: 6 }}>
           <Text style={{ fontSize: 40 }}>🕘</Text>
@@ -139,11 +101,5 @@ const s = StyleSheet.create({
   meta: { color: C.textSoft, fontSize: 12 },
   dayHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
   dayMg: { color: C.textSoft, fontSize: 13 },
-  todayHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
-  todayTitle: { fontFamily: serif, fontSize: 19, color: C.text },
-  todayMg: { fontFamily: serif, fontSize: 24, color: C.text },
-  todayOf: { fontSize: 15, color: C.textSoft },
-  bar: { height: 10, borderRadius: 5, backgroundColor: C.chip, overflow: 'hidden' },
-  barFill: { height: '100%', borderRadius: 5, backgroundColor: C.olive },
   delete: { color: C.textSoft, fontSize: 22, paddingHorizontal: 4 },
 });

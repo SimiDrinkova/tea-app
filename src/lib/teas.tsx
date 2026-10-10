@@ -79,6 +79,9 @@ export function isNewBrew(tea: Tea, steepIndex: number) {
 
 export const sumCaffeine = (drinks: Drink[]) => drinks.reduce((n, d) => n + (d.caffeineMg ?? 0), 0);
 
+export const caffeineToday = (teas: Tea[]) =>
+  sumCaffeine(teas.flatMap((t) => (t.drunk ?? []).filter((d) => sameDay(d.at, new Date()))));
+
 export function dayLabel(iso: string) {
   const d = new Date(iso);
   if (sameDay(iso, new Date())) return 'Dnes';
