@@ -88,6 +88,35 @@
         "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín.\nSceď a vypi do 3 – 4 dní."
       },
       "shopUrl": "https://www.manutea.sk/golden-yunnan-superior-bio-cierny-caj-x1603"
+    },
+    {
+      "id": "ceylon-op1",
+      "name": "Ceylon OP 1",
+      "type": "Čierny",
+      "origin": "Srí Lanka, Ruhuna",
+      "country": "Srí Lanka (Cejlón)",
+      "region": "Ruhuna, juhozápad ostrova pri pobreží (600 – 900 m n. m.)",
+      "harvest": "neskorý zber, ručne zbieraný",
+      "leaf": "OP1 (Orange Pekoe 1): dlhé, celé lístky s púčikmi, po fermentácii tmavé až čierne",
+      "character": "klasický, plný, jemne pikantný, zvieravý, príjemne sladký",
+      "tasting": "slad, hnedý cukor, zemité tóny, jemné korenie, slivka",
+      "description": "Klasický cejlónsky čaj „so všetkým“, obľúbený ako raňajkový alebo dopoludňajší. Má silný nálev medenej farby a jemnú, pikantnú chuť. Je zvieravý, ako sa na čierny čaj patrí, ale zároveň príjemne sladký, čo pekne vyvažuje zemité tóny. V nižšie položenom regióne Ruhuna, kde sa okrem čaju pestuje aj korenie, sa čierny čaj vyrába od roku 1900. Výborne sa hodí s kvapkou mlieka a lyžičkou cukru, ako ho pijú Angličania.",
+      "baseMl": 300,
+      "baseGrams": 4,
+      "tempC": 100,
+      "steeps": [
+        240,
+        300
+      ],
+      "steps": "Nahrej konvičku horúcou vodou.\nZalej čaj vriacou vodou (100 °C).\nLúhuj prikryté 4 minúty a sceď. Kratšie lúhovanie (3 min) dá jemnejší čaj, dlhšie (5 min) silnejší so sladovými a čokoládovými tónmi.\nDruhý nálev lúhuj 5 minút.",
+      "milkSteps": "V šálke · 300 ml:\nPriprav silnejší čaj: {5 g} na {300 ml} vriacej vody a lúhuj 5 minút.\nSceď a dolej {50 – 80 ml} teplého mlieka.\nPridaj {1} lyžičku cukru alebo medu – podľa Manutea je najlepší s mliekom aj cukrom.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 6,
+        "hours": 10,
+        "steps": "Nasyp čaj do fľaše.\nZalej studenou filtrovanou vodou.\nDaj do chladničky na 8 – 12 hodín.\nSceď a vypi do 3 – 4 dní."
+      },
+      "shopUrl": "https://www.manutea.sk/ceylon-op-1-cierny-caj-x1105"
     }
   ]
 }
