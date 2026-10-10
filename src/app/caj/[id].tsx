@@ -1,6 +1,6 @@
 import { router, Stack, useLocalSearchParams, useNavigation } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Card, Chip, SectionTitle } from '@/components/ui';
 import {
@@ -26,7 +26,6 @@ export default function TeaDetail() {
   const [ml, setMl] = useState<number | null>(null);
   const [cold, setCold] = useState(false);
   const [lastUsed, setLastUsed] = useState<number | null>(null);
-  const [usedInput, setUsedInput] = useState<string | null>(null); // null = podľa receptu
   const navigation = useNavigation();
 
   if (!loaded) return null;
@@ -52,19 +51,13 @@ export default function TeaDetail() {
   const switchMode = (next: boolean) => {
     setCold(next);
     setMl(null);
-    setUsedInput(null);
   };
-  const usedGrams = usedInput === null ? grams : Number(usedInput.replace(',', '.'));
-  const usedValid = Number.isFinite(usedGrams) && usedGrams > 0;
-  const setUsed = (g: number) => setUsedInput(String(Math.max(0, Math.round(g * 10) / 10)).replace('.', ','));
 
   const markUsed = () => {
     if (tea.stockGrams === undefined) return;
-    if (!usedValid) return;
-    const used = Math.round(Math.min(usedGrams, tea.stockGrams) * 10) / 10;
+    const used = Math.min(grams, tea.stockGrams);
     update(tea.id, { stockGrams: Math.round((tea.stockGrams - used) * 10) / 10 });
     setLastUsed(used);
-    setUsedInput(null);
   };
 
   const undoUse = () => {
@@ -150,20 +143,20 @@ export default function TeaDetail() {
       <Card style={{ gap: 14 }}>
         <SectionTitle>{isCold ? 'Koľko cold brew si chceš pripraviť?' : 'Koľko si chceš pripraviť?'}</SectionTitle>
         <View style={s.stepper}>
-          <Pressable style={s.stepBtn} onPress={() => { setMl(Math.max(50, volume - 50)); setUsedInput(null); }}>
+          <Pressable style={s.stepBtn} onPress={() => setMl(Math.max(50, volume - 50))}>
             <Text style={s.stepBtnText}>−</Text>
           </Pressable>
           <View style={{ alignItems: 'center', flex: 1 }}>
             <Text style={s.bigNumber}>{formatVolume(volume)}</Text>
             <Text style={[s.bigNumber, { color }]}>{grams} g</Text>
           </View>
-          <Pressable style={s.stepBtn} onPress={() => { setMl(volume + 50); setUsedInput(null); }}>
+          <Pressable style={s.stepBtn} onPress={() => setMl(volume + 50)}>
             <Text style={s.stepBtnText}>+</Text>
           </Pressable>
         </View>
         <View style={s.wrap}>
           {presets.map((p) => (
-            <Chip key={p} label={formatVolume(p)} active={p === volume} color={color} onPress={() => { setMl(p); setUsedInput(null); }} />
+            <Chip key={p} label={formatVolume(p)} active={p === volume} color={color} onPress={() => setMl(p)} />
           ))}
         </View>
         <View style={s.params}>
@@ -239,28 +232,11 @@ export default function TeaDetail() {
                 : `Dochádza ti, zostáva už len ${formatGrams(tea.stockGrams)}. Čas objednať nový.`}
             </Text>
           )}
-          <View style={s.usedRow}>
-            <Text style={s.body}>Minula som</Text>
-            <View style={s.usedStepper}>
-              <Pressable style={s.smallStep} onPress={() => setUsed((usedValid ? usedGrams : grams) - 1)} hitSlop={6}>
-                <Text style={s.stepBtnText}>−</Text>
-              </Pressable>
-              <TextInput
-                value={usedInput ?? String(grams)}
-                onChangeText={setUsedInput}
-                inputMode="decimal"
-                selectTextOnFocus
-                accessibilityLabel="Koľko gramov som minula"
-                style={s.usedInput}
-              />
-              <Text style={s.body}>g</Text>
-              <Pressable style={s.smallStep} onPress={() => setUsed((usedValid ? usedGrams : grams) + 1)} hitSlop={6}>
-                <Text style={s.stepBtnText}>+</Text>
-              </Pressable>
-            </View>
-          </View>
-          <Button title="Odpočítať zo zásoby" variant="soft" onPress={markUsed} />
-          {!usedValid && <Text style={[s.hint, { color: C.danger, textAlign: 'center' }]}>Zadaj počet gramov.</Text>}
+          <Button
+            title={`Pripravila som – odpočítať ${Math.min(grams, tea.stockGrams)} g`}
+            variant="soft"
+            onPress={markUsed}
+          />
           {lastUsed !== null && (
             <Pressable onPress={undoUse} hitSlop={8}>
               <Text style={[s.hint, { textAlign: 'center' }]}>
@@ -351,28 +327,6 @@ const s = StyleSheet.create({
   timerBtnText: { color: '#FFF', fontWeight: '700', fontSize: 14 },
   hint: { color: C.textSoft, fontSize: 13, lineHeight: 19 },
   stock: { fontFamily: serif, fontSize: 24, color: C.text, marginBottom: 10 },
-  usedRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  usedStepper: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  smallStep: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
-    backgroundColor: C.chip,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  usedInput: {
-    width: 58,
-    backgroundColor: C.card,
-    borderWidth: 1,
-    borderColor: C.border,
-    borderRadius: 12,
-    paddingVertical: 8,
-    textAlign: 'center',
-    fontSize: 17,
-    fontWeight: '600',
-    color: C.text,
-  },
   lowCard: { borderColor: '#E3B7AE', backgroundColor: '#FBF0EC' },
   stepNum: {
     width: 28,
