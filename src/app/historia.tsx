@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Card } from '@/components/ui';
-import { dayLabel, formatGrams, sumCaffeine, useTeas } from '@/lib/teas';
+import { dayLabel, formatGrams, useTeas } from '@/lib/teas';
 import { C, serif, TYPE_COLORS } from '@/lib/theme';
 import { confirmAction } from '@/lib/timer';
 
@@ -33,7 +33,7 @@ export default function History() {
           <Text style={{ fontSize: 40 }}>🕘</Text>
           <Text style={s.emptyTitle}>Zatiaľ žiadna história</Text>
           <Text style={[s.soft, { textAlign: 'center' }]}>
-            Keď pri čaji spustíš časovač 1. nálevu alebo cold brew, appka si to zapíše aj s gramami a odhadom kofeínu.
+            Keď pri čaji spustíš časovač 1. nálevu alebo cold brew, appka si to zapíše.
           </Text>
         </Card>
       ) : (
@@ -42,10 +42,7 @@ export default function History() {
 
       {days.map((day) => (
         <View key={day.label} style={{ gap: 8 }}>
-          <View style={s.dayHead}>
-            <Text style={s.day}>{day.label}</Text>
-            <Text style={s.dayMg}>≈ {sumCaffeine(day.items)} mg kofeínu</Text>
-          </View>
+          <Text style={s.day}>{day.label}</Text>
           <Card style={{ padding: 6 }}>
             {day.items.map((item, i) => (
               <View key={item.tea.id + item.at} style={[s.row, i > 0 && s.rowBorder]}>
@@ -63,7 +60,7 @@ export default function History() {
                     </Text>
                     {item.grams !== undefined && (
                       <Text style={s.meta}>
-                        {formatGrams(item.grams)} · ≈ {item.caffeineMg ?? 0} mg
+                        {item.ml} ml · {formatGrams(item.grams)}
                       </Text>
                     )}
                   </View>
@@ -99,7 +96,5 @@ const s = StyleSheet.create({
   name: { flex: 1, color: C.text, fontSize: 16 },
   time: { color: C.textSoft, fontSize: 14 },
   meta: { color: C.textSoft, fontSize: 12 },
-  dayHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
-  dayMg: { color: C.textSoft, fontSize: 13 },
   delete: { color: C.textSoft, fontSize: 22, paddingHorizontal: 4 },
 });

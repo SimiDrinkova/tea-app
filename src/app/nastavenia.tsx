@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Button, Card, Chip, SectionTitle } from '@/components/ui';
+import { Button, Card, SectionTitle } from '@/components/ui';
 import { exportBackup, lastBackupDate } from '@/lib/backup';
-import { DEFAULT_LIMIT, LIMITS, loadLimit, saveLimit } from '@/lib/caffeine';
 import { formatDate, Tea, useTeas } from '@/lib/teas';
 import { C, serif } from '@/lib/theme';
 import { confirmAction, SHORTCUT_NAME, startSteepTimer } from '@/lib/timer';
@@ -12,11 +11,9 @@ export default function Settings() {
   const { teas, replaceAll } = useTeas();
   const [message, setMessage] = useState('');
   const [lastBackup, setLastBackup] = useState<string | null>(null);
-  const [limit, setLimit] = useState(DEFAULT_LIMIT);
 
   useEffect(() => {
     lastBackupDate().then(setLastBackup);
-    loadLimit().then(setLimit);
   }, []);
 
   const backup = async () => {
@@ -76,27 +73,6 @@ export default function Settings() {
         <Text style={s.hint}>
           Ak sa zobrazí chyba, že skratka neexistuje, skontroluj, či sa volá presne „{SHORTCUT_NAME}“ (aj s
           diakritikou).
-        </Text>
-      </Card>
-
-      <Card style={{ gap: 12 }}>
-        <SectionTitle>☕ Odporúčané maximum kofeínu</SectionTitle>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-          {LIMITS.map((l) => (
-            <Chip
-              key={l.mg}
-              label={`${l.label} · ${l.mg} mg`}
-              active={limit === l.mg}
-              onPress={() => {
-                setLimit(l.mg);
-                saveLimit(l.mg);
-              }}
-            />
-          ))}
-        </View>
-        <Text style={s.hint}>
-          Podľa EFSA (Európsky úrad pre bezpečnosť potravín). Na hlavnej obrazovke uvidíš, koľko kofeínu si dnes
-          vypila v porovnaní s týmto maximom.
         </Text>
       </Card>
 

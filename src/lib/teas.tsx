@@ -29,7 +29,6 @@ export type Tea = {
   shopUrl?: string; // odkaz na čaj v e-shope
   log?: LogEntry[]; // denník poznámok, najnovšie prvé
   drunk?: Drink[]; // história pitia, najnovšie prvé
-  caffeinePerGram?: number; // vlastný odhad kofeínu v mg na 1 g; inak podľa druhu
   edited?: boolean; // upravený cez formulár, takže ho zoznam mojich čajov neprepíše
 };
 
@@ -38,26 +37,7 @@ export type Drink = {
   cold?: boolean;
   grams?: number;
   ml?: number;
-  caffeineMg?: number; // odhad v čase prípravy
 };
-
-// Orientačný odhad vylúhovaného kofeínu na 1 g čaju (nie meranie).
-export const CAFFEINE_PER_GRAM: Record<TeaType, number> = {
-  Čierny: 20,
-  'Pu-erh': 20,
-  Oolong: 16,
-  Zelený: 14,
-  Biely: 12,
-  Bylinný: 0,
-  Iný: 15,
-};
-const COLD_BREW_FACTOR = 2 / 3; // studená voda vytiahne menej kofeínu
-
-export const caffeinePerGram = (tea: Tea) => tea.caffeinePerGram ?? CAFFEINE_PER_GRAM[tea.type];
-
-export function estimateCaffeine(tea: Tea, grams: number, cold: boolean) {
-  return Math.round(grams * caffeinePerGram(tea) * (cold ? COLD_BREW_FACTOR : 1));
-}
 
 const RECENT_MS = 10 * 60 * 1000;
 
@@ -73,7 +53,6 @@ export function withDrink(tea: Tea, cold: boolean, grams: number, ml: number): D
     cold: cold || undefined,
     grams,
     ml,
-    caffeineMg: estimateCaffeine(tea, grams, cold),
   };
   return [entry, ...drunk];
 }
@@ -83,11 +62,6 @@ export function isNewBrew(tea: Tea, steepIndex: number) {
   const last = tea.drunk?.[0];
   return steepIndex === 0 || !last || Date.now() - Date.parse(last.at) > 3 * 3600 * 1000;
 }
-
-export const sumCaffeine = (drinks: Drink[]) => drinks.reduce((n, d) => n + (d.caffeineMg ?? 0), 0);
-
-export const caffeineToday = (teas: Tea[]) =>
-  sumCaffeine(teas.flatMap((t) => (t.drunk ?? []).filter((d) => sameDay(d.at, new Date()))));
 
 export function dayLabel(iso: string) {
   const d = new Date(iso);
