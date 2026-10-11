@@ -176,6 +176,33 @@
       }
     },
     {
+      "id": "vahdam-double-spice-chai",
+      "name": "Double Spice Masala Chai (Vahdam)",
+      "type": "Čierny",
+      "origin": "India, Darjeeling",
+      "country": "India",
+      "region": "Darjeeling (čierny čaj), korenie z Keraly a Karnataky",
+      "leaf": "zmes: čierny čaj z Darjeelingu, kardamón, klinček, čierne korenie, škorica",
+      "character": "silný, výrazne korenený a štipľavý, s vysokým obsahom kofeínu",
+      "tasting": "čierne korenie, kardamón, klinček, škorica",
+      "description": "Korenený čierny čaj od indickej značky Vahdam s „dvojitou dávkou“ korenia. Má len štyri druhy korenia, všetky z južnej Indie: kardamón a klinček z Keraly, štipľavé čierne korenie a škoricu z Karnataky. Na rozdiel od klasického masala chai tu nie je zázvor ani badián, a čierne korenie mu dáva príjemné štípanie v hrdle. Je výrazný a povzbudzujúci, najlepší uvarený s mliekom ako pravý indický chai.",
+      "baseMl": 300,
+      "baseGrams": 4,
+      "tempC": 100,
+      "steeps": [
+        240
+      ],
+      "steps": "Zalej čaj vriacou vodou (100 °C).\nLúhuj prikryté 3 – 5 minút (4 minúty sú zlatá stredná cesta) a sceď.\nPodávaj samotný alebo s trochou mlieka a cukru – najlepší je však uvarený s mliekom, pozri nižšie.",
+      "milkSteps": "Indický chai na sporáku · 400 ml:\nV hrnci priveď do varu {200 ml} vody a pridaj {8 g} čaju.\nVar na miernom plameni 3 minúty, aby sa korenie rozvoňalo.\nPrilej {200 ml} mlieka a {1 – 2} lyžičky cukru a nechaj znova zovrieť. Keď začne stúpať pena, stiahni plameň.\nSceď do šálok.\nRýchly chai v šálke · 300 ml:\nZalej {5 g} čaju {220 ml} vriacej vody a lúhuj 5 minút.\nSceď a dolej {80 ml} teplého mlieka, osláď podľa chuti.\nTip: čierne korenie je tu výrazné – ak ťa štípe, daj viac mlieka alebo trochu medu.",
+      "coldBrew": {
+        "baseMl": 500,
+        "baseGrams": 10,
+        "hours": 8,
+        "steps": "Nasyp čaj do fľaše a zalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín (silnejší až 12 h).\nLístky a korenie sceď.\nPodávaj s ľadom, podľa chuti dolej mlieko a osláď.\nVypi do 2 – 3 dní."
+      },
+      "shopUrl": "https://www.vahdam.global/collections/chai-teas/products/double-spice-masala-chai-tea"
+    },
+    {
       "id": "yunnak-dian-hong-1938",
       "name": "Yunnák – červený čaj Dian Hong 1938",
       "type": "Čierny",
