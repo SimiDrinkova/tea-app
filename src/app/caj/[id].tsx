@@ -27,12 +27,15 @@ const PRESETS = [100, 150, 200, 250, 300, 400, 500];
 const COLD_PRESETS = [250, 300, 400, 500, 700, 1000];
 const MAX_TIMER_HOURS = 24; // časovač v iPhone ide najviac do 23:59:59
 
+type Mode = 'hot' | 'milk' | 'cold';
+
 export default function TeaDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { teas, loaded, remove, update, save } = useTeas();
   const tea = teas.find((t) => t.id === id);
   const [ml, setMl] = useState<number | null>(null);
-  const [cold, setCold] = useState(false);
+  const [mode, setMode] = useState<Mode>('hot');
+  const [milkIdx, setMilkIdx] = useState(0);
   const [lastUsed, setLastUsed] = useState<number | null>(null);
   const [nextSteep, setNextSteep] = useState(0);
   const [note, setNote] = useState('');
@@ -53,8 +56,23 @@ export default function TeaDetail() {
     );
   }
 
-  const isCold = cold && !!tea.coldBrew;
-  const recipe = isCold && tea.coldBrew ? tea.coldBrew : tea;
+  const milkSections = parseMilk(tea.milkSteps ?? '');
+  const milkMethods = milkSections.filter((m): m is MilkMethod => m.ml !== undefined && m.grams !== undefined);
+  const milkMethod = milkMethods[Math.min(milkIdx, milkMethods.length - 1)];
+  const isCold = mode === 'cold' && !!tea.coldBrew;
+  const isMilk = mode === 'milk' && milkSections.length > 0;
+  // Gramáž sa ráta podľa spôsobu prípravy: cold brew a čaj s mliekom majú svoj vlastný pomer.
+  const recipe =
+    isCold && tea.coldBrew
+      ? tea.coldBrew
+      : isMilk
+        ? { baseMl: milkMethod?.ml ?? tea.baseMl, baseGrams: milkMethod?.grams ?? tea.baseGrams, steps: '' }
+        : tea;
+  const modes: { label: string; value: Mode }[] = [
+    { label: '☕ Horúci', value: 'hot' },
+    ...(milkSections.length ? [{ label: '🥛 S mliekom', value: 'milk' as const }] : []),
+    ...(tea.coldBrew ? [{ label: '🧊 Cold brew', value: 'cold' as const }] : []),
+  ];
   const volume = ml ?? recipe.baseMl;
   const grams = Math.max(1, Math.round((recipe.baseGrams * volume) / recipe.baseMl));
   const color = TYPE_COLORS[tea.type];
@@ -73,8 +91,13 @@ export default function TeaDetail() {
   const presets = Array.from(new Set([...(isCold ? COLD_PRESETS : PRESETS), recipe.baseMl])).sort((a, b) => a - b);
   const low = isLowStock(tea);
 
-  const switchMode = (next: boolean) => {
-    setCold(next);
+  const switchMode = (next: Mode) => {
+    setMode(next);
+    setMl(null);
+  };
+
+  const switchMilk = (i: number) => {
+    setMilkIdx(i);
     setMl(null);
   };
 
@@ -108,6 +131,14 @@ export default function TeaDetail() {
   const runColdTimer = (hours: number) => {
     recordDrink(true);
     startSteepTimer(Math.round(hours * 3600));
+  };
+
+  // Pri čaji s mliekom je len jeden časovač – čas z receptu, kým sa pridá mlieko.
+  const milkTimer = milkMethod ? findMilkTimer(milkMethod.lines) : null;
+  const runMilkTimer = () => {
+    if (!milkTimer) return;
+    recordDrink(false);
+    startSteepTimer(milkTimer.sec);
   };
 
   const resetSteeps = () => {
@@ -222,24 +253,33 @@ export default function TeaDetail() {
         </View>
       )}
 
-      {!!tea.coldBrew && (
+      {modes.length > 1 && (
         <View style={s.segment}>
-          {[
-            { label: '☕ Horúci', value: false },
-            { label: '🧊 Cold brew', value: true },
-          ].map((o) => (
-            <Pressable
-              key={o.label}
-              onPress={() => switchMode(o.value)}
-              style={[s.segmentBtn, isCold === o.value && { backgroundColor: color }]}>
-              <Text style={[s.segmentText, isCold === o.value && { color: '#FFF' }]}>{o.label}</Text>
-            </Pressable>
-          ))}
+          {modes.map((o) => {
+            const active = (isCold ? 'cold' : isMilk ? 'milk' : 'hot') === o.value;
+            return (
+              <Pressable
+                key={o.value}
+                onPress={() => switchMode(o.value)}
+                style={[s.segmentBtn, active && { backgroundColor: color }]}>
+                <Text style={[s.segmentText, active && { color: '#FFF' }]}>{o.label}</Text>
+              </Pressable>
+            );
+          })}
         </View>
       )}
 
       <Card style={{ gap: 14 }}>
-        <SectionTitle>{isCold ? 'Koľko cold brew si chceš pripraviť?' : 'Koľko si chceš pripraviť?'}</SectionTitle>
+        <SectionTitle>
+          {isCold ? 'Koľko cold brew si chceš pripraviť?' : isMilk ? 'Koľko čaju s mliekom chceš?' : 'Koľko si chceš pripraviť?'}
+        </SectionTitle>
+        {isMilk && milkMethods.length > 1 && (
+          <View style={s.wrap}>
+            {milkMethods.map((m, i) => (
+              <Chip key={m.title} label={m.title} active={m === milkMethod} color={color} onPress={() => switchMilk(i)} />
+            ))}
+          </View>
+        )}
         <View style={s.stepper}>
           <Pressable style={s.stepBtn} onPress={() => setMl(Math.max(50, volume - 50))}>
             <Text style={s.stepBtnText}>−</Text>
@@ -260,14 +300,27 @@ export default function TeaDetail() {
         <View style={s.params}>
           {isCold && tea.coldBrew ? (
             <Param label="V chladničke" value={formatHours(tea.coldBrew.hours)} />
-          ) : (
+          ) : isMilk ? null : (
             <Param label="Teplota" value={`${tea.tempC} °C`} />
           )}
           <Param label="Pomer" value={`${formatGrams(recipe.baseGrams)} / ${recipe.baseMl} ml`} />
         </View>
       </Card>
 
-      {!isCold && tea.steeps.length > 0 && (
+      {isMilk && milkTimer && (
+        <Card style={{ gap: 10 }}>
+          <SectionTitle>Lúhovanie</SectionTitle>
+          <View style={s.steepRow}>
+            <Text style={s.body}>
+              {milkTimer.label} · <Text style={{ fontWeight: '700' }}>{formatTime(milkTimer.sec)}</Text>
+            </Text>
+            <TimerButton color={color} onPress={runMilkTimer} />
+          </View>
+          <Text style={s.hint}>Keď zazvoní, pokračuj podľa postupu nižšie.</Text>
+        </Card>
+      )}
+
+      {!isCold && !isMilk && tea.steeps.length > 0 && (
         <Card style={{ gap: 10 }}>
           <SectionTitle>Lúhovanie</SectionTitle>
           {tea.steeps.map((sec, i) => (
@@ -335,7 +388,13 @@ export default function TeaDetail() {
         </View>
       )}
 
-      {!isCold && !!tea.milkSteps?.trim() && <MilkSteps text={tea.milkSteps} color={color} volume={volume} />}
+      {isMilk && (
+        <MilkSteps
+          sections={milkMethod ? [milkMethod, ...milkSections.filter((m) => !milkMethods.includes(m as MilkMethod))] : milkSections}
+          color={color}
+          volume={volume}
+        />
+      )}
 
       {tea.stockGrams !== undefined ? (
         <Card style={[{ gap: 12 }, low && s.lowCard]}>
@@ -437,41 +496,64 @@ function scaleAmounts(line: string, factor: number) {
   });
 }
 
-function MilkSteps({ text, color, volume }: { text: string; color: string; volume: number }) {
-  // Riadok končiaci dvojbodkou je nadpis spôsobu; „· 350 ml“ v nadpise je objem, pre ktorý sú
-  // množstvá napísané. Kroky sa číslujú od každého nadpisu znova.
-  const lines = text
-    .split('\n')
-    .map((l) => l.trim())
-    .filter(Boolean)
-    .reduce<{ text: string; num: number; factor: number }[]>((acc, line) => {
-      const prev = acc[acc.length - 1];
-      if (line.endsWith(':')) {
-        const m = line.match(/^(.*?)\s*·\s*(\d+)\s*ml:$/);
-        const factor = m ? volume / Number(m[2]) : 1;
-        return [...acc, { text: m ? `${m[1]} · pre ${volume} ml` : line.slice(0, -1), num: 0, factor }];
-      }
-      // nadpis má num 0, takže číslovanie pod ním začne znova od 1
-      const factor = prev?.factor ?? 1;
-      return [...acc, { text: scaleAmounts(line, factor), num: (prev?.num ?? 0) + 1, factor }];
-    }, []);
+type MilkSection = { title: string; ml?: number; grams?: number; lines: string[] };
+type MilkMethod = MilkSection & { ml: number; grams: number };
+
+// Riadok končiaci dvojbodkou je nadpis spôsobu; „· 350 ml“ v nadpise je objem, pre ktorý sú
+// množstvá napísané. Prvé „{5 g}“ v krokoch je gramáž čaju pre tento spôsob, podľa nej sa
+// odpočítava zásoba. Nadpis bez ml (napr. „Tipy:“) je len doplnok, ukáže sa pri každom spôsobe.
+function parseMilk(text: string) {
+  const sections: MilkSection[] = [];
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (line.endsWith(':')) {
+      const m = line.match(/^(.*?)\s*·\s*(\d+)\s*ml:$/);
+      sections.push(m ? { title: m[1], ml: Number(m[2]), lines: [] } : { title: line.slice(0, -1), lines: [] });
+      continue;
+    }
+    if (!sections.length) sections.push({ title: '', lines: [] });
+    const sec = sections[sections.length - 1];
+    sec.lines.push(line);
+    const g = sec.grams === undefined && line.match(/\{(\d+(?:[.,]\d+)?)[^}]*?\bg\s*\}/);
+    if (g) sec.grams = Number(g[1].replace(',', '.'));
+  }
+  return sections;
+}
+
+// Prvý čas v krokoch receptu, napr. „lúhuj 5 minút“ alebo „var 3 – 4 minúty“ (berie sa kratší).
+function findMilkTimer(lines: string[]) {
+  for (const line of lines) {
+    const m = line.match(/(\d+)(?:\s*[–-]\s*\d+)?\s*min/);
+    if (m) return { sec: Number(m[1]) * 60, label: /var/i.test(line) ? 'Varenie čaju' : 'Lúhovanie' };
+  }
+  return null;
+}
+
+function MilkSteps({ sections, color, volume }: { sections: MilkSection[]; color: string; volume: number }) {
   return (
     <Card style={{ gap: 12 }}>
       <SectionTitle>🥛 S mliekom</SectionTitle>
-      {lines.map((line, i) =>
-        line.num === 0 ? (
-          <Text key={i} style={[s.milkHeading, i > 0 && { marginTop: 6 }]}>
-            {line.text}
-          </Text>
-        ) : (
-          <View key={i} style={{ flexDirection: 'row', gap: 12 }}>
-            <View style={[s.stepNum, { borderColor: color }]}>
-              <Text style={[s.stepNumText, { color }]}>{line.num}</Text>
-            </View>
-            <Text style={[s.body, { flex: 1 }]}>{line.text}</Text>
+      {sections.map((sec, si) => {
+        const factor = sec.ml ? volume / sec.ml : 1;
+        return (
+          <View key={si} style={{ gap: 12 }}>
+            {!!sec.title && (
+              <Text style={[s.milkHeading, si > 0 && { marginTop: 6 }]}>
+                {sec.ml ? `${sec.title} · pre ${volume} ml` : sec.title}
+              </Text>
+            )}
+            {sec.lines.map((line, i) => (
+              <View key={i} style={{ flexDirection: 'row', gap: 12 }}>
+                <View style={[s.stepNum, { borderColor: color }]}>
+                  <Text style={[s.stepNumText, { color }]}>{i + 1}</Text>
+                </View>
+                <Text style={[s.body, { flex: 1 }]}>{scaleAmounts(line, factor)}</Text>
+              </View>
+            ))}
           </View>
-        ),
-      )}
+        );
+      })}
       <Text style={s.hint}>Množstvá sa prepočítavajú podľa toho, koľko ml si zvolíš vyššie.</Text>
     </Card>
   );
