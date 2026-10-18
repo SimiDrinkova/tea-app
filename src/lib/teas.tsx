@@ -156,6 +156,19 @@ function withSeedUpdates(teas: Tea[]): Tea[] {
   });
 }
 
+// Vahdam upravený cez formulár nedostal z môjho zoznamu nový cold brew postup (koncentrát).
+// Mení sa len text postupu a len vtedy, ak je v telefóne ešte pôvodný text.
+const VAHDAM_COLD_OLD = 'Nasyp čaj do fľaše a zalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín (silnejší až 12 h).\nLístky a korenie sceď.\nPodávaj s ľadom, podľa chuti dolej mlieko a osláď.\nVypi do 2 – 3 dní.';
+const VAHDAM_COLD_NEW = 'Toto je silný koncentrát, nie hotový nápoj.\nNasyp čaj do fľaše a zalej studenou filtrovanou vodou.\nDaj do chladničky na 8 hodín (silnejší až 12 h, dlhšie už čierne korenie štípe).\nLístky a korenie sceď.\nPri podávaní zrieď 1 : 1 mliekom, mlieko pridávaj až do pohára, nie do fľaše.\nOsladenie podľa chuti. Koncentrát vypi do 3 dní.';
+
+function withVahdamColdBrew(teas: Tea[]): Tea[] {
+  return teas.map((t) =>
+    t.id === 'vahdam-double-spice-chai' && t.coldBrew?.steps === VAHDAM_COLD_OLD
+      ? { ...t, coldBrew: { ...t.coldBrew, steps: VAHDAM_COLD_NEW } }
+      : t,
+  );
+}
+
 type Ctx = {
   teas: Tea[];
   loaded: boolean;
@@ -173,7 +186,7 @@ export function TeasProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
-      .then((raw) => (raw ? withSeedUpdates(JSON.parse(raw)) : SEED))
+      .then((raw) => (raw ? withVahdamColdBrew(withSeedUpdates(JSON.parse(raw))) : SEED))
       .catch(() => SEED)
       .then(async (stored) => {
         setTeas(stored);
