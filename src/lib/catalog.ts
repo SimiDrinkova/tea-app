@@ -52,6 +52,11 @@ export async function syncCatalog(existing: Tea[]): Promise<Tea[] | null> {
         // opravený recept/popis; moje hodnotenie, zásoba, história a poznámky ostanú
         teas = teas.map((t) => (t.id === entry.id ? { ...t, ...entry } : t));
         changed = true;
+      } else if (stored?.edited && entry.id === 'masala-chai' && !stored.milkSteps?.includes('Koncentrát')) {
+        // Masala upravená cez formulár nedostala varený koncentrát namiesto cold brew.
+        // Mení sa len príprava s mliekom a cold brew, ostatné moje úpravy ostanú.
+        teas = teas.map((t) => (t.id === entry.id ? { ...t, milkSteps: entry.milkSteps, coldBrew: entry.coldBrew } : t));
+        changed = true;
       }
       seen[entry.id] = json;
     }
